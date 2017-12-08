@@ -1,4 +1,4 @@
-# nostos
+# Project Nostos - A New Way to Apply for Moving Permits in the City of Boston
 The prototype permitting application for the City of Boston Boston Transportation 
 
 Issue
