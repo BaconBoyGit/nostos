@@ -1,5 +1,5 @@
 # Project Nostos - A New Way to Apply for Moving Permits in the City of Boston
-The prototype permitting application for the City of Boston Boston Transportation 
+The prototype permitting application for the City of Boston  
 
 ## Issue
 Moving day--September 1--is a big day in Boston. 
