@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import MapBox from './MapBox';
+var blight = require('./images/b-light.svg');
+var blogo = require('./images/logo.svg');
+var bseal = require('./images/seal.svg');
 
 class App extends Component {
 
@@ -28,18 +30,26 @@ class App extends Component {
     }
     
   render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title"> {this.state.date.toLocaleDateString()} </h1>
-        </header>
-        <p className="App-intro">
-          It is {this.state.date.toLocaleTimeString()}.
-        </p>
-    </div>,
-    <MapBox />
-    );
+    return [
+      <div className ="App">
+
+        <div class="mn">
+
+            <header class="h" role="header">
+
+                <div class="lo">
+                        <img src= { blogo } alt="City of Boston" class="lo-i" />
+                </div>
+                <div class="s">
+                    <img src= { bseal }  alt="City of Boston" class="s-i" />
+                </div>
+               
+            </header>
+        </div>
+      </div>
+      ,     
+        <MapBox />
+    ];
   }
 }
 

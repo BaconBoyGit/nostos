@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import mapboxgl from 'mapbox-gl'
 
 class Map extends React.Component {
@@ -21,7 +21,7 @@ class Map extends React.Component {
         zoom: this.state.zoom,
         attributionControl: false
       });
-      this.map.addControl(new mapboxgl.AttributionControl(), 'top-left');
+      this.map.addControl(new mapboxgl.AttributionControl(), 'bottom-right');
     }
   
     componentWillUnmount() {
