@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import Home from './pages/home';
-import MapBox from './MapBox';
+import Home from '../components/home';
+import MapBox from '../components/MapBox';
 
 class App extends Component {
 
@@ -13,9 +13,8 @@ class App extends Component {
   render() {
     
     return [
+      <MapBox />,
       <Home />
-      ,     
-      <MapBox />
     ];
   }
 }
