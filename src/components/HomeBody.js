@@ -12,7 +12,9 @@ class homeBody extends React.Component {
     render () {
         const carStyle = {
             maxHeight: 200,
-            position: 'absolutely',
+            position: 'absolute',
+            top: 0,
+            bottom: 0,
         }
 
 

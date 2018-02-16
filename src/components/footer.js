@@ -8,13 +8,16 @@ import React from 'react';
 
 class footer extends React.Component {
     render () {
-        const logoStyle = {
-            marginLeft: "10px",
+        const footerStyle = {
+            position: "relative",
+            top: 0,
           }; 
 
         return (
-        <div className ="Footer">
-            Footer
+        <div className ="Footer" style = { footerStyle }>
+            <div className = "p.a400">
+                footer placeholder text
+            </div>
         </div>
       
         )

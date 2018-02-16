@@ -1,5 +1,6 @@
 import React from 'react';
 import mapboxgl from 'mapbox-gl'
+import HBody from './HomeBody'
 
 class Map extends React.Component {
 
@@ -45,15 +46,27 @@ class Map extends React.Component {
     render() {
 
       // Define our styling for the map
-      const style = {
+      const mapStyle = {
         position: 'absolute',
         top: 0,
         bottom: 0,
         width: '100%',
-        height: '75%'
+        height: '400px'
       };
-  
-      return <div style={style} ref={el => this.mapContainer = el} />;
+
+
+      const mapContainerStyle = {
+        position: 'relative',
+        height: '400px'
+      };
+
+      return (
+          <div className = 'mapContainer' style = { mapContainerStyle }>
+            <div style={ mapStyle } ref={el => this.mapContainer = el} />
+            <HBody />
+          </div>
+      )
+
     }
   }
   
