@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 import Header from '../components/header';
 import MapBox from '../components/MapBox';
-import Hbody from '../components/home-body';
+import Hbody from '../components/HomeBody';
 
-class App extends Component {
+
+class Home extends Component {
  
+    // Currently no props are being used, but we retain the 
+    // structure for later use
     constructor(props) {
       super(props)
-      this.state = {date: new Date()};
     }
 
   render() {
-    
+    // Render our components as a single part
     return [
       <MapBox />,
       <Header />,
@@ -20,4 +22,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Home;
