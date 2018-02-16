@@ -1,5 +1,6 @@
 import React from 'react';
 import mapboxgl from 'mapbox-gl'
+// We want the body of our page to be rendered overtop of the map
 import HBody from './HomeBody'
 
 class Map extends React.Component {
@@ -54,7 +55,7 @@ class Map extends React.Component {
         height: '400px'
       };
 
-
+      // Define a relative container for our map, and anything inside of it
       const mapContainerStyle = {
         position: 'relative',
         height: '400px'

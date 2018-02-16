@@ -8,6 +8,8 @@ import React from 'react';
 
 class footer extends React.Component {
     render () {
+
+        // We use 'relative' to render this below other elements
         const footerStyle = {
             position: "relative",
             top: 0,

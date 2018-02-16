@@ -10,6 +10,8 @@ var car = require('../images/nostos-car.svg');
 
 class homeBody extends React.Component {
     render () {
+
+        // Height is important to the file size
         const carStyle = {
             maxHeight: 200,
             position: 'absolute',
