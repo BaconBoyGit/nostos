@@ -1,5 +1,4 @@
 import React from 'react';
-var car = require('../images/nostos-car.svg');
 
 /*
 *   The body of the home page,
@@ -11,18 +10,27 @@ var car = require('../images/nostos-car.svg');
 class homeBody extends React.Component {
     render () {
 
-        // Height is important to the file size
-        const carStyle = {
-            maxHeight: 200,
-            position: 'absolute',
-            top: 0,
-            bottom: 0,
+        // Match the height of the mapbox container
+        const homeBodyStyle = {
+            height: 400,
+            padding: 25,
         }
 
+        // Center the content of the home body
+        const homeContent = {
+            textAlign: 'center',
+            position: 'relative',
+        }
 
         return (
-            <div className = "homeBody">
-                    <img src={ car }  alt="car" style={ carStyle } />
+            <div className = "homeBody" style = {homeBodyStyle} >
+                <div style= { homeContent }>
+                            <div class="hro-c">
+                                <div class="hro-i hro-i--l">welcome to the City of Boston</div>
+                                <h1 class="hro-t hro-t--l">Moving Permit Portal</h1>
+                                <a href="#" class="btn btn--700">Get Started</a>
+                            </div>
+                </div>
             </div>
         );
     }

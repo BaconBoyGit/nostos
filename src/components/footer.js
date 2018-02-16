@@ -12,15 +12,16 @@ class footer extends React.Component {
         // We use 'relative' to render this below other elements
         const footerStyle = {
             position: "relative",
-            top: 0,
           }; 
 
         return (
-        <div className ="Footer" style = { footerStyle }>
-            <div className = "p.a400">
-                footer placeholder text
-            </div>
-        </div>
+            <footer className = "ft" >
+                <div class="ft-c">
+                    <ul class="ft-ll">
+                        <li class="ft-ll-i"><a href="https://www.boston.gov/copyright/privacyandsecurity.asp" class="ft-ll-a">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </footer>
       
         )
     }

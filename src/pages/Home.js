@@ -11,7 +11,7 @@ class Home extends Component {
     // Render our components as a single part
     return [
       <Header />,
-      <MapBox /> ,
+      <MapBox />,
       <Footer />
     ];
   }

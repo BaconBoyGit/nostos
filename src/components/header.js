@@ -11,15 +11,15 @@ var bseal = require('../images/seal.svg');
 
 class header extends React.Component {
     render () {
+
+        // Move the logo slightlty away from the wall
         const logoStyle = {
             marginLeft: "10px",
           }; 
 
         return (
-        <header className ="Header">
 
             <div className="mn">
-
                 <header className="h" >
                 
                     <div class="lo">
@@ -30,13 +30,11 @@ class header extends React.Component {
                     </div>
                                         
                     <div className="s">
-
-                        <img src= { bseal }  alt="City of Boston" class="s-i" />
-                        
+                        <img src= { bseal }  alt="City of Boston" class="s-i" /> 
                     </div>
+                    
                 </header>
             </div>
-        </header>
  
         )
     }

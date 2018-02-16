@@ -10,8 +10,8 @@ class Map extends React.Component {
         super(props)
         // Set the default location of focus for the map
         this.state = {
-            lng:-71.055683,
-            lat: 42.359997,
+            lng:-71.059179,
+            lat: 42.357816,
             zoom: 12,
         }
         // Set the boundaries for the map
@@ -35,7 +35,6 @@ class Map extends React.Component {
         // We want this specific map to be used for style, not function, so we disaple interactivity
         interactive: false,
       });
-      this.map.addControl(new mapboxgl.AttributionControl(), 'bottom-right');
     }
   
     //Handle map removal
@@ -66,6 +65,7 @@ class Map extends React.Component {
             <div style={ mapStyle } ref={el => this.mapContainer = el} />
             <HBody />
           </div>
+          
       )
 
     }
