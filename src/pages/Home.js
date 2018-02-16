@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Header from '../components/header';
+import Header from '../components/Header';
 import MapBox from '../components/MapBox';
-import Footer from '../components/footer';
+import Footer from '../components/Footer';
 
 
 class Home extends Component {
