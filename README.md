@@ -2,18 +2,18 @@
 The prototype permitting application for the City of Boston 
 
 ## Table of Contents
-- [Running the Project] (#running-the-project)
-    - [Dependencies] (#project-dependencies)
-    - [Running the React.js client] (#running-client)
-    - [Running the Node.js Express server] (#running-server)
+- [Running the Project](#running-the-project)
+    - [Dependencies](#project-dependencies)
+    - [Running the React.js client](#running-client)
+    - [Running the Node.js Express server](#running-server)
 - [Resources]
-    - [Developement Tools] (#development-tools)
-    - [External Resources] (#external-resources)
+    - [Developement Tools](#development-tools)
+    - [External Resources](#external-resources)
 
-- [About the Project] (#about-the-project)
-    - [Issue] (#issue)
-    - [Questions] (#questions)
-    - [Scope of Work] (#scope-of-work)
+- [About the Project](#about-the-project)
+    - [Issue](#issue)
+    - [Questions](#questions)
+    - [Scope of Work](#scope-of-work)
 
 ## Running the Project
 Information regarding dependencies, requirements, and commands used to build or run the project
