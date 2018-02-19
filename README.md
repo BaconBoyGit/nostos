@@ -6,7 +6,7 @@ The prototype permitting application for the City of Boston
     - [Dependencies](#project-dependencies)
     - [Running the React.js client](#running-client)
     - [Running the Node.js Express server](#running-server)
-- [Resources]
+- [Resources](#resources)
     - [Developement Tools](#development-tools)
     - [External Resources](#external-resources)
 
