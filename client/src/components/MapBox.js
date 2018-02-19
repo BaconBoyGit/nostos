@@ -1,7 +1,13 @@
 import React from 'react';
 import mapboxgl from 'mapbox-gl'
-// We want the body of our page to be rendered overtop of the map
-import HBody from './HomeBody'
+
+/*
+*   The body of the home page,
+*   Makes use of a basic, non-interactive mapbox and
+*   boston.gov stylings to introduce the user to the site
+*   
+*   Bradley Boutcher 2018
+*/
 
 class Map extends React.Component {
 
@@ -60,10 +66,30 @@ class Map extends React.Component {
         height: '400px'
       };
 
+       // Match the height of the mapbox container
+       const homeBodyStyle = {
+        height: 400,
+        padding: 25,
+    }
+
+      // Center the content of the home body within its container
+      const homeContent = {
+          textAlign: 'center',
+          position: 'relative',
+      }
+
       return (
           <div className = 'mapContainer' style = { mapContainerStyle }>
             <div style={ mapStyle } ref={el => this.mapContainer = el} />
-            <HBody />
+            <div className = "homeBody" style = {homeBodyStyle} >
+                <div style= { homeContent }>
+                            <div class="hro-c">
+                                <div class="hro-i hro-i--l">welcome to the City of Boston</div>
+                                <h1 class="hro-t hro-t--l">Moving Truck Permit Portal</h1>
+                                <a href="#" class="btn btn--700">Get Started</a>
+                            </div>
+                </div>
+            </div>
           </div>
           
       )
