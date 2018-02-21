@@ -1,11 +1,12 @@
 # Project Nostos 
-The prototype permitting application for the City of Boston 
+The prototype moving truck permitting application for the City of Boston 
 
 ## Table of Contents
 - [Running the Project](#running-the-project)
     - [Dependencies](#project-dependencies)
     - [Running the React.js client](#running-client)
     - [Running the Node.js Express server](#running-server)
+    
 - [Resources](#resources)
     - [Developement Tools](#development-tools)
     - [External Resources](#external-resources)
@@ -79,16 +80,24 @@ Information regarding the tools and resources essential to the design and develo
 
 ### Developement Tools
 [Visual Studio Code](https://code.visualstudio.com)
+
 [React.js](https://reactjs.org)
+
 [Create React App](https://github.com/facebook/create-react-app)
+
 [Node.js](https://nodejs.org/en/docs/)
+
 [Nodemon](https://nodemon.io)
+
 [Concurrently](https://www.npmjs.com/package/concurrently)
+
 [Yarn](https://yarnpkg.com/en/)
 
 ### External Resources
 [City of Boston Patterns Library](https://github.com/CityOfBoston/patterns)
+
 [City of Boston Public Data Portal](https://data.boston.gov)
+
 [MapBox](https://www.mapbox.com)
 
 ## About the Project
@@ -119,6 +128,9 @@ The prototype delivered by Gordon College Consultants will be used as a proof-of
 
 ## Scoping Resources
 [Moving Truck Permit Dataset](https://data.boston.gov/dataset/open-moving-truck-permits)
+
 [Current Street Sweeping Schedules](https://data.boston.gov/dataset/street-sweeping-schedules)
+
 [Current Moving Permit Reservation System](https://www.boston.gov/how-reserve-parking-spot-your-moving-truck)
+
 [General Moving Day Information](https://www.boston.gov/movingx)
