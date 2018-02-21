@@ -134,3 +134,4 @@ The prototype delivered by Gordon College Consultants will be used as a proof-of
 [Current Moving Permit Reservation System](https://www.boston.gov/how-reserve-parking-spot-your-moving-truck)
 
 [General Moving Day Information](https://www.boston.gov/movingx)
+
