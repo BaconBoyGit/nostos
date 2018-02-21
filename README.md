@@ -19,17 +19,62 @@ The prototype permitting application for the City of Boston
 Information regarding dependencies, requirements, and commands used to build or run the project
 
 ### Dependencies
+Before running the project, there are several dependencies for the front end and the back end.
+
+First, make sure you have the latest version of NPM and Node.js installed. You can download and install it [here](https://nodejs.org/en/download/) or follow the instructions on their site to install it through other means.
+
+Make sure node is up to date with :
+`npm i npm@latest -g`
+
+With NPM installed, download and install yarn with:
+`npm i --global yarn` 
+
+In the project directory, run:
+`cd client && yarn`
+
+Move back up to the top level of the directory, and run:
+`cd server && yarn`
+
+This should install all dependencies for the project using our yarn.lock files. Yarn will further be used to run the front end and back end concurrently.
+
+Install nodemon using
+`npm i nodemon -g`
+Nodemon is used for managing live updates to our Node.js server
+
+Install concurrently using
+`npm i -g concurrently`
+This allows us to run two commands simulataneously, using react-scripts and nodemon to manage live updates for both the front end and the back end.
+
+Finally, in the top level, run
+`yarn dev`
+To serve the client and the server on their respective ports concurrently.
 
 ### Running the React.js client
+To run only the front end, use
+`cd client && npm start`
+To create a build of the client, run
+`cd client && npm run build`
 
 ### Running the Node.js Express server
+To run the server, use
+`cd server && nodemon server.js`
 
 ## Resources
 Information regarding the tools and resources essential to the design and development of the project 
 
 ### Developement Tools
+[Visual Studio Code](https://code.visualstudio.com)
+[React.js](https://reactjs.org)
+[Create React App](https://github.com/facebook/create-react-app)
+[Node.js](https://nodejs.org/en/docs/)
+[Nodemon](https://nodemon.io)
+[Concurrently](https://www.npmjs.com/package/concurrently)
+[Yarn](https://yarnpkg.com/en/)
 
 ### External Resources
+[City of Boston Patterns Library](https://github.com/CityOfBoston/patterns)
+[City of Boston Public Data Portal](https://data.boston.gov)
+[MapBox](https://www.mapbox.com)
 
 ## About the Project
 Information regarding the process and purposes of this project
