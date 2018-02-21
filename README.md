@@ -14,6 +14,7 @@ The prototype permitting application for the City of Boston
     - [Issue](#issue)
     - [Questions](#questions)
     - [Scope of Work](#scope-of-work)
+    - [Scoping Resources](#scoping-resources)
 
 ## Running the Project
 Information regarding dependencies, requirements, and commands used to build or run the project
@@ -102,8 +103,8 @@ The New Urban Mechanics will provide access to data, key stakeholders, and other
 
 The prototype delivered by Gordon College Consultants will be used as a proof-of-concept design and catalyst for internal stakeholder conversations around moving day permitting, and may not be adopted as a final solution to the above Issue.
 
-### Moving Truck Permit Dataset - https://data.boston.gov/dataset/open-moving-truck-permits
-### Current Street Sweeping Schedules - https://data.boston.gov/dataset/street-sweeping-schedules
-### Current Moving Permit Reservation System - https://www.boston.gov/how-reserve-parking-spot-your-moving-truck
-### General Moving Day Information - https://www.boston.gov/movingx
-### Proposal- https://docs.google.com/document/d/1U_7Pi0U9DdZ-eEz-trZTXDP3XaLs8rmhaDX_kh44vkM/edit#heading=h.6cxtcn9dvq82
+## Scoping Resources
+[Moving Truck Permit Dataset](https://data.boston.gov/dataset/open-moving-truck-permits)
+[Current Street Sweeping Schedules](https://data.boston.gov/dataset/street-sweeping-schedules)
+[Current Moving Permit Reservation System](https://www.boston.gov/how-reserve-parking-spot-your-moving-truck)
+[General Moving Day Information](https://www.boston.gov/movingx)
