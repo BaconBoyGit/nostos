@@ -30,4 +30,4 @@ yarn-error.log*
 server/id_rsa
 server/.env
 server/secrets.js
-config/config.json
+server/config/config.json
