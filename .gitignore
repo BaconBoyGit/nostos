@@ -25,3 +25,8 @@ yarn-error.log*
 
 /.vscode
 */.vscode
+
+# private
+server/id_rsa
+server/.env
+server/secrets.js
