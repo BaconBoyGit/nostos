@@ -1,0 +1,73 @@
+{
+ 
+ "development": {
+
+     "username": "bradley",
+
+     "password": "1Robot@school",
+
+     "database": "nostos_test",
+
+     "host": "localhost",
+
+     "dialect": "mysql",
+
+     "operatorsAliases": {
+      "$and": "Op.and",
+      "$or": "Op.or",
+      "$eq": "Op.eq",
+      "$gt": "Op.gt",
+      "$lt": "Op.lt",
+      "$lte": "Op.lte",
+      "$like": "Op.like"
+    }
+
+ },
+
+ "test": {
+
+     "username": "",
+
+     "password": null,
+
+     "database": "",
+
+     "host": "",
+
+     "dialect": "mysql",
+
+     "operatorsAliases": {
+        "$and": "Op.and",
+        "$or": "Op.or",
+        "$eq": "Op.eq",
+        "$gt": "Op.gt",
+        "$lt": "Op.lt",
+        "$lte": "Op.lte",
+        "$like": "Op.like"
+     }
+ },
+
+ "production": {
+
+    "username": "bradley",
+
+    "password": "1Robot@school",
+
+    "database": "nostos",
+
+    "host": "localhost",
+
+    "dialect": "mysql",
+
+    "operatorsAliases": {
+        "$and": "Op.and",
+        "$or": "Op.or",
+        "$eq": "Op.eq",
+        "$gt": "Op.gt",
+        "$lt": "Op.lt",
+        "$lte": "Op.lte",
+        "$like": "Op.like"
+    }
+ }
+
+}
