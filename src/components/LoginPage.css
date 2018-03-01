@@ -1,4 +1,6 @@
-input[type=email] 
-{
-    width: 50%;
-}
+emailAddress {
+    width: 100px;
+   }
+.txt-f {
+    width: 100px;
+   }
