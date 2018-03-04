@@ -20,7 +20,7 @@ class Home extends Component {
 
     // A helper function to async access our api
     callApi = async () => {
-      const response = await fetch('/api/hello');
+      const response = await fetch('/v1/users');
       const body = await response.json();
       if (response.status !== 200) throw Error(body.message);
       return body;
