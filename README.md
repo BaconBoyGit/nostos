@@ -71,9 +71,9 @@ To create a build of the client, run
 `cd client && npm run build`
 
 ### Running the Node.js Express server
-To run the server, use
+To run the server independent of the front end, use
 
-`cd server && nodemon server.js`
+`cd server && nodemon bin/www`
 
 ## Resources
 Information regarding the tools and resources essential to the design and development of the project 
@@ -94,6 +94,8 @@ Information regarding the tools and resources essential to the design and develo
 [Yarn](https://yarnpkg.com/en/)
 
 ### External Resources
+[REST API tutorial by Brian Alois](https://codeburst.io/build-a-rest-api-for-node-mysql-2018-jwt-6957bcfc7ac9)
+
 [City of Boston Patterns Library](https://github.com/CityOfBoston/patterns)
 
 [City of Boston Public Data Portal](https://data.boston.gov)
