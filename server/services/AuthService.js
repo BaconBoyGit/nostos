@@ -1,6 +1,12 @@
 const User 			= require('./../models').User;
 const validator     = require('validator');
 
+/*
+We would love if the user can use either an email or phone number.
+This method helps us combine what ever is sent to a variable called unique_key. 
+Which we will use in the create user function
+*/
+
 const getUniqueKeyFromBody = function(body){// this is so they can send in 3 options unique_key, email, or phone and it will work
     let unique_key = body.unique_key;
     if(typeof unique_key==='undefined'){

@@ -1,3 +1,4 @@
+// import modules and setup passport middleware
 const express 			= require('express');
 const router 			= express.Router();
 
@@ -17,6 +18,8 @@ router.get('/', function(req, res, next) {
   res.json({status:"success", message:"Parcel Pending API", data:{"version_number":"v1.0.0"}})
 });
 
+// Basic CRUD(create, read, update, delete) routes
+// Testable using /v1/{route}
 
 router.post(    '/users',           UserController.create);                                                    // C
 router.get(     '/users',           passport.authenticate('jwt', {session:false}), UserController.get);        // R

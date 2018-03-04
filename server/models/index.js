@@ -7,6 +7,8 @@ var basename  = path.basename(__filename);
 var db        = {};
 
 // Setup database and load models
+
+// Connect to sequelize using env variables
 const sequelize = new Sequelize(CONFIG.db_name, CONFIG.db_user, CONFIG.db_password, {
   host: CONFIG.db_host,
   dialect: CONFIG.db_dialect,
@@ -14,6 +16,7 @@ const sequelize = new Sequelize(CONFIG.db_name, CONFIG.db_user, CONFIG.db_passwo
   operatorsAliases: false
 });
 
+// Load all the models in the model directory
 fs
   .readdirSync(__dirname)
   .filter(file => {
@@ -30,6 +33,7 @@ Object.keys(db).forEach(modelName => {
   }
 });
 
+// Export Sequelize
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
