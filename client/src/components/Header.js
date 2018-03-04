@@ -10,6 +10,7 @@ var bseal = require('../images/seal.svg');
 */
 
 class header extends React.Component {
+    
     render () {
 
         // Move the logo slightlty away from the wall
