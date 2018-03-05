@@ -1,36 +1,34 @@
 import React from 'react';
-import PropTypes from 'prop-types'
+// import route Components here
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Switch,
+  Redirect
+} from 'react-router-dom'
+
 import Header from './common/Header';
-import MapBox from './maps/MapBox';
+import Welcome from './maps/WelcomeMap';
+import LoginForm from './forms/LoginForm';
+import RegisterForm from './forms/RegisterForm';
 import Footer from './common/Footer';
 
 class App extends React.Component {
-  
-    // Define a data model for this page
-    state = {
-      response: ''
-    };
-    
-
-
-    App = () => (
-
-        <div className = "app">
-          <Header />
-          {this.props.children}
-          <Footer />
-        </div>
-
-    )
-
   render() {
-    // Render our components as a single part
-    return this.App();
+    return (
+      <Router>
+        <div className="App">
+            <Header />
+            <Route exact path="/" component={Welcome} />
+            <Route exact path="/login" component={LoginForm} />
+            <Route exact path="/register" component={RegisterForm} />
+            <Footer />
+        </div>
+      </Router>
+    );
   }
 }
 
-App.propTypes = {  
-  children: PropTypes.object.isRequired
-};
 
 export default App;
