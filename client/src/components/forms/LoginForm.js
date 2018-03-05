@@ -1,48 +1,53 @@
 import React from 'react'
 
+const signinContainer = {
+	marginLeft: '10%',
+	marginRight: '10%',
+	marginBottom: '5%'
+}
 const LoginForm = () => {
 
 	return (      
 	
-	<div className ="login">   
+	<div className ="signin-container" style = { signinContainer }>   
 		<center>            
-			<div class="b b-- b--fw">
-				<div class="b-c">
+			<div className="b b-- b--fw">
+				<div className="b-c">
 				
-						<h2 class="sh-title">Application for Moving Truck Permit</h2>
+						<h2 className="sh-title">Application for Moving Truck Permit</h2>
 				
 				</div>
 			</div>
 		</center>
 
 		<form action="https://boston.gov" method="POST">
-			<div class="fs">
+			<div className="fs">
 			<div align="center">
-			<div class="txt g--6">
-				<label for="first_name" class="txt-l txt-l--mt000">Email Address</label>
-				<input id="first_name" type="text" placeholder="Email" class="txt-f" required/>
+			<div className="txt g--6">
+				<label htmlFor="first_name" className="txt-l txt-l--mt000">Email Address</label>
+				<input id="first_name" type="text" placeholder="Email" className="txt-f" required/>
 			</div>
 			</div>
-			<div class="fs-c fs-c--i">    
-				<div class="txt">
+			<div className="fs-c fs-c--i">    
+				<div className="txt">
 				<div align="center">
-					<label for="text" class="txt-l">Password</label>
-					<input id="text" type="password" placeholder="Password" class="txt-f" required />
+					<label htmlFor="text" className="txt-l">Password</label>
+					<input id="text" type="password" placeholder="Password" className="txt-f" required />
 				</div>
 				</div>
 			</div>
 			</div>
 
-			<div class="bc bc--r">
+			<div className="bc bc--r">
 				<center>
-					<button id="login" type="submit" class="btn btn--700">Login</button>      
+					<button id="login" type="submit" className="btn btn--700">Login</button>      
 				</center> 
 			</div> 
 		</form>  
 
-		<div class="bc bc--r">					
+		<div className="bc bc--r">					
 			<center>
-				<button id="apply" class="btn btn--700">Apply </button>
+				<button id="apply" className="btn btn--700">Apply </button>
 			</center>
 		</div> 
 	</div>

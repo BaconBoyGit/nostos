@@ -1,6 +1,12 @@
 import React from 'react';
 import mapboxgl from 'mapbox-gl'
-import { BrowserRouter, Link, Route, Switch } from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Switch,
+  Redirect
+} from 'react-router-dom'
 
 /*
 *   The body of the home page,

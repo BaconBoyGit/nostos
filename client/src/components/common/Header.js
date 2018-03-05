@@ -30,22 +30,22 @@ const Header = () => {
         <div className="mn">
             <header className="h" >
 
-                <nav class="lo">
-                    <Link to="/" activeClassName = "active" class="lo-l">
-                        <img style = {logoStyle} src= { blogo } alt="City of Boston" class="lo-i" />
-                        <span class="lo-t">Mayor Martin J. Walsh</span>
+                <nav className="lo">
+                    <Link to="/" className="lo-l">
+                        <img style = {logoStyle} src= { blogo } alt="City of Boston" className="lo-i" />
+                        <span className="lo-t">Mayor Martin J. Walsh</span>
                     </Link>
                 </nav>
                
                 <div className="s">
-                    <img src= { bseal }  alt="City of Boston" class="s-i" /> 
+                    <img src= { bseal }  alt="City of Boston" className="s-i" /> 
                 </div>
 
                 <nav className="nv-h">
-                    <Link to="/register" activeClassName="active">
+                    <Link to="/register" >
                         <div className="btn btn--sm btn--y"> Sign Up </div>
                     </Link>
-                    <Link to="/login" activeClassName="active">
+                    <Link to="/login">
                         <div className="btn btn--sm btn--y" style = {{marginLeft: "10px"}} > Sign In </div>
                     </Link>
                 </nav>

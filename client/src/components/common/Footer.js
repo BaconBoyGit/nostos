@@ -19,9 +19,9 @@ components that render stateful/changing content.
 const Footer = () => {
     return (
         <footer className = "ft" >
-            <div class="ft-c">
-                <ul class="ft-ll">
-                    <li class="ft-ll-i"><a href="https://www.boston.gov/copyright/privacyandsecurity.asp" class="ft-ll-a">Privacy Policy</a></li>
+            <div className="ft-c">
+                <ul className="ft-ll">
+                    <li className="ft-ll-i"><a href="https://www.boston.gov/copyright/privacyandsecurity.asp" className="ft-ll-a">Privacy Policy</a></li>
                 </ul>
             </div>
         </footer>

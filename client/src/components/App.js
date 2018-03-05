@@ -16,6 +16,7 @@ import Footer from './common/Footer';
 
 class App extends React.Component {
   render() {
+    // make code here
     return (
       <Router>
         <div className="App">
