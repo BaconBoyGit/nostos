@@ -1,5 +1,6 @@
 import React from 'react';
 import mapboxgl from 'mapbox-gl'
+import { BrowserRouter, Link, Route, Switch } from 'react-router-dom'
 
 /*
 *   The body of the home page,
@@ -81,15 +82,18 @@ class Map extends React.Component {
       return (
           <div className = 'mapContainer' style = { mapContainerStyle }>
             <div style={ mapStyle } ref={el => this.mapContainer = el} />
-            <div className = "homeBody" style = {homeBodyStyle} >
-                <div style= { homeContent }>
-                            <div class="hro-c">
-                                <div class="hro-i hro-i--l">welcome to the City of Boston</div>
-                                <h1 class="hro-t hro-t--l">Moving Truck Permit Portal</h1>
-                                <a href="#" class="btn btn--700">Get Started</a>
-                            </div>
-                </div>
-            </div>
+              
+              <div className = "homeBody" style = {homeBodyStyle} >
+                  <div style= { homeContent }>
+                              <div class="hro-c">
+                                  <div class="hro-i hro-i--l">welcome to the City of Boston</div>
+                                  <h1 class="hro-t hro-t--l">Moving Truck Permit Portal</h1>
+                                  <nav>
+                                      <Link to="/login" class="btn btn--700">Get Started</Link>
+                                  </nav>
+                              </div>
+                  </div>
+              </div>
           </div>
           
       )

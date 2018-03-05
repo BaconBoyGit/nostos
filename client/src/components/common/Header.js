@@ -5,7 +5,7 @@ var bseal = require('../images/seal.svg');
 
 /*
 *   The header component, present on all pages for the Nostos site
-*   Uses patterns.boston.gov modules
+*   Uses patterns.boston.gov patterns
 *   Bradley Boutcher 2018
 */
 
