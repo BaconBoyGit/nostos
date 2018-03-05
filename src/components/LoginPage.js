@@ -1,9 +1,7 @@
 import React from 'react';
 import Home from './home.js';
 import './LoginPage.css';
-import './applicationLink.js'
-import Application from '../components/Application';
-import Header from '../components/Header';
+import App from '../pages/App';
 
 var blight = require('../images/b-dark.svg');
 var blogo = require('../images/logo.svg');
@@ -14,29 +12,15 @@ var bseal = require('../images/seal.svg');
 
 
 class login extends React.Component {
-
-
-   
+     
 
     render () {   
 
-     
-        function toApplication()
-        {
+       var app1 = new App;
         
-            alert('Hello world');
-            
-        }   
-
         return (      
  
         <div className ="login">   
-        
-        <header>
-        <script type="text/javascript" src="./applicationLink.js/">
-        </script>
-        </header>
-
         <center>            
         <div class="b b-- b--fw">
              <div class="b-c">
@@ -62,24 +46,13 @@ class login extends React.Component {
                          </div>
                          </div>
                     </div>
-                   
-                    <div class="bc bc--r">
-                    <center>
-                        <button type="submit" class="btn btn--700">Login</button>       
-                    </center>
                     </div>
-                    </div>
-                     </form>  
-            
-            <div class="bc bc--r">
-                    <center>
-        <button id="apply" class="btn btn--700" onClick={toApplication()} >Apply</button> 
-                    
-                    </center>
-                    </div>
-                 
+                     </form>    
         </div>
+        
+   
         )
+    
     }
 
     

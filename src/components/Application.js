@@ -1,8 +1,8 @@
 import React from 'react';
 import './Application.css';
-var blight = require('../images/b-dark.svg');
-var blogo = require('../images/logo.svg');
-var bseal = require('../images/seal.svg');
+
+
+//This class creates the primary application form that is filled out for the permit
 
 class application extends React.Component {
     render () {   
@@ -119,7 +119,7 @@ class application extends React.Component {
             <div class="fs-c fs-c--i m-b300">
             <div class="txt g--6">
                 <label for="email" class="txt-l txt-l--mt000">Email*</label>
-                <input id="email" type="text" placeholder="Email" class="txt-f" required/>
+                <input id="email" type="email" placeholder="Email" class="txt-f" required/>
             </div>
             <div class="txt g--6">
                 <label for="cell" class="txt-l txt-l--mt000">Mobile</label>
@@ -154,13 +154,13 @@ class application extends React.Component {
             <div class="fs-c fs-c--i m-b300">
             <div class="txt g--6">
                 <label for="password" class="txt-l txt-l--mt000">Password*</label>
-                <input id="password" type="text" placeholder="Password" class="txt-f" required/>
+                <input id="password" type="password" placeholder="Password" class="txt-f" required/>
             </div>
             </div>
             <div class="fs-c fs-c--i m-b300">
             <div class="txt g--6">
                 <label for="confirm" class="txt-l txt-l--mt000">Password Confirmation*</label>
-                <input id="confirm" type="text" placeholder="Retype password" class="txt-f" required/>
+                <input id="confirm" type="password" placeholder="Confirm" class="txt-f" required/>
             </div>
             </div>
             
