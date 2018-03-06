@@ -18,7 +18,7 @@ router.get('/', function(req, res, next) {
   res.json({status:"success", message:"Parcel Pending API", data:{"version_number":"v1.0.0"}})
 });
 
-// Basic CRUD(create, read, update, delete) routes
+// Basic CRUD (create, read, update, delete) routes
 // Testable using /v1/{route}
 
 router.post(    '/users',           UserController.create);                                                    // C
