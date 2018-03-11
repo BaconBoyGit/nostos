@@ -17,22 +17,22 @@ const RegisterForm = () => {
 			<div class="fs-c fs-c--i m-b300">
 				<div class="txt g--6">
 					<label for="first_name" class="txt-l txt-l--mt000">First name*</label>
-					<input id="first_name" type="text" placeholder="First name" class="txt-f" required/>
+					<input id="first_name" type="text" placeholder="First name" class="txt-f txt-f--sm txt-f txt-f--sm--sm" required/>
 				</div>
 				<div class="txt g--6">
 					<label for="last_name" class="txt-l txt-l--mt000">Last name*</label>
-					<input id="last_name" type="text" placeholder="Last name" class="txt-f" required/>
+					<input id="last_name" type="text" placeholder="Last name" class="txt-f txt-f--sm txt-f txt-f--sm--sm" required/>
 				</div>
 			</div>
 
 			<div class="fs-c fs-c--i m-b300">
 				<div class="txt g--6">
 					<label for="title" class="txt-l txt-l--mt000">Title</label>
-					<input id="title" type="text" placeholder="Title" class="txt-f"/>
+					<input id="title" type="text" placeholder="Title" class="txt-f txt-f--sm"/>
 				</div>
 				<div class="txt g--6">
 					<label for="company" class="txt-l txt-l--mt000">Company</label>
-					<input id="company" type="text" placeholder="Company" class="txt-f"/>
+					<input id="company" type="text" placeholder="Company" class="txt-f txt-f--sm"/>
 				</div>
 			</div>
 
@@ -41,11 +41,11 @@ const RegisterForm = () => {
 			<div class="fs-c fs-c--i m-b300">
 				<div class="txt g--6">
 					<label for="address" class="txt-l txt-l--mt000">Address 1*</label>
-					<input id="address" type="text" placeholder="Address" class="txt-f" required/>
+					<input id="address" type="text" placeholder="Address" class="txt-f txt-f--sm" required/>
 				</div>
 				<div class="txt g--6">
 					<label for="alt_addrss" class="txt-l txt-l--mt000">Address 2</label>
-					<input id="alt_addrss" type="text" placeholder="Alternate address" class="txt-f"/>
+					<input id="alt_addrss" type="text" placeholder="Alternate address" class="txt-f txt-f--sm"/>
 				</div>
 			</div>
 
@@ -53,7 +53,7 @@ const RegisterForm = () => {
 
 			<div class="txt g--6">
 				<label for="city" class="txt-l txt-l--mt000">City*</label>
-				<input id="city" type="text" placeholder="City" class="txt-f" required/>
+				<input id="city" type="text" placeholder="City" class="txt-f txt-f--sm" required/>
 			</div>
 
 			<div class="txt g--6">
@@ -122,7 +122,7 @@ const RegisterForm = () => {
 			<div class="fs-c fs-c--i m-b300">
 				<div class="txt g--6">
 					<label for="zip_code" class="txt-l txt-l--mt000">Zip Code*</label>
-					<input id="zip_code" type="text" placeholder="Zip code" class="txt-f" required/>
+					<input id="zip_code" type="text" placeholder="Zip code" class="txt-f txt-f--sm" required/>
 				</div>
 			</div>
 
@@ -131,22 +131,22 @@ const RegisterForm = () => {
 			<div class="fs-c fs-c--i m-b300">
 				<div class="txt g--6">
 					<label for="email" class="txt-l txt-l--mt000">Email*</label>
-					<input id="email" type="email" placeholder="Email" class="txt-f" required/>
+					<input id="email" type="email" placeholder="Email" class="txt-f txt-f--sm" required/>
 				</div>
 				<div class="txt g--6">
 					<label for="cell" class="txt-l txt-l--mt000">Mobile</label>
-					<input id="cell" type="text" placeholder="Mobile number" class="txt-f"/>
+					<input id="cell" type="text" placeholder="Mobile number" class="txt-f txt-f--sm"/>
 				</div>
 			</div>
 
 			<div class="fs-c fs-c--i m-b300">
 				<div class="txt g--6">
 					<label for="phone" class="txt-l txt-l--mt000">Telephone*</label>
-					<input id="phone" type="text" placeholder="Telephone number" class="txt-f" required/>
+					<input id="phone" type="text" placeholder="Telephone number" class="txt-f txt-f--sm" required/>
 				</div>
 				<div class="txt g--6">
 					<label for="fax" class="txt-l txt-l--mt000">Fax</label>
-					<input id="fax" type="text" placeholder="Fax number" class="txt-f"/>
+					<input id="fax" type="text" placeholder="Fax number" class="txt-f txt-f--sm"/>
 				</div>
 			</div>
 
@@ -155,7 +155,7 @@ const RegisterForm = () => {
 			<div class="fs-c fs-c--i m-b300">
 				<div class="txt g--6">
 					<label for="password" class="txt-l txt-l--mt000">Password*</label>
-					<input id="password" type="password" placeholder="Password" class="txt-f" required/>
+					<input id="password" type="password" placeholder="Password" class="txt-f txt-f--sm" required/>
 				</div>
 			</div>
 
@@ -163,7 +163,7 @@ const RegisterForm = () => {
 
 			<div class="txt g--6">
 				<label for="confirm" class="txt-l txt-l--mt000">Password Confirmation*</label>
-				<input id="confirm" type="password" placeholder="Confirm" class="txt-f" required/>
+				<input id="confirm" type="password" placeholder="Confirm" class="txt-f txt-f--sm" required/>
 			</div>
 			</div>
 			
