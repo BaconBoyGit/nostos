@@ -95,7 +95,7 @@ class Map extends React.Component {
                                   <div class="hro-i hro-i--l">welcome to the City of Boston</div>
                                   <h1 class="hro-t hro-t--l">Moving Truck Permit Portal</h1>
                                   <nav>
-                                      <Link to="/login" class="btn btn--700">Get Started</Link>
+                                      <Link to="/register" class="btn btn--700">Get Started</Link>
                                   </nav>
                               </div>
                   </div>
