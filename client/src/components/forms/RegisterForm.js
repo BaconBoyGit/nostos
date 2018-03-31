@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
 const signupContainer = {
 	marginLeft: "10%",
@@ -61,7 +63,7 @@ const RegisterForm = () => {
 					<div class="sel-c sel-c--fw">
 						<select name="language" id="language" class="sel-f" required>
 							<option value="AL">Alabama</option>
-							<option selected="selected" value="AK">Alaska</option>
+							<option value="AK">Alaska</option>
 							<option value="AR">Arkansas</option>
 							<option value="CA">California</option>
 							<option value="CO">Colorado</option>
@@ -79,7 +81,7 @@ const RegisterForm = () => {
 							<option value="LA">Louisiana</option>
 							<option value="ME">Maine</option>
 							<option value="MD">Maryland</option>
-							<option value="MA">Massachusetts</option>
+							<option selected="selected" value="MA">Massachusetts</option>
 							<option value="MI">Michigan</option>
 							<option value="MN">Minnesota</option>
 							<option value="MS">Mississippi</option>
@@ -174,7 +176,7 @@ const RegisterForm = () => {
 
 			<div class="m-v400 m-h200">
 
-			<button class="btn">Sign Up</button>
+			<Link to="/permit" className="nv-h-l-a nv-h-l-a--k--s tr-link">Sign Up</Link>
 
 			</div>	
 		</form>    

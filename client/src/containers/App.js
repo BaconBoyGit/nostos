@@ -21,6 +21,8 @@ import Welcome from '../components/maps/WelcomeMap';
 import RegisterForm from '../components/forms/RegisterForm';
 import Profile from '../components/common/Profile';
 import Footer from '../components/common/Footer';
+import Status from '../components/forms/Status';
+import Permit from '../componetns/forms/Permit';
 
 class App extends Component {
   render() {
@@ -38,7 +40,8 @@ class App extends Component {
             />
             <Route exact path="/" component={Welcome} />
             <Route exact path="/register" component={RegisterForm} />
-            <Route exact path="/profile" component={Profile} />
+            <Route exact path="/status" component={Status} />
+            <Route exact path="/permit" component={Permit} />
             <Footer />
         </div>
       </Router>
