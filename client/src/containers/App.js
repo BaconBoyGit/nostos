@@ -22,7 +22,7 @@ import RegisterForm from '../components/forms/RegisterForm';
 import Profile from '../components/common/Profile';
 import Footer from '../components/common/Footer';
 import Status from '../components/forms/Status';
-import Permit from '../componetns/forms/Permit';
+import Permit from '../components/forms/Permit';
 
 class App extends Component {
   render() {

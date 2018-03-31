@@ -176,7 +176,7 @@ const RegisterForm = () => {
 
 			<div class="m-v400 m-h200">
 
-			<Link to="/permit" className="nv-h-l-a nv-h-l-a--k--s tr-link">Sign Up</Link>
+			<Link to="/permit" className="nv-h-l-a nv-h-l-a--k--s tr-link"><button>Sign Up</button></Link>
 
 			</div>	
 		</form>    
