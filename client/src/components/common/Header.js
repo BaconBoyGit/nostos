@@ -66,6 +66,7 @@ export default class Header extends Component {
                         <Logout
                         onLogoutClick={() => dispatch(logoutUser())}
                         />
+                        <Link to="/profile" className="nv-h-l-a nv-h-l-a--k--s tr-link"> Profile </Link>
                     </nav>
                     }
                 </nav>

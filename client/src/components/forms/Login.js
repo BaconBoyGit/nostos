@@ -10,10 +10,20 @@ export default class Login extends Component {
       return (
         <ul className="nv-h-l"> 
           <li className="nv-h-l-i">
-              <input type='text' ref='username' className="form-control " placeholder='Username'/>
+              { this.props.errorMessage && 
+              <input type='text' ref='username' className="form-control txt-f--err" placeholder='Username'/>
+              }
+              { !this.props.errorMessage && 
+              <input type='text' ref='username' className="form-control" placeholder='Username'/>
+              } 
           </li>
           <li className="nv-h-l-i">
+              { this.props.errorMessage && 
+              <input type='password' ref='password' className="form-control txt-f--err" placeholder='Password'/>
+              }
+              { !this.props.errorMessage && 
               <input type='password' ref='password' className="form-control" placeholder='Password'/>
+              }
           </li>
           <li className="nv-h-l-i">
             <div onClick={(event) => this.handleClick(event)} className="nv-h-l-a nv-h-l-a--k--s tr-link">
@@ -25,9 +35,6 @@ export default class Login extends Component {
               Sign Up
               </Link>
           </li>
-          {errorMessage &&
-            <p >{errorMessage}</p>
-          }
         </ul>
       )
     }

@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux'
 import {
-  LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_SUCCESS
+  LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_SUCCESS,
+  INFO_REQUEST, INFO_SUCCESS, INFO_FAILURE
 } from '../actions/actions'
 
 // The auth reducer. The starting state sets authentication
@@ -39,13 +40,30 @@ function auth(state = {
   }
 }
 
-// The quotes reducer
-function info( state = {}, action) {
-    switch (action.type) {
-
-        default:
-            return state
-    }
+// The info reducer
+function info(state = {
+  isFetching: false,
+  quote: '',
+  authenticated: false
+}, action) {
+switch (action.type) {
+  case INFO_REQUEST:
+    return Object.assign({}, state, {
+      isFetching: true
+    })
+  case INFO_SUCCESS:
+    return Object.assign({}, state, {
+      isFetching: false,
+      name: action.response,
+      authenticated: action.authenticated || false
+    })
+  case INFO_FAILURE:
+    return Object.assign({}, state, {
+      isFetching: false
+    })
+  default:
+    return state
+  }
 }
 
 // We combine all the reducers here so that they can 

@@ -30,14 +30,14 @@ const createUser = async function(userInfo){
     auth_info.status='create';
 
     unique_key = getUniqueKeyFromBody(userInfo);
-    if(!unique_key) TE('An email or phone number was not entered.');
+    if(!unique_key) TE('An email was not entered.');
 
     if(validator.isEmail(unique_key)){
         auth_info.method = 'email';
         userInfo.email = unique_key;
 
         [err, user] = await to(User.create(userInfo));
-        if(err) TE('user already exists with that email');
+        if(err) TE('A user already exists with that email');
 
         return user;
 
@@ -46,7 +46,7 @@ const createUser = async function(userInfo){
         userInfo.phone = unique_key;
 
         [err, user] = await to(User.create(userInfo));
-        if(err) TE('user already exists with that phone number');
+        if(err) TE('A user already exists with that phone number');
 
         return user;
     }else{
@@ -61,7 +61,7 @@ const authUser = async function(userInfo){//returns token
     auth_info.status = 'login';
     unique_key = getUniqueKeyFromBody(userInfo);
 
-    if(!unique_key) TE('Please enter an email or phone number to login');
+    if(!unique_key) TE('Please enter an email to login');
 
 
     if(!userInfo.password) TE('Please enter a password to login');
@@ -84,7 +84,7 @@ const authUser = async function(userInfo){//returns token
         TE('A valid email or phone number was not entered');
     }
 
-    if(!user) TE('Not registered');
+    if(!user) TE('An account with that email does not exist');
 
     [err, user] = await to(user.comparePassword(userInfo.password));
 
