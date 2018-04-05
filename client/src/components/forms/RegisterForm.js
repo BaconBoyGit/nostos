@@ -8,22 +8,23 @@ const signupContainer = {
 	marginBottom: '5%'
 }
 
+
 const RegisterForm = () => {
 
 	return (        
 		<div className ="signup-container" style = { signupContainer } >  
 
-		<form action="#" method="GET">
+		<form action="database.php" method="post">
 
 			<h1 class="hro-t"> <font color = "black" size="6" >Sign Up</font></h1>
 			<div class="fs-c fs-c--i m-b300">
 				<div class="txt g--6">
 					<label for="first_name" class="txt-l txt-l--mt000">First name*</label>
-					<input id="first_name" type="text" placeholder="First name" class="txt-f txt-f--sm txt-f txt-f--sm--sm" required/>
+					<input name="fname" id="first_name" type="text" placeholder="First name" class="txt-f txt-f--sm txt-f txt-f--sm--sm" required/>
 				</div>
 				<div class="txt g--6">
 					<label for="last_name" class="txt-l txt-l--mt000">Last name*</label>
-					<input id="last_name" type="text" placeholder="Last name" class="txt-f txt-f--sm txt-f txt-f--sm--sm" required/>
+					<input name="lname" id="last_name" type="text" placeholder="Last name" class="txt-f txt-f--sm txt-f txt-f--sm--sm" required/>
 				</div>
 			</div>
 
@@ -43,7 +44,7 @@ const RegisterForm = () => {
 			<div class="fs-c fs-c--i m-b300">
 				<div class="txt g--6">
 					<label for="address" class="txt-l txt-l--mt000">Address 1*</label>
-					<input id="address" type="text" placeholder="Address" class="txt-f txt-f--sm" required/>
+					<input id="address" type="text" placeholder="Address" class="txt-f txt-f--sm" />
 				</div>
 				<div class="txt g--6">
 					<label for="alt_addrss" class="txt-l txt-l--mt000">Address 2</label>
@@ -55,7 +56,7 @@ const RegisterForm = () => {
 
 			<div class="txt g--6">
 				<label for="city" class="txt-l txt-l--mt000">City*</label>
-				<input id="city" type="text" placeholder="City" class="txt-f txt-f--sm" required/>
+				<input id="city" type="text" placeholder="City" class="txt-f txt-f--sm"/>
 			</div>
 
 			<div class="txt g--6">
@@ -124,7 +125,7 @@ const RegisterForm = () => {
 			<div class="fs-c fs-c--i m-b300">
 				<div class="txt g--6">
 					<label for="zip_code" class="txt-l txt-l--mt000">Zip Code*</label>
-					<input id="zip_code" type="text" placeholder="Zip code" class="txt-f txt-f--sm" required/>
+					<input id="zip_code" type="text" placeholder="Zip code" class="txt-f txt-f--sm"/>
 				</div>
 			</div>
 
@@ -133,7 +134,7 @@ const RegisterForm = () => {
 			<div class="fs-c fs-c--i m-b300">
 				<div class="txt g--6">
 					<label for="email" class="txt-l txt-l--mt000">Email*</label>
-					<input id="email" type="email" placeholder="Email" class="txt-f txt-f--sm" required/>
+					<input name="email" id="email" type="email" placeholder="Email" class="txt-f txt-f--sm" required/>
 				</div>
 				<div class="txt g--6">
 					<label for="cell" class="txt-l txt-l--mt000">Mobile</label>
@@ -144,7 +145,7 @@ const RegisterForm = () => {
 			<div class="fs-c fs-c--i m-b300">
 				<div class="txt g--6">
 					<label for="phone" class="txt-l txt-l--mt000">Telephone*</label>
-					<input id="phone" type="text" placeholder="Telephone number" class="txt-f txt-f--sm" required/>
+					<input id="phone" type="text" placeholder="Telephone number" class="txt-f txt-f--sm" />
 				</div>
 				<div class="txt g--6">
 					<label for="fax" class="txt-l txt-l--mt000">Fax</label>
@@ -157,7 +158,7 @@ const RegisterForm = () => {
 			<div class="fs-c fs-c--i m-b300">
 				<div class="txt g--6">
 					<label for="password" class="txt-l txt-l--mt000">Password*</label>
-					<input id="password" type="password" placeholder="Password" class="txt-f txt-f--sm" required/>
+					<input name = "pass" id="password" type="password" placeholder="Password" class="txt-f txt-f--sm" required/>
 				</div>
 			</div>
 
@@ -165,7 +166,7 @@ const RegisterForm = () => {
 
 			<div class="txt g--6">
 				<label for="confirm" class="txt-l txt-l--mt000">Password Confirmation*</label>
-				<input id="confirm" type="password" placeholder="Confirm" class="txt-f txt-f--sm" required/>
+				<input name="pass" id="confirm" type="password" placeholder="Confirm" class="txt-f txt-f--sm" />
 			</div>
 			</div>
 			
@@ -176,7 +177,10 @@ const RegisterForm = () => {
 
 			<div class="m-v400 m-h200">
 
-			<Link to="/permit" className="nv-h-l-a nv-h-l-a--k--s tr-link"><button>Sign Up</button></Link>
+			<input type="submit" value="Submit"/>
+
+
+			<Link to="/permit" class="btn btn--700">Sign Up</Link>
 
 			</div>	
 		</form>    

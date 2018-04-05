@@ -9,13 +9,14 @@ import { Link } from 'react-router-dom'
 class application extends React.Component {
     render () {   
 
-        //formats date box
-        const date = {
-            width: "5000px"
-          };
+        const signupContainer = {
+            marginLeft: "10%",
+            marginRight: '10%',
+            marginBottom: '5%'
+        }
 
         return (        
-            <div className ="App">  
+            <div className ="App" style={signupContainer}>  
 
             <form action="#" method="GET">
             <h1 class="hro-t"> <font color = "black" size="6" >Apply for New Permit</font></h1>
@@ -68,7 +69,6 @@ class application extends React.Component {
                 <label for="end" class="txt-l txt-l--mt000">Select End Time</label>
                 <div class="sel-c sel-c--fw">
                 <select name="time" id="time" class="sel-f">
-                    <option value="8:00 AM">8:00 AM</option>
                     <option value="8:30 AM">8:30 AM</option>
                     
                     <option value="9:00 AM">9:00 AM</option>
@@ -103,12 +103,12 @@ class application extends React.Component {
             </div>  
             <div class="fs-c fs-c--i m-b300">
             <div class="txt g--6">
-                <label for="date" style = {date} class="txt-l txt-l--mt000">Date</label>
+                <label for="date" class="txt-l txt-l--mt000">Date</label>
                 <input id="date" type="text" placeholder="mm/dd/yyyy" class="txt-f" required/>
             </div>
             </div>  
             <div class="m-v400 m-h200">
-            <Link to="/status" className="nv-h-l-a nv-h-l-a--k--s tr-link">Submit</Link>
+            <Link to="/status" class="btn btn--700">Submit</Link>
             </div>
         </form>    
 

@@ -15,6 +15,8 @@ import Login from "../forms/Login"
 
 var blogo = require("../images/logo.svg");
 var bseal = require("../images/seal.svg");
+//Will draw from database
+var user = "Joe Smith";
 
 /*
    The header component, present on all pages for the Nostos site
@@ -52,7 +54,7 @@ export default class Header extends Component {
 
                 <nav className="nv-h">
                     { !isAuthenticated && // If not authenticated, display sign in form
-
+                    
                         <Login
                             errorMessage={errorMessage}
                             onLoginClick={ creds => dispatch(loginUser(creds)) }
@@ -62,11 +64,18 @@ export default class Header extends Component {
                     }
                     
                     {isAuthenticated && // If authenticated, only display the logout button
+                    <div>
+                    <li className="nv-h-l-i">
+                    <Link to="/status" className="nv-h-l-a nv-h-l-a--k--s tr-link">
+                    {user}
+                    </Link>
+                    </li>
                     <nav className="nv-h-l">
                         <Logout
                         onLogoutClick={() => dispatch(logoutUser())}
                         />
                     </nav>
+                    </div>
                     }
                 </nav>
                 
