@@ -58,7 +58,7 @@ export function loginUser(creds) {
     // We dispatch requestLogin to kickoff the call to the API
     dispatch(requestLogin(creds))
 
-    return fetch('http://localhost:3000/v1/users/login', config)
+    return fetch('http://btboutcher.com/v1/users/login', config)
       .then(response =>
         response.json().then(user => ({ user, response }))
             ).then(({ user, response }) =>  {
