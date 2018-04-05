@@ -9,6 +9,8 @@ A request failed
 */
 
 import { CALL_API } from '../middleware/api'
+const prodRoute = "http://btboutcher.com:5000"
+const devRoute = "http://localhost:5000"
 
 // There are three possible states for our login
 // process, and we need actions for each of them
@@ -58,7 +60,7 @@ export function loginUser(creds) {
     // We dispatch requestLogin to kickoff the call to the API
     dispatch(requestLogin(creds))
 
-    return fetch('http://btboutcher.com/v1/users/login', config)
+    return fetch(prodRoute + '/v1/users/login', config)
       .then(response =>
         response.json().then(user => ({ user, response }))
             ).then(({ user, response }) =>  {
