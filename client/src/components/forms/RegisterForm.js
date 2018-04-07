@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
+
 const signupContainer = {
 	marginLeft: "10%",
 	marginRight: '10%',
@@ -14,7 +15,7 @@ const RegisterForm = () => {
 	return (        
 		<div className ="signup-container" style = { signupContainer } >  
 
-		<form action="database.php" method="post">
+		<form action="#" method="post">
 
 			<h1 class="hro-t"> <font color = "black" size="6" >Sign Up</font></h1>
 			<div class="fs-c fs-c--i m-b300">
