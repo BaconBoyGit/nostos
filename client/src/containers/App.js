@@ -24,6 +24,8 @@ import Footer from '../components/common/Footer';
 import Status from '../components/forms/Status';
 import Permit from '../components/forms/Permit';
 
+import { fetchUser } from '../actions/actions';
+
 class App extends Component {
   render() {
     
@@ -38,10 +40,25 @@ class App extends Component {
                 errorMessage={errorMessage}
                 dispatch={dispatch}
             />
+            { errorMessage &&  <div class="t--subinfo t--err m-t100"> { errorMessage } </div>}
             <Route exact path="/" component={Welcome} />
             <Route exact path="/register" component={RegisterForm} />
-            <Route exact path="/status" component={Status} />
+            
+            <Route 
+                exact path="/status" 
+                render={()=><Status
+                  dispatch={dispatch}
+                  isAuthenticated={isAuthenticated} 
+                  />}
+            />
             <Route exact path="/permit" component={Permit} />
+            <Route 
+                exact path="/profile" 
+                render={()=><Profile 
+                  dispatch={dispatch}
+                  isAuthenticated={isAuthenticated}
+                />} 
+            />
             <Footer />
         </div>
       </Router>
@@ -53,8 +70,7 @@ App.propTypes = {
   dispatch: PropTypes.func.isRequired,
   name: PropTypes.string,
   isAuthenticated: PropTypes.bool.isRequired,
-  errorMessage: PropTypes.string,
-  isPrivate: PropTypes.bool.isRequired
+  errorMessage: PropTypes.string
 }
 
 // These props come from the application's

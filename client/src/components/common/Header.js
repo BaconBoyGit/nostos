@@ -20,7 +20,7 @@ var user = "Joe Smith";
 
 /*
    The header component, present on all pages for the Nostos site
-   Bradley Boutcher 2018
+   Bradley Boutcher and Christine Frandsen 2018
 */
 
 export default class Header extends Component {
@@ -64,18 +64,15 @@ export default class Header extends Component {
                     }
                     
                     {isAuthenticated && // If authenticated, only display the logout button
-                    <div>
-                    <li className="nv-h-l-i">
-                    <Link to="/status" className="nv-h-l-a nv-h-l-a--k--s tr-link">
-                    {user}
-                    </Link>
-                    </li>
                     <nav className="nv-h-l">
+                        <div className = "nv-h-l-a nv-h-l-a--k--s tr-link"> {user} </div>
+                        <Link to = "/">
                         <Logout
                         onLogoutClick={() => dispatch(logoutUser())}
                         />
+                        </Link>
+                        <Link to="/status" className="nv-h-l-a nv-h-l-a--k--s tr-link"> Profile </Link>
                     </nav>
-                    </div>
                     }
                 </nav>
                 
