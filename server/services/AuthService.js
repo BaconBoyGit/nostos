@@ -81,7 +81,7 @@ const authUser = async function(userInfo){//returns token
         if(err) TE(err.message);
 
     }else{
-        TE('A valid email or phone number was not entered');
+        TE('A valid email was not entered');
     }
 
     if(!user) TE('An account with that email does not exist');

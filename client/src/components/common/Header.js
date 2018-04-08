@@ -16,7 +16,8 @@ import Login from "../forms/Login"
 var blogo = require("../images/logo.svg");
 var bseal = require("../images/seal.svg");
 //Will draw from database
-var user = "Joe Smith";
+var first = "Joe";
+var last = "Smith";
 
 /*
    The header component, present on all pages for the Nostos site
@@ -65,13 +66,15 @@ export default class Header extends Component {
                     
                     {isAuthenticated && // If authenticated, only display the logout button
                     <nav className="nv-h-l">
-                        <div className = "nv-h-l-a nv-h-l-a--k--s tr-link"> {user} </div>
+                        <Link to="/profile"><div className ="nv-h-l-a"> {first} {last} </div></Link>
+    
+                        <Link to="/status" className="nv-h-l-a nv-h-l-a--k--s tr-link"> Status </Link>
+                        <Link to="/permit" className="nv-h-l-a nv-h-l-a--k--s tr-link"> New Permit </Link>
                         <Link to = "/">
                         <Logout
                         onLogoutClick={() => dispatch(logoutUser())}
                         />
                         </Link>
-                        <Link to="/status" className="nv-h-l-a nv-h-l-a--k--s tr-link"> Profile </Link>
                     </nav>
                     }
                 </nav>

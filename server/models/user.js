@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
         last      : { type: DataTypes.STRING, allowNull: false },
         title     : DataTypes.STRING,
         Company   : DataTypes.STRING,
-        email     : {type: DataTypes.STRING, allowNull: true, unique: true, validate: { isEmail: {msg: "Phone number invalid."} }},
+        email     : {type: DataTypes.STRING, allowNull: true, unique: true, validate: { isEmail: {msg: "Email is invalid."} }},
         phone     : {type: DataTypes.STRING, allowNull: true, unique: true, validate: { len: {args: [7, 20], msg: "Phone number invalid, too short."}, isNumeric: { msg: "not a valid phone number."} }},
         password  : DataTypes.STRING,
         address1  : { type: DataTypes.STRING, allowNull: false },

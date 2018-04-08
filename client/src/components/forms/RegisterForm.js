@@ -178,8 +178,6 @@ const RegisterForm = () => {
 
 			<div class="m-v400 m-h200">
 
-			<input type="submit" value="Submit"/>
-
 
 			<Link to="/permit" class="btn btn--700">Sign Up</Link>
 

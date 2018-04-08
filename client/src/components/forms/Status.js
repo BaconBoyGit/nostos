@@ -44,7 +44,7 @@ class Status extends React.Component {
       var disStatus = '';
       var i;
       var address = ["1144 Aztec Road", "255 Grapevine Road", "1225 Santa Claus Lane"];
-      var disStatus2 = '';
+
 
       // container for our profile element
       const profileContainer = {
@@ -60,25 +60,25 @@ class Status extends React.Component {
           position: 'relative',
       }
       
-      var htmlLoop =  <tr> <td data-label='Date Applied'> {appNumber[i]} </td> 
-      <td data-label='Address'>  {address[i]}  </td> 
-       <td data-label='Date Applied'> {status[i]}  </td> 
-       </tr>;
+      var test = <tbody><tr> <td data-label='Date Applied For'> {appNumber[0]} </td> 
+      <td data-label='Address'>  {address[0]}  </td> 
+       <td data-label='Date Applied'> {status[0]}  </td> 
+       </tr>
+       <tr> <td data-label='Date Applied'> {appNumber[0]} </td> 
+       <td data-label='Address'>  {address[0]}  </td> 
+        <td data-label='Date Applied'> {status[0]}  </td> 
+        </tr>
+        <tr> <td data-label='Date Applied'> {appNumber[0]} </td> 
+        <td data-label='Address'>  {address[0]}  </td> 
+         <td data-label='Date Applied'> {status[0]}  </td> 
+         </tr></tbody>
 
-    
         for (i = 0; i < appNumber.length; i++)
         {
-            disStatus += "Application " + appNumber[i] + ": " + status[i] + "\n";
-        }
-      
-        for (i = 0; i < appNumber.length; i++)
-        {
-          
-            disStatus2 += <tr> <td data-label='Date Applied'> {appNumber[i]} </td> 
+            disStatus +=<tr> <td data-label='Date Applied'> {appNumber[i]} </td> 
             <td data-label='Address'>  {address[i]}  </td> 
              <td data-label='Date Applied'> {status[i]}  </td> 
              </tr>;
-          
         }
        
       return (
@@ -92,25 +92,14 @@ class Status extends React.Component {
     <table border="1" cellpadding="1" cellspacing="1" class="responsive-table responsive-table--horizontal">
     <thead>
         <tr>
-            <th>Date Applied</th>
+            <th>Date Applied For</th>
             <th>Address</th>
             <th>Status</th>
         </tr>
     </thead>
-    <tbody>
-    <tr> <td data-label='Date Applied'> {appNumber[0]} </td> 
-            <td data-label='Address'>  {address[0]}  </td> 
-             <td data-label='Date Applied'> {status[0]}  </td> 
-             </tr>
-             <tr> <td data-label='Date Applied'> {appNumber[1]} </td> 
-            <td data-label='Address'>  {address[1]}  </td> 
-             <td data-label='Date Applied'> {status[1]}  </td> 
-             </tr>
-             <tr> <td data-label='Date Applied'> {appNumber[2]} </td> 
-            <td data-label='Address'>  {address[2]}  </td> 
-             <td data-label='Date Applied'> {status[2]}  </td> 
-             </tr>
-    </tbody>
+  
+    {test}
+    
 </table>
 </div>
                         </div>
