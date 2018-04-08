@@ -64,13 +64,13 @@ class Status extends React.Component {
       <td data-label='Address'>  {address[0]}  </td> 
        <td data-label='Date Applied'> {status[0]}  </td> 
        </tr>
-       <tr> <td data-label='Date Applied'> {appNumber[0]} </td> 
-       <td data-label='Address'>  {address[0]}  </td> 
-        <td data-label='Date Applied'> {status[0]}  </td> 
+       <tr> <td data-label='Date Applied'> {appNumber[1]} </td> 
+       <td data-label='Address'>  {address[1]}  </td> 
+        <td data-label='Date Applied'> {status[1]}  </td> 
         </tr>
-        <tr> <td data-label='Date Applied'> {appNumber[0]} </td> 
-        <td data-label='Address'>  {address[0]}  </td> 
-         <td data-label='Date Applied'> {status[0]}  </td> 
+        <tr> <td data-label='Date Applied'> {appNumber[2]} </td> 
+        <td data-label='Address'>  {address[2]}  </td> 
+         <td data-label='Date Applied'> {status[2]}  </td> 
          </tr></tbody>
 
         for (i = 0; i < appNumber.length; i++)
