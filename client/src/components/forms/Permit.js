@@ -1,13 +1,80 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
-
+import React from 'react';
+import mapboxgl from 'mapbox-gl'
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Switch,
+  Redirect
+} from 'react-router-dom'
 
 
 //This class creates the primary application form that is filled out for the permit
 
 class application extends React.Component {
+
+      // Set default map attributes on construction
+    constructor(props){
+        super(props)
+        // Set the default location of focus for the map
+        this.state = {
+            lng:-71.055,
+            lat: 42.365,
+            zoom: 13,
+        }
+        // Set the boundaries for the map
+        this.bounds = [
+            [-71.222102, 42.215041], // Southwest coordinates
+            [-70.935952, 42.413089]  // Northeast coordinates
+        ];
+    }
+
+    // Upon mounting component, instantiate a map with the following attributes
+    componentDidMount() {
+      mapboxgl.accessToken = 'pk.eyJ1IjoiY2ZyYW5kc2VuMDkiLCJhIjoiY2plYnlvdDFoMGkzcTMzbzd6N3Jhd3ZlMCJ9.HMzKJI3qhrImWmHIuaE8EA';
+      this.map = new mapboxgl.Map({
+        container: this.mapContainer,
+        // General map of Boston
+        style: 'mapbox://styles/cfrandsen09/cjfr00sai5l9q2rmmzoz0pjl0',
+        center: [this.state.lng, this.state.lat],
+        zoom: this.state.zoom,
+        attributionControl: false,
+        maxBounds: this.bounds,
+        // We want this specific map to be used for style, not function, so we disaple interactivity
+        interactive: true,
+      });
+    }
+  
+    //Handle map removal
+    componentWillUnmount() {
+      this.map.remove();
+    }
+
+
     render () {   
+
+
+        // Define our styling for the map
+      const mapStyle = {
+        position: 'absolute',
+        top: 0,
+        bottom: 0,
+        width: '49%',
+        height: '400px'
+      };
+
+      // Define a relative container for our map, and anything inside of it
+      const mapContainerStyle = {
+        position: 'relative',
+        height: '400px',
+        marginBottom: '2%'
+      };
+
+       // Match the height of the mapbox container
+    
+
+      // Center the content of the home body within its container
+    
 
         const signupContainer = {
             marginLeft: "10%",
@@ -25,6 +92,9 @@ class application extends React.Component {
                 <label for="address" class="txt-l txt-l--mt000">Address Moving into or out of</label>
                 <input id="address" type="text" placeholder="Address" class="txt-f" required/>
             </div>
+            </div>
+            <div className = 'mapContainer' style = { mapContainerStyle }>
+            <div style={ mapStyle } ref={el => this.mapContainer = el} />
             </div>
             <div class="fs-c fs-c--i m-b300">
             <div class="txt g--6">
