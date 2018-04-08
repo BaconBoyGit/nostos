@@ -68,22 +68,19 @@ class App extends Component {
 
 App.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  name: PropTypes.string,
   isAuthenticated: PropTypes.bool.isRequired,
-  errorMessage: PropTypes.string
+  errorMessage: PropTypes.string,
 }
 
 // These props come from the application's
 // state when it is started
 function mapStateToProps(state) {
 
-  const { info, auth } = state
-  const { name, authenticated } = info
-  const { isAuthenticated, errorMessage } = auth
+  const { auth } = state
+  const { isAuthenticated, errorMessage, user } = auth
 
   return {
-    name,
-    isPrivate: authenticated,
+    user,
     isAuthenticated,
     errorMessage
   }

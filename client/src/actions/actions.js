@@ -2,15 +2,18 @@
 The actions that we need in our case are all going to be asynchronous 
 because we are calling an API. To handle the async calls, 
 we need a setup that has actions which cover the three possible states that exist:
-
 A request was sent
 A request successful
 A request failed
 */
 
 import { CALL_API } from '../middleware/api'
+
+// Our development route (running on localhost) and our production route
+// Comment out one route to use the other 
+
 const prodRoute = "http://btboutcher.com:5000"
-const devRoute = "http://localhost:5000"
+// const prodRoute = "http://localhost:5000"
 
 // There are three possible states for our login
 // process, and we need actions for each of them
@@ -32,7 +35,7 @@ function receiveLogin(user) {
     type: LOGIN_SUCCESS,
     isFetching: false,
     isAuthenticated: true,
-    id_token: user.id_token
+    user
   }
 }
 
@@ -64,7 +67,7 @@ export function loginUser(creds) {
       .then(response =>
         response.json().then(user => ({ user, response }))
             ).then(({ user, response }) =>  {
-        if (!response.ok) {
+        if (!response.ok || user.success === false) {
           // If there was a problem, we want to
           // dispatch the error condition
           dispatch(loginError(user.error))
@@ -75,6 +78,7 @@ export function loginUser(creds) {
           // If login was successful, set the token in local storage
           localStorage.setItem('id_token', user.token)
           localStorage.setItem('access_token', user.token)
+          localStorage.setItem('user', JSON.stringify(user.user))
 
           // Dispatch the success action
           dispatch(receiveLogin(user))
@@ -84,8 +88,10 @@ export function loginUser(creds) {
 }
 
 // Registration actions 
-// There are three possible states for our login
+// There are three possible states for our registration
 // process, and we need actions for each of them
+// The data returned is identical to login, so we can follow a similar process
+
 export const REGISTER_REQUEST = 'REGISTER_REQUEST'
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS'
 export const REGISTER_FAILURE = 'REGISTER_FAILURE'
@@ -104,7 +110,7 @@ function receiveRegister(user) {
     type: REGISTER_SUCCESS,
     isFetching: false,
     isAuthenticated: true,
-    id_token: user.id_token
+    user
   }
 }
 
@@ -117,23 +123,27 @@ function registerError(message) {
   }
 }
 
+// To register a user, we can use the same POST method as logging in
 export function registerUser(creds) {
 
   let config = {
     method: 'POST',
     headers: { 'Content-Type':'application/x-www-form-urlencoded' },
-    body: `email=${creds.username}&password=${creds.password}`
+    body: ("first="+creds.first+"&last="+creds.last+"&title="+creds.title+
+    "&Company="+creds.company+"&phone="+creds.phone+"&email="+creds.email+"&address1="+creds.address1+
+    "&address2="+creds.address2+"&password="+creds.password+"&confirm="+creds.confirm+"&city="+creds.city+
+    "&state="+creds.state+"&zip="+creds.zip).replace(" ", "%20")
   }
 
   return dispatch => {
     // We dispatch requestLogin to kickoff the call to the API
-    dispatch(requestLogin(creds))
-
-    return fetch('http://localhost:3000/v1/users/login', config)
+    dispatch(requestRegister(creds))
+    console.log(config)
+    return fetch(prodRoute + '/v1/users/', config)
       .then(response =>
         response.json().then(user => ({ user, response }))
             ).then(({ user, response }) =>  {
-        if (!response.ok) {
+        if (!response.ok || user.success === false) {
           // If there was a problem, we want to
           // dispatch the error condition
           dispatch(loginError(user.error))
@@ -141,10 +151,11 @@ export function registerUser(creds) {
           return Promise.reject(user)
         } else {
 
-          // If login was successful, set the token in local storage
+          // If login was successful, set the token and user data in local storage
           localStorage.setItem('id_token', user.token)
           localStorage.setItem('access_token', user.token)
-
+          localStorage.setItem('user', JSON.stringify(user.user))
+ 
           // Dispatch the success action
           dispatch(receiveLogin(user))
         }
@@ -182,6 +193,7 @@ export function logoutUser() {
     dispatch(requestLogout())
     localStorage.removeItem('id_token')
     localStorage.removeItem('access_token')
+    localStorage.removeItem('user')
     dispatch(receiveLogout())
   }
 }

@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
         last      : { type: DataTypes.STRING, allowNull: false },
         title     : DataTypes.STRING,
         Company   : DataTypes.STRING,
-        email     : {type: DataTypes.STRING, allowNull: true, unique: true, validate: { isEmail: {msg: "Email is invalid."} }},
+        email     : {type: DataTypes.STRING, allowNull: true, unique: true, validate: { isEmail: {msg: "Email address invalid."} }},
         phone     : {type: DataTypes.STRING, allowNull: true, unique: true, validate: { len: {args: [7, 20], msg: "Phone number invalid, too short."}, isNumeric: { msg: "not a valid phone number."} }},
         password  : DataTypes.STRING,
         address1  : { type: DataTypes.STRING, allowNull: false },
@@ -27,6 +27,7 @@ module.exports = (sequelize, DataTypes) => {
         zip       : { type: DataTypes.STRING, allowNull: false },
     });
 
+    // Associate our model with any pertinent tables
     Model.associate = function(models){
         this.Companies = this.belongsToMany(models.Company, {through: 'UserCompany'});
     };

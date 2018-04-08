@@ -1,5 +1,5 @@
 import React from 'react';
-import mapboxgl from 'mapbox-gl'
+import mapboxgl from 'mapbox-gl';
 import {
   BrowserRouter as Router,
   Route,
@@ -7,6 +7,7 @@ import {
   Switch,
   Redirect
 } from 'react-router-dom'
+
 
 
 //This class creates the primary application form that is filled out for the permit
@@ -29,10 +30,12 @@ class application extends React.Component {
         ];
     }
 
+    
+
     // Upon mounting component, instantiate a map with the following attributes
-    componentDidMount() {
+   /* componentDidMount() {
       mapboxgl.accessToken = 'pk.eyJ1IjoiY2ZyYW5kc2VuMDkiLCJhIjoiY2plYnlvdDFoMGkzcTMzbzd6N3Jhd3ZlMCJ9.HMzKJI3qhrImWmHIuaE8EA';
-      this.map = new mapboxgl.Map({
+       var map = new mapboxgl.Map({
         container: this.mapContainer,
         // General map of Boston
         style: 'mapbox://styles/cfrandsen09/cjfr00sai5l9q2rmmzoz0pjl0',
@@ -43,33 +46,46 @@ class application extends React.Component {
         // We want this specific map to be used for style, not function, so we disaple interactivity
         interactive: true,
       });
-    }
+
+
+      /* Cant this be used without paying?
+        map.addControl(new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken
+         }));*/
+
+
+     //Adds navigation controls
+    //  map.addControl(new mapboxgl.NavigationControl());
+
+    //}
   
     //Handle map removal
+    /*
     componentWillUnmount() {
       this.map.remove();
     }
-
+    */
 
     render () {   
 
 
         // Define our styling for the map
+        /*
       const mapStyle = {
         position: 'absolute',
         top: 0,
         bottom: 0,
         width: '49%',
-        height: '400px'
+        height: '350px'
       };
 
       // Define a relative container for our map, and anything inside of it
       const mapContainerStyle = {
         position: 'relative',
-        height: '400px',
+        height: '350px',
         marginBottom: '2%'
       };
-
+*/
        // Match the height of the mapbox container
     
 
@@ -93,9 +109,9 @@ class application extends React.Component {
                 <input id="address" type="text" placeholder="Address" class="txt-f" required/>
             </div>
             </div>
-            <div className = 'mapContainer' style = { mapContainerStyle }>
-            <div style={ mapStyle } ref={el => this.mapContainer = el} />
-            </div>
+
+            
+
             <div class="fs-c fs-c--i m-b300">
             <div class="txt g--6">
                 <label for="start" class="txt-l txt-l--mt000">Select Start Time</label>
