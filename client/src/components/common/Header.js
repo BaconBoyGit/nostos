@@ -72,14 +72,19 @@ export default class Header extends Component {
                         
                         {isAuthenticated && // If authenticated, only display the logout button
                         <nav className="nv-h-l">
-                            <Link to="/profile"><div className ="nv-h-l-a"> {first} {last} </div></Link>
+                            <Link to="/profile" >
+                                <div className ="nv-h-l-a" onClick = { this.refreshPage }> 
+                                    {first} {last} 
+                                </div>
+                            </Link>
     
-                            <Link to="/status" className="nv-h-l-a nv-h-l-a--k--s tr-link"> Status </Link>
-                            <Link to="/permit" className="nv-h-l-a nv-h-l-a--k--s tr-link"> New Permit </Link>
+                            <Link to="/status" onClick = { this.refreshPage } className="nv-h-l-a nv-h-l-a--k--s tr-link" > Status </Link>
+                            <Link to="/permit" onClick = { this.refreshPage } className="nv-h-l-a nv-h-l-a--k--s tr-link"> New Permit </Link>
                             <Link to = "/">
-                            <Logout
-                                onLogoutClick={() => dispatch(logoutUser())}
-                            />
+                                <Logout
+                                        onLogoutClick={() => dispatch(logoutUser())}
+                                        onClick = { this.refreshPage }
+                                    />
                             </Link>
                         </nav>
                         }
