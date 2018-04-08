@@ -52,4 +52,5 @@ export default class Profile extends React.Component {
 Profile.propTypes = {
     isAuthenticated: PropTypes.bool.isRequired,
     user: PropTypes.object,
+
 }

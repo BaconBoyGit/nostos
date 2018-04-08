@@ -10,15 +10,13 @@ import {
 import {
   BrowserRouter as Router,
   Route,
-  Link,
-  Switch,
-  Redirect
+  Redirect,
 } from 'react-router-dom'
 
 // Components to be loaded
 import Header from '../components/common/Header';
 import Welcome from '../components/maps/WelcomeMap';
-import RegisterForm from '../components/forms/Register';
+import Register from '../components/forms/Register';
 import Profile from '../components/common/Profile';
 import Footer from '../components/common/Footer';
 import Status from '../components/forms/Status';
@@ -27,39 +25,69 @@ import Permit from '../components/forms/Permit';
 import { fetchUser } from '../actions/actions';
 
 class App extends Component {
+
   render() {
     
     // Bring in our proptypes
-    const { dispatch, name, isAuthenticated, errorMessage, isPrivate } = this.props
+    const { dispatch, isAuthenticated, errorMessage, user } = this.props
 
+    const errorStyle = {
+      position: "fixed",
+      background: "white"
+    }
+
+    
     return (
       <Router>
         <div className="App">
+           
             <Header 
                 isAuthenticated={isAuthenticated}
                 errorMessage={errorMessage}
                 dispatch={dispatch}
             />
-            { errorMessage &&  <div class="t--subinfo t--err m-t100"> { errorMessage } </div>}
-            <Route exact path="/" component={Welcome} />
-            <Route exact path="/register" component={RegisterForm} />
             
+            { errorMessage &&  alert( errorMessage )  }
+            
+            <Route exact path="/" component={ Welcome } />
             <Route 
-                exact path="/status" 
-                render={()=><Status
-                  dispatch={dispatch}
-                  isAuthenticated={isAuthenticated} 
-                  />}
+                exact path="/register" 
+                render={ () =>
+                isAuthenticated === false // Redirect authenticated users to prevent double registration
+                ? <Register
+                  dispatch = { dispatch }
+                  errorMessage = { errorMessage }
+                />
+                : <Redirect to= '/' />
+              }
             />
-            <Route exact path="/permit" component={Permit} />
             <Route 
                 exact path="/profile" 
-                render={()=><Profile 
-                  dispatch={dispatch}
-                  isAuthenticated={isAuthenticated}
-                />} 
+                render={()=>
+                  isAuthenticated === true // Redirect unauthenticated users to avoid profile access
+                  ? <Profile 
+                    isAuthenticated={ isAuthenticated }
+                    user = { user }
+                  />
+                  : <Redirect to='/' />
+                } 
+
             />
-            <Footer />
+            <Route 
+              exact path ="/status"
+              render={()=>
+                isAuthenticated === true // Redirect unauthenticated users to avoid status access
+                ? <Profile 
+                  isAuthenticated={ isAuthenticated }
+                  user = { user }
+                />
+                : <Redirect to='/' />
+              } />
+              <Route 
+              exact path="/permit" component = {Permit} />
+
+          <Footer />
+
         </div>
       </Router>
     );

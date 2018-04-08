@@ -25,14 +25,6 @@ class Status extends React.Component {
         this.state = {
         }
     }
-
-    // Upon mounting component, instantiate a map with the following attributes
-    componentDidMount() {
-    }
-  
-    //Handle map removal
-    componentWillUnmount() {
-    }
   
     // Render inline style attributes
     render() {
@@ -96,12 +88,12 @@ class Status extends React.Component {
             <th>Address</th>
             <th>Status</th>
         </tr>
-    </thead>
+            </thead>
   
-    {test}
+                {test}
     
-</table>
-</div>
+            </table>
+            </div>
                         </div>
                     </div>
                 </div>

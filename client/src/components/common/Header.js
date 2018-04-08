@@ -80,7 +80,7 @@ export default class Header extends Component {
                         <Logout
                         onLogoutClick={() => dispatch(logoutUser())}
                         />
-                        </Link>>
+                        </Link>
                         </nav>
                         }
 
