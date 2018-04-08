@@ -5,8 +5,9 @@ import { Link } from 'react-router-dom'
 export default class Login extends Component {
 
     render() {
+
       const { errorMessage } = this.props
-  
+      
       return (
         <ul className="nv-h-l"> 
           <li className="nv-h-l-i">
@@ -32,7 +33,7 @@ export default class Login extends Component {
           </li>
           <li className="nv-h-l-i">
               <Link to="/register" className="nv-h-l-a nv-h-l-a--k--s tr-link">
-              Sign Up
+                Sign Up
               </Link>
           </li>
         </ul>

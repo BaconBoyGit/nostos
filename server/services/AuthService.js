@@ -7,7 +7,8 @@ This method helps us combine what ever is sent to a variable called unique_key.
 Which we will use in the create user function
 */
 
-const getUniqueKeyFromBody = function(body){// this is so they can send in 3 options unique_key, email, or phone and it will work
+const getUniqueKeyFromBody = function(body){ 
+    // this is so they can send in 3 options for unique_key, email, or phone and it will work
     let unique_key = body.unique_key;
     if(typeof unique_key==='undefined'){
         if(typeof body.email != 'undefined'){
@@ -23,6 +24,7 @@ const getUniqueKeyFromBody = function(body){// this is so they can send in 3 opt
 }
 module.exports.getUniqueKeyFromBody = getUniqueKeyFromBody;
 
+// This function creates and prepares the user for insertion
 const createUser = async function(userInfo){
     let unique_key, auth_info, err;
 
@@ -37,7 +39,13 @@ const createUser = async function(userInfo){
         userInfo.email = unique_key;
 
         [err, user] = await to(User.create(userInfo));
-        if(err) TE('A user already exists with that email');
+        
+        if(err) {
+            if(err.message=='Validation error') 
+                TE('The email address or phone number is already in use');
+            else
+                TE(err.message);
+        }
 
         return user;
 
@@ -46,15 +54,17 @@ const createUser = async function(userInfo){
         userInfo.phone = unique_key;
 
         [err, user] = await to(User.create(userInfo));
-        if(err) TE('A user already exists with that phone number');
+        if(err) TE(err.message);
 
         return user;
     }else{
+        console.log(userInfo)
         TE('A valid email or phone number was not entered.');
     }
 }
 module.exports.createUser = createUser;
 
+// To log the user in, we need to verify they exist
 const authUser = async function(userInfo){//returns token
     let unique_key;
     let auth_info = {};
@@ -67,6 +77,9 @@ const authUser = async function(userInfo){//returns token
     if(!userInfo.password) TE('Please enter a password to login');
 
     let user;
+    
+    // Determine the unique key for the user row in the db
+    // Then, search and verify existence
     if(validator.isEmail(unique_key)){
         auth_info.method='email';
 
@@ -84,7 +97,7 @@ const authUser = async function(userInfo){//returns token
         TE('A valid email or phone number was not entered');
     }
 
-    if(!user) TE('An account with that email does not exist');
+    if(!user) TE('Email or Password incorrect!');
 
     [err, user] = await to(user.comparePassword(userInfo.password));
 

@@ -1,31 +1,36 @@
 import { combineReducers } from 'redux'
 import {
   LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_SUCCESS,
-  INFO_REQUEST, INFO_SUCCESS, INFO_FAILURE
+  REGISTER_REQUEST, REGISTER_FAILURE, REGISTER_SUCCESS
 } from '../actions/actions'
 
-// The auth reducer. The starting state sets authentication
-// based on a token being in local storage. In a real app,
-// we would also want a util to check if the token is expired.
-function auth(state = {
+// The authentication reducer. The starting state sets authentication
+// based on a token being in local storage. 
+// We would also want a util to check if the token is expired.
+
+// Since registration and login are handled identically,
+// we perform the same state assignements on the appropriate actions
+
+function auth(state = { // This is our "default" state
     isFetching: false,
-    isAuthenticated: localStorage.getItem('id_token') ? true : false
+    isAuthenticated: localStorage.getItem('id_token') ? true : false, 
+    user: localStorage.getItem('user') !== 'undefined' ? JSON.parse(localStorage.getItem('user')) : null  // Pull from local storage if we happen to lose our state
   }, action) {
   switch (action.type) {
-    case LOGIN_REQUEST:
+    case LOGIN_REQUEST || REGISTER_REQUEST:
       return Object.assign({}, state, {
         isFetching: true,
         isAuthenticated: false,
-        user: action.creds
+        data: action.creds
       })
-    case LOGIN_SUCCESS:
+    case LOGIN_SUCCESS || REGISTER_SUCCESS:
       return Object.assign({}, state, {
         isFetching: false,
         isAuthenticated: true,
-        data: action.data,
+        user: action.user,
         errorMessage: ''
       })
-    case LOGIN_FAILURE:
+    case LOGIN_FAILURE || REGISTER_FAILURE:
       return Object.assign({}, state, {
         isFetching: false,
         isAuthenticated: false,
@@ -41,37 +46,10 @@ function auth(state = {
   }
 }
 
-// The info reducer
-function info(state = {
-  isFetching: false,
-  quote: '',
-  authenticated: false
-}, action) {
-switch (action.type) {
-  case INFO_REQUEST:
-    return Object.assign({}, state, {
-      isFetching: true
-    })
-  case INFO_SUCCESS:
-    return Object.assign({}, state, {
-      isFetching: false,
-      name: action.response,
-      authenticated: action.authenticated || false
-    })
-  case INFO_FAILURE:
-    return Object.assign({}, state, {
-      isFetching: false
-    })
-  default:
-    return state
-  }
-}
-
 // We combine all the reducers here so that they can 
 // be left split apart above
 const userInfo = combineReducers({
-    auth,
-    info
+    auth
 })
 
 export default userInfo

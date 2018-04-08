@@ -9,7 +9,7 @@ import {
 import PropTypes from 'prop-types'; 
 
 import { loginUser, logoutUser } from "../../actions/actions";
-import RegisterForm from "../forms/RegisterForm";
+import Register from "../forms/Register";
 import Logout from "../forms/Logout"
 import Login from "../forms/Login"
 
@@ -22,58 +22,64 @@ var bseal = require("../images/seal.svg");
 */
 
 export default class Header extends Component {
-  render() {
-    const { dispatch, isAuthenticated, errorMessage } = this.props;
 
-    // Move the logo slightly away from the wall
-    const logoStyle = {
-      marginLeft: "10px"
-    };
+    // We want to manually refresh the dom after updating our props
+    refreshPage() {
+        window.location.reload()
+    }
 
-    //if (!isAuthenticated) {
-      return (
-        <div className="mn">
-            <header className="h" role="banner">
-                <nav className="lo">
-                    <Link to="/" className="lo-l">
-                        <img
-                        style={logoStyle}
-                        src={blogo}
-                        alt="City of Boston"
-                        className="lo-i"
-                        />
-                        <span className="lo-t">Mayor Martin J. Walsh</span>
-                    </Link>
-                </nav>
+    render() {
+        const { dispatch, isAuthenticated, errorMessage } = this.props;
 
-                <div className="s">
-                    <img src={bseal} alt="City of Boston" className="s-i" />
-                </div>
+        // Move the logo slightly away from the wall
+        const logoStyle = {
+        marginLeft: "10px"
+        };
 
-                <nav className="nv-h">
-                    { !isAuthenticated && // If not authenticated, display sign in form
-
-                        <Login
-                            errorMessage={errorMessage}
-                            onLoginClick={ creds => dispatch(loginUser(creds)) }
-                            style={{ marginLeft: "10px" }}
-                        />
-  
-                    }
-                    
-                    {isAuthenticated && // If authenticated, only display the logout button
-                    <nav className="nv-h-l">
-                        <Logout
-                        onLogoutClick={() => dispatch(logoutUser())}
-                        />
-                        <Link to="/profile" className="nv-h-l-a nv-h-l-a--k--s tr-link"> Profile </Link>
+        return (
+            <div className="mn">
+                <header className="h" role="banner">
+                    <nav className="lo">
+                        <Link to="/" className="lo-l">
+                            <img
+                            style={logoStyle}
+                            src={blogo}
+                            alt="City of Boston"
+                            className="lo-i"
+                            />
+                            <span className="lo-t">Mayor Martin J. Walsh</span>
+                        </Link>
                     </nav>
-                    }
-                </nav>
-                
-            </header>
-        </div>
-      );
+
+                    <div className="s">
+                        <img src={bseal} alt="City of Boston" className="s-i" />
+                    </div>
+
+                    <nav className="nv-h">
+                        { !isAuthenticated && // If not authenticated, display sign in form
+
+                            <Login
+                                errorMessage={errorMessage}
+                                onLoginClick={ creds => dispatch(loginUser(creds)) }
+                                style={{ marginLeft: "10px" }}
+                            />
+    
+                        }
+                        
+                        {isAuthenticated && // If authenticated, only display the logout button
+                        <nav className="nv-h-l">
+                            <Logout
+                                onClick = { this.refreshPage }
+                                onLogoutClick={() => dispatch(logoutUser())}
+                            />
+                            <Link onClick= { this.refreshPage } to="/profile" className="nv-h-l-a nv-h-l-a--k--s tr-link"> Profile </Link>
+                        </nav>
+                        }
+                    </nav>
+                    
+                </header>
+            </div>
+        );
     }
 }
 
