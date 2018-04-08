@@ -9,7 +9,7 @@ import {
 import PropTypes from 'prop-types'; 
 
 import { loginUser, logoutUser } from "../../actions/actions";
-import RegisterForm from "../forms/Register";
+import Register from "../forms/Register";
 import Logout from "../forms/Logout"
 import Login from "../forms/Login"
 
@@ -29,52 +29,50 @@ export default class Header extends Component {
 
     // We want to manually refresh the dom after updating our props
     refreshPage() {
-    window.location.reload()
-}
+        window.location.reload()
+    }
 
+    render() {
+        const { dispatch, isAuthenticated, errorMessage } = this.props;
 
-  render() {
-    const { dispatch, isAuthenticated, errorMessage } = this.props;
+        // Move the logo slightly away from the wall
+        const logoStyle = {
+        marginLeft: "10px"
+        };
+      
+        return (
+            <div className="mn">
+                <header className="h" role="banner">
+                    <nav className="lo">
+                        <Link to="/" className="lo-l">
+                            <img
+                            style={logoStyle}
+                            src={blogo}
+                            alt="City of Boston"
+                            className="lo-i"
+                            />
+                            <span className="lo-t">Mayor Martin J. Walsh</span>
+                        </Link>
+                    </nav>
 
-    // Move the logo slightly away from the wall
-    const logoStyle = {
-      marginLeft: "10px"
-    };
+                    <div className="s">
+                        <img src={bseal} alt="City of Boston" className="s-i" />
+                    </div>
 
-    //if (!isAuthenticated) {
-      return (
-        <div className="mn">
-            <header className="h" role="banner">
-                <nav className="lo">
-                    <Link to="/" className="lo-l">
-                        <img
-                        style={logoStyle}
-                        src={blogo}
-                        alt="City of Boston"
-                        className="lo-i"
-                        />
-                        <span className="lo-t">Mayor Martin J. Walsh</span>
-                    </Link>
-                </nav>
+                    <nav className="nv-h">
+                        { !isAuthenticated && // If not authenticated, display sign in form
 
-                <div className="s">
-                    <img src={bseal} alt="City of Boston" className="s-i" />
-                </div>
-
-                <nav className="nv-h">
-                    { !isAuthenticated && // If not authenticated, display sign in form
-                    
-                        <Login
-                            errorMessage={errorMessage}
-                            onLoginClick={ creds => dispatch(loginUser(creds)) }
-                            style={{ marginLeft: "10px" }}
-                        />
-  
-                    }
-                    
-                    {isAuthenticated && // If authenticated, only display the logout button
-                    <nav className="nv-h-l">
-                        <Link to="/profile"><div className ="nv-h-l-a"> {first} {last} </div></Link>
+                            <Login
+                                errorMessage={errorMessage}
+                                onLoginClick={ creds => dispatch(loginUser(creds)) }
+                                style={{ marginLeft: "10px" }}
+                            />
+    
+                        }
+                        
+                        {isAuthenticated && // If authenticated, only display the logout button
+                        <nav className="nv-h-l">
+                            <Link to="/profile"><div className ="nv-h-l-a"> {first} {last} </div></Link>
     
                         <Link to="/status" className="nv-h-l-a nv-h-l-a--k--s tr-link"> Status </Link>
                         <Link to="/permit" className="nv-h-l-a nv-h-l-a--k--s tr-link"> New Permit </Link>
@@ -82,14 +80,15 @@ export default class Header extends Component {
                         <Logout
                         onLogoutClick={() => dispatch(logoutUser())}
                         />
-                        </Link>
+                        </Link>>
+                        </nav>
+                        }
+
                     </nav>
-                    }
-                </nav>
-                
-            </header>
-        </div>
-      );
+                    
+                </header>
+            </div>
+        );
     }
 }
 
