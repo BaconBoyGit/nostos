@@ -5,14 +5,13 @@ import { Link } from 'react-router-dom'
 export default class Login extends Component {
 
     render() {
+
       const { errorMessage } = this.props
 
       const textStyle = {
         marginRight: "1%"
     
     }
-   
-
   
       return (
         <ul className="nv-h-l"> 
@@ -22,6 +21,7 @@ export default class Login extends Component {
               }
               { !this.props.errorMessage && 
               <input type='text' ref='username' className="form-control txt-f txt-f--sm" placeholder='Email'/>
+
               } 
           </li>
           <li className="nv-h-l-i">

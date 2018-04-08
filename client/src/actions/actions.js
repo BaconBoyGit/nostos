@@ -212,4 +212,4 @@ export function fetchUser() {
       types: [INFO_REQUEST, INFO_SUCCESS, INFO_FAILURE]
     }
   }
-}
+

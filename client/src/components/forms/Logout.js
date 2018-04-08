@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 export default class Logout extends Component {
@@ -7,9 +8,9 @@ export default class Logout extends Component {
     const { onLogoutClick } = this.props
 
     return (
-        <div className="nv-h-l-a nv-h-l-a--k--s tr-link" onClick={() => onLogoutClick()}> 
+        <Link to="/" className="nv-h-l-a nv-h-l-a--k--s tr-link" onClick={() => onLogoutClick()}> 
             Logout 
-        </div>
+        </Link>
     )
   }
 

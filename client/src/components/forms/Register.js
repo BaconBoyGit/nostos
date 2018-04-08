@@ -226,4 +226,3 @@ export default class Register extends React.Component {
 Register.propTypes = {
 	dispatch: PropTypes.func.isRequired,
 	errorMessage: PropTypes.string
-}
