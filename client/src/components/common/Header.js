@@ -74,13 +74,13 @@ export default class Header extends Component {
                         <nav className="nv-h-l">
                             <Link to="/profile"><div className ="nv-h-l-a"> {first} {last} </div></Link>
     
-                        <Link to="/status" className="nv-h-l-a nv-h-l-a--k--s tr-link"> Status </Link>
-                        <Link to="/permit" className="nv-h-l-a nv-h-l-a--k--s tr-link"> New Permit </Link>
-                        <Link to = "/">
-                        <Logout
-                        onLogoutClick={() => dispatch(logoutUser())}
-                        />
-                        </Link>
+                            <Link to="/status" className="nv-h-l-a nv-h-l-a--k--s tr-link"> Status </Link>
+                            <Link to="/permit" className="nv-h-l-a nv-h-l-a--k--s tr-link"> New Permit </Link>
+                            <Link to = "/">
+                            <Logout
+                                onLogoutClick={() => dispatch(logoutUser())}
+                            />
+                            </Link>
                         </nav>
                         }
 

@@ -77,13 +77,14 @@ class App extends Component {
               exact path ="/status"
               render={()=>
                 isAuthenticated === true // Redirect unauthenticated users to avoid status access
-                ? <Profile 
+                ? <Status 
                   isAuthenticated={ isAuthenticated }
                   user = { user }
                 />
                 : <Redirect to='/' />
               } />
               <Route 
+              
               exact path="/permit" component = {Permit} />
 
           <Footer />
