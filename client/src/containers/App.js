@@ -50,6 +50,7 @@ class App extends Component {
             { errorMessage &&  alert( errorMessage )  }
             
             <Route exact path="/" component={ Welcome } />
+
             <Route 
                 exact path="/register" 
                 render={ () =>
@@ -61,6 +62,7 @@ class App extends Component {
                 : <Redirect to= '/' />
               }
             />
+
             <Route 
                 exact path="/profile" 
                 render={()=>
@@ -73,6 +75,7 @@ class App extends Component {
                 } 
 
             />
+
             <Route 
               exact path ="/status"
               render={()=>
@@ -83,9 +86,17 @@ class App extends Component {
                 />
                 : <Redirect to='/' />
               } />
-              <Route 
               
-              exact path="/permit" component = {Permit} />
+              <Route 
+              exact path ="/permit"
+              render={()=>
+                isAuthenticated === true // Redirect unauthenticated users to avoid status access
+                ? <Permit 
+                  isAuthenticated={ isAuthenticated }
+                  user = { user }
+                />
+                : <Redirect to='/' />
+              } />
 
           <Footer />
 
