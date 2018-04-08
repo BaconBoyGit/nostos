@@ -6,6 +6,7 @@ import {react} from 'react'
 
 const BASE_URL = 'http://localhost:5000/v1/'
 
+// This is a basic function which makes calls to the specified endpoint 
 function callApi(endpoint, authenticated) {
 
     let token = localStorage.getItem('access_token') || null
