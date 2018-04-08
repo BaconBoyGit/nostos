@@ -9,12 +9,13 @@ import {
 import PropTypes from 'prop-types'; 
 
 import { loginUser, logoutUser } from "../../actions/actions";
-import RegisterForm from "../forms/RegisterForm";
+import RegisterForm from "../forms/Register";
 import Logout from "../forms/Logout"
 import Login from "../forms/Login"
 
 var blogo = require("../images/logo.svg");
 var bseal = require("../images/seal.svg");
+
 //Will draw from database
 var first = "Joe";
 var last = "Smith";
@@ -25,6 +26,13 @@ var last = "Smith";
 */
 
 export default class Header extends Component {
+
+    // We want to manually refresh the dom after updating our props
+    refreshPage() {
+    window.location.reload()
+}
+
+
   render() {
     const { dispatch, isAuthenticated, errorMessage } = this.props;
 

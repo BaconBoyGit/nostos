@@ -18,7 +18,7 @@ import {
 // Components to be loaded
 import Header from '../components/common/Header';
 import Welcome from '../components/maps/WelcomeMap';
-import RegisterForm from '../components/forms/RegisterForm';
+import RegisterForm from '../components/forms/Register';
 import Profile from '../components/common/Profile';
 import Footer from '../components/common/Footer';
 import Status from '../components/forms/Status';
