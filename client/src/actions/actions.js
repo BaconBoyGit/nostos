@@ -13,7 +13,7 @@ import { CALL_API } from '../middleware/api'
 // Our development route (running on localhost) and our production route
 // Comment out one route to use the other 
 
-const prodRoute = "https://btboutcher.com:5000"
+const prodRoute = "http://btboutcher.com:5000"
 // const prodRoute = "http://localhost:5000"
 
 // There are three possible states for our login

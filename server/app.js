@@ -6,6 +6,7 @@ console.log("Environment:", CONFIG.app)
 // Require dependencies and instantiate server
 
 const express 		= require('express');
+const helmet        = require('helmet')
 const logger 	    = require('morgan');
 const bodyParser 	= require('body-parser');
 const passport      = require('passport');
@@ -20,8 +21,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, 'public')));
 
-//Passport
+// Passport
 app.use(passport.initialize());
+
+// Helmet is a combiantion of twelve security measure for our headers
+app.use(helmet())
 
 //DATABASE
 const models = require("./models");
