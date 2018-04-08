@@ -19,6 +19,10 @@ import Welcome from '../components/maps/WelcomeMap';
 import Register from '../components/forms/Register';
 import Profile from '../components/common/Profile';
 import Footer from '../components/common/Footer';
+import Status from '../components/forms/Status';
+import Permit from '../components/forms/Permit';
+
+import { fetchUser } from '../actions/actions';
 
 class App extends Component {
 
@@ -67,8 +71,22 @@ class App extends Component {
                   />
                   : <Redirect to='/' />
                 } 
+
             />
-            <Footer />
+            <Route 
+              exact path ="/status"
+              render={()=>
+                isAuthenticated === true // Redirect unauthenticated users to avoid status access
+                ? <Profile 
+                  isAuthenticated={ isAuthenticated }
+                  user = { user }
+                />
+                : <Redirect to='/' />
+              } />
+              <Route 
+              exact path="/permit" component = {Permit} />
+
+          <Footer />
 
         </div>
       </Router>

@@ -86,7 +86,7 @@ export default class Register extends React.Component {
 							<div className="sel-c sel-c--fw">
 								<select name="language" ref="state" className="sel-f" required>
 									<option value="AL">Alabama</option>
-									<option defaultValue="AK" >Alaska</option>
+									<option value="AK" >Alaska</option>
 									<option value="AR">Arkansas</option>
 									<option value="CA">California</option>
 									<option value="CO">Colorado</option>
@@ -104,7 +104,7 @@ export default class Register extends React.Component {
 									<option value="LA">Louisiana</option>
 									<option value="ME">Maine</option>
 									<option value="MD">Maryland</option>
-									<option value="MA">Massachusetts</option>
+									<option defaultValue="MA">Massachusetts</option>
 									<option value="MI">Michigan</option>
 									<option value="MN">Minnesota</option>
 									<option value="MS">Mississippi</option>
@@ -227,4 +227,3 @@ Register.propTypes = {
 	dispatch: PropTypes.func.isRequired,
 	errorMessage: PropTypes.string
 }
-

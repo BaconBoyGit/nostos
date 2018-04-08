@@ -6,7 +6,6 @@ const jwt           	= require('jsonwebtoken');
 /*
 Build Schema with hooks and custom methods.
 A hook is function you can add when something happens in sequelize. 
-
 Here we use it to hash the password every time it is change using the beforeSave hook.
 We also have a custom method on the model to generate a JWT token for this user. 
 Very handy and supports reusable code.

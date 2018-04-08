@@ -16,9 +16,13 @@ import Login from "../forms/Login"
 var blogo = require("../images/logo.svg");
 var bseal = require("../images/seal.svg");
 
+//Will draw from database
+var first = "Joe";
+var last = "Smith";
+
 /*
    The header component, present on all pages for the Nostos site
-   Bradley Boutcher 2018
+   Bradley Boutcher and Christine Frandsen 2018
 */
 
 export default class Header extends Component {
@@ -35,7 +39,7 @@ export default class Header extends Component {
         const logoStyle = {
         marginLeft: "10px"
         };
-
+      
         return (
             <div className="mn">
                 <header className="h" role="banner">
@@ -68,13 +72,18 @@ export default class Header extends Component {
                         
                         {isAuthenticated && // If authenticated, only display the logout button
                         <nav className="nv-h-l">
-                            <Logout
-                                onClick = { this.refreshPage }
-                                onLogoutClick={() => dispatch(logoutUser())}
-                            />
-                            <Link onClick= { this.refreshPage } to="/profile" className="nv-h-l-a nv-h-l-a--k--s tr-link"> Profile </Link>
+                            <Link to="/profile"><div className ="nv-h-l-a"> {first} {last} </div></Link>
+    
+                        <Link to="/status" className="nv-h-l-a nv-h-l-a--k--s tr-link"> Status </Link>
+                        <Link to="/permit" className="nv-h-l-a nv-h-l-a--k--s tr-link"> New Permit </Link>
+                        <Link to = "/">
+                        <Logout
+                        onLogoutClick={() => dispatch(logoutUser())}
+                        />
+                        </Link>
                         </nav>
                         }
+
                     </nav>
                     
                 </header>
