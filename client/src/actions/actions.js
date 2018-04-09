@@ -9,12 +9,6 @@ A request failed
 
 import { CALL_API } from '../middleware/api'
 
-// Our development route (running on localhost) and our production route
-// Comment out one route to use the other 
-
-const prodRoute = "http://btboutcher.com:5000"
-// const prodRoute = "http://localhost:5000"
-
 // There are three possible states for our login
 // process, and we need actions for each of them
 export const LOGIN_REQUEST = 'LOGIN_REQUEST'
@@ -63,7 +57,7 @@ export function loginUser(creds) {
     // We dispatch requestLogin to kickoff the call to the API
     dispatch(requestLogin(creds))
 
-    return fetch(prodRoute + '/v1/users/login', config)
+    return fetch('/v1/users/login', config)
       .then(response =>
         response.json().then(user => ({ user, response }))
             ).then(({ user, response }) =>  {
@@ -139,7 +133,7 @@ export function registerUser(creds) {
     // We dispatch requestLogin to kickoff the call to the API
     dispatch(requestRegister(creds))
     console.log(config)
-    return fetch(prodRoute + '/v1/users/', config)
+    return fetch('/v1/users/', config)
       .then(response =>
         response.json().then(user => ({ user, response }))
             ).then(({ user, response }) =>  {
