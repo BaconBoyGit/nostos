@@ -6,7 +6,6 @@ const jwt           	= require('jsonwebtoken');
 /*
 Build Schema with hooks and custom methods.
 A hook is function you can add when something happens in sequelize. 
-
 Here we use it to hash the password every time it is change using the beforeSave hook.
 We also have a custom method on the model to generate a JWT token for this user. 
 Very handy and supports reusable code.
@@ -14,13 +13,21 @@ Very handy and supports reusable code.
 
 module.exports = (sequelize, DataTypes) => {
     var Model = sequelize.define('User', {
-        first     : DataTypes.STRING,
-        last      : DataTypes.STRING,
-        email     : {type: DataTypes.STRING, allowNull: true, unique: true, validate: { isEmail: {msg: "Phone number invalid."} }},
+        first     : { type: DataTypes.STRING, allowNull: false },
+        last      : { type: DataTypes.STRING, allowNull: false },
+        title     : DataTypes.STRING,
+        Company   : DataTypes.STRING,
+        email     : {type: DataTypes.STRING, allowNull: true, unique: true, validate: { isEmail: {msg: "Email address invalid."} }},
         phone     : {type: DataTypes.STRING, allowNull: true, unique: true, validate: { len: {args: [7, 20], msg: "Phone number invalid, too short."}, isNumeric: { msg: "not a valid phone number."} }},
         password  : DataTypes.STRING,
+        address1  : { type: DataTypes.STRING, allowNull: false },
+        address2  : DataTypes.STRING,
+        city      : { type: DataTypes.STRING, allowNull: false },
+        state     : { type: DataTypes.STRING, allowNull: false },
+        zip       : { type: DataTypes.STRING, allowNull: false },
     });
 
+    // Associate our model with any pertinent tables
     Model.associate = function(models){
         this.Companies = this.belongsToMany(models.Company, {through: 'UserCompany'});
     };
@@ -41,12 +48,12 @@ module.exports = (sequelize, DataTypes) => {
 
     Model.prototype.comparePassword = async function (pw) {
         let err, pass
-        if(!this.password) TE('password not set');
+        if(!this.password) TE('A password is not set!');
 
         [err, pass] = await to(bcrypt_p.compare(pw, this.password));
         if(err) TE(err);
 
-        if(!pass) TE('invalid password');
+        if(!pass) TE('Invalid password!');
 
         return this;
     }
