@@ -13,7 +13,7 @@ class Status extends React.Component {
     // Render inline style attributes
     render() {
 
-        const { isAuthenticated, user } = this.props
+        const { isAuthenticated, user, company } = this.props
 
         //Currently static, will connect to database to be dynamic later
        
@@ -45,7 +45,7 @@ class Status extends React.Component {
                     <td data-label='Date Applied'> {status[0]}  </td> 
                 </tr>
                 <tr> 
-                    <td data-label='Date Applied'> {appNumber[1]} </td> 
+                    <td data-label='Date Applied'> {/*company.date*/} </td> 
                     <td data-label='Address'>  {address[1]}  </td> 
                     <td data-label='Date Applied'> {status[1]}  </td> 
                 </tr>

@@ -192,7 +192,7 @@ export default class Permit extends React.Component {
             </div>
             </div>  
             <div class="m-v400 m-h200">
-           <input type="submit" className="btn" value="Submit"> 
+            <input type="submit" className="btn" value="Submit"> 
             </input>
             
             </div>
@@ -215,7 +215,6 @@ permitClick= function(e) {
 
     // Build our credentials to send to the backend
     const creds = { location: location.value.trim(), start: start.value.trim(), end: end.value.trim(), date: date.value.trim()}
-
     this.props.dispatch(createPermit(creds))
   }
 

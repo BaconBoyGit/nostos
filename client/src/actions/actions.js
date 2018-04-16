@@ -204,7 +204,7 @@ export function createPermit(creds) {
 
   let config = {
     method: 'POST',
-    headers: { 'Content-Type':'application/x-www-form-urlencoded' },
+    headers: { 'Content-Type':'application/x-www-form-urlencoded', 'Authorization': localStorage.getItem('access_token') },
     /*headers: { 'Authorization': localStorage.getItem('access_token') }*/
     body: ("&location="+creds.location+"&start="+creds.start+"&end="+creds.end+
     "&date="+creds.date).replace(" ", "%20")
@@ -276,6 +276,22 @@ export function fetchUser() {
       endpoint: 'users',
       authenticated: true, // Protected call
       types: [INFO_REQUEST, INFO_SUCCESS, INFO_FAILURE]
+    }
+  }
+}
+
+// we need to include some more actions to call the API for the user info.
+export const PINFO_REQUEST = 'PINFO_REQUEST'
+export const PINFO_SUCCESS = 'PINFO_SUCCESS'
+export const PINFO_FAILURE = 'PINFO_FAILURE'
+
+// Uses the api middleware to get the user's info
+export function fetchPermit() {
+  return {
+    [CALL_API]: {
+      endpoint: 'companies',
+      authenticated: true, // Protected call
+      types: [PINFO_REQUEST, PINFO_SUCCESS, PINFO_FAILURE]
     }
   }
 }

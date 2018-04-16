@@ -23,13 +23,15 @@ import Status from '../components/forms/Status';
 import Permit from '../components/forms/Permit';
 
 import { fetchUser } from '../actions/actions';
+import { fetchPermit } from '../actions/actions';
+
 
 class App extends Component {
 
   render() {
     
     // Bring in our proptypes
-    const { dispatch, isAuthenticated, errorMessage, user } = this.props
+    const { dispatch, isAuthenticated, errorMessage, user, company } = this.props
 
     const errorStyle = {
       position: "fixed",
@@ -50,7 +52,8 @@ class App extends Component {
             
             { errorMessage &&  alert( errorMessage )  }
             
-            <Route exact path="/" component={ Welcome } />
+            <Route exact path="/" component={ Welcome } 
+            />
 
             <Route 
                 exact path="/register" 
@@ -84,6 +87,7 @@ class App extends Component {
                 ? <Status 
                   isAuthenticated={ isAuthenticated }
                   user = { user }
+                  company = { company }
                 />
                 : <Redirect to='/' />
               } />
@@ -116,15 +120,17 @@ App.propTypes = {
 
 // These props come from the application's
 // state when it is started
+
 function mapStateToProps(state) {
 
   const { auth } = state
-  const { isAuthenticated, errorMessage, user } = auth
+  const { isAuthenticated, errorMessage, user, company } = auth
 
   return {
     user,
     isAuthenticated,
-    errorMessage
+    errorMessage,
+    company,
   }
 }
 
