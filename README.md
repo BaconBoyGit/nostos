@@ -2,11 +2,17 @@
 The prototype moving truck permitting application for the City of Boston 
 
 ## Table of Contents
+
 - [Running the Project](#running-the-project)
-    - [Dependencies](#project-dependencies)
-    - [Running the React.js client](#running-client)
-    - [Running the Node.js Express server](#running-server)
-    
+    - [Dependencies](#dependencies)
+    - [Running the React.js client](#Running-the-React.js-client)
+    - [Running the Node.js Express server](#Running-the-Node.js-Express-server)
+        - [Server API](#server-api)
+    - [Database](#database)
+        - [Schema](#schema)
+
+- [Project Structure](#project-structure)
+
 - [Resources](#resources)
     - [Developement Tools](#development-tools)
     - [External Resources](#external-resources)
@@ -18,7 +24,7 @@ The prototype moving truck permitting application for the City of Boston
     - [Scoping Resources](#scoping-resources)
 
 ## Running the Project
-Information regarding dependencies, requirements, and commands used to build or run the project
+Information regarding dependencies, requirements, and commands used to build or run the project. To run this project, there is a private configuration file used by the front end and the back end. Without these files, you will be unable to successfully run the project. Please contact the respository owner for access to these files.
 
 ### Dependencies
 Before running the project, there are several dependencies for the front end and the back end.
@@ -33,13 +39,7 @@ With NPM installed, download and install yarn with:
 
 `npm i --global yarn` 
 
-In the project directory, run:
-
-`cd client && yarn`
-
-Move back up to the top level of the directory, and run:
-
-`cd server && yarn`
+Run `yarn` in the top-level directory, as well as in the "client" and "server" directories.
 
 This should install all dependencies for the project using our yarn.lock files. Yarn will further be used to run the front end and back end concurrently.
 
@@ -71,14 +71,24 @@ To create a build of the client, run
 `cd client && npm run build`
 
 ### Running the Node.js Express server
-To run the server, use
+To run the server separate from the front end, use
 
 `cd server && nodemon server.js`
+
+### Database
+The project server requires a connection to a MYSQL Database to store data. Configuration information for this databse is stored in the private configuration file.
+
+Upon running the back-end, the specified database will be populated with the appropriate tables, designed in the `/server/models` directory.
+
+Therefore, one must have a pre-existing database, or run your own with appropriate security measures, to store any data.
+
+#### Schema
 
 ## Resources
 Information regarding the tools and resources essential to the design and development of the project 
 
 ### Developement Tools
+These development kits and tools were used to produce the project. Becoming familiar with their documentation may prove useful in future development.
 [Visual Studio Code](https://code.visualstudio.com)
 
 [React.js](https://reactjs.org)
@@ -94,6 +104,7 @@ Information regarding the tools and resources essential to the design and develo
 [Yarn](https://yarnpkg.com/en/)
 
 ### External Resources
+These components were developed by third-party teams, and used for the execution of this prototype.
 [City of Boston Patterns Library](https://github.com/CityOfBoston/patterns)
 
 [City of Boston Public Data Portal](https://data.boston.gov)
