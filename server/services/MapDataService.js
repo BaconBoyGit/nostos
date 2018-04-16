@@ -3,6 +3,7 @@ var MapboxClient = require('mapbox');
 var upload = require('mapbox-upload')
 var http = require('http');
 var fs = require('fs');
+var path = require('path');
 var stream = require('stream');
 
 require('../config/config');     //instantiate configuration variables
@@ -14,7 +15,6 @@ var parkingOptions = {
     method: 'GET'
 };
 
-// Create and / or open files to contain geojson data
 var parkingData = fs.createWriteStream("parkingMeters.geojson", { flag: 'w'}, function (err) {
     if (err) throw err;
     console.log("File Opened")
@@ -27,15 +27,22 @@ var zipOptions = {
     method: 'GET'
 };
 
-var zipData = fs.createWriteStream("parkingMeters.geojson", { flag: 'w'}, function (err) {
+var zipData = fs.createWriteStream("zipCodes.geojson", { flag: 'w'}, function (err) {
     if (err) throw err;
     console.log("File Opened")
 })
+
+// Create an array of upload data to iterate through
+var uploadData = {
+    1: { options: parkingOptions, data: parkingData},
+    2: { options: zipOptions, data: zipData}
+}
 
 // A function for uploading using the mpabox uploading api
 function uploadGeoJson ( data, options )  {
     http.get( options, (response) => {
         response.pipe(data);
+
         data.on('finish', () => {
             // close() is async, call cb after close completes.
             data.close()
@@ -45,8 +52,8 @@ function uploadGeoJson ( data, options )  {
                 file: data.path, // Path to mbtiles file on disk.
                 account: 'bradleyboutcher', // Mapbox user account.
                 accesstoken: CONFIG.mapbox_upload_token, // A valid Mapbox API secret token with the uploads:write scope enabled.
-                mapid: "bradleyboutcher." + data.path.basename, // The identifier of the map to create or update.
-                name: 'My upload' // Optional name to set, otherwise a default such as original.geojson will be used.
+                mapid: "bradleyboutcher." + path.basename(data.path, '.geojson'), // The identifier of the map to create or update.
+                name: path.basename(data.path, '.geojson') // Optional name to set, otherwise a default such as original.geojson will be used.
             });
 
             progress.on('error', function(err){
@@ -66,5 +73,6 @@ function uploadGeoJson ( data, options )  {
 }
 
 // Commence uploads
-// uploadGeoJson(parkingData, parkingOptions)
 uploadGeoJson(zipData, zipOptions)
+uploadGeoJson(parkingData, parkingOptions)
+

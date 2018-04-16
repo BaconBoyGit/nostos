@@ -32,3 +32,4 @@ server/.env
 server/secrets.js
 server/config/config.json
 
+*.geojson
