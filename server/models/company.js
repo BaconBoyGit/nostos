@@ -1,7 +1,10 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var Model = sequelize.define('Company', {
-    name: DataTypes.STRING
+        location     : { type: DataTypes.STRING, allowNull: false },
+        start        : { type: DataTypes.STRING,  },
+        end          : { type: DataTypes.STRING,  },
+        date         : { type: DataTypes.STRING,  },
   });
 
   Model.associate = function(models){

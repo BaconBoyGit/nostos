@@ -45,6 +45,7 @@ class App extends Component {
                 isAuthenticated={isAuthenticated}
                 errorMessage={errorMessage}
                 dispatch={dispatch}
+                user = {user}
             />
             
             { errorMessage &&  alert( errorMessage )  }
@@ -90,10 +91,11 @@ class App extends Component {
               <Route 
               exact path ="/permit"
               render={()=>
-                isAuthenticated === true // Redirect unauthenticated users to avoid status access
+                isAuthenticated === true // Redirect unauthenticated users to avoid permits being created
                 ? <Permit 
                   isAuthenticated={ isAuthenticated }
                   user = { user }
+                  dispatch = { dispatch }
                 />
                 : <Redirect to='/' />
               } />

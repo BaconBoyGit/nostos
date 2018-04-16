@@ -13,8 +13,10 @@ class Status extends React.Component {
     // Render inline style attributes
     render() {
 
+        const { isAuthenticated, user } = this.props
+
         //Currently static, will connect to database to be dynamic later
-        var userName = "Joe Smith";  
+       
         var appNumber = ["1", "2", "3"];
         var status = ["Accepted", "Pending", "Denied"];
         var disStatus = '';
@@ -67,7 +69,7 @@ class Status extends React.Component {
                 <div className = "profileContent" style = {profileContent} >
                     <div class="b">
                         <div class="b-c">
-                            <div class="h2 tt-u ta-c p-h300">{userName}'s Application Status</div>
+                            <div class="h2 tt-u ta-c p-h300">{user.first} {user.last}'s Application Status</div>
                             <hr class="hr hr--sq m-h300 m-v500" />
                           
                             <table border="1" cellpadding="1" cellspacing="1" class="responsive-table responsive-table--horizontal">

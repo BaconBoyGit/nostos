@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 import {
   LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_SUCCESS,
-  REGISTER_REQUEST, REGISTER_FAILURE, REGISTER_SUCCESS
+  REGISTER_REQUEST, REGISTER_FAILURE, REGISTER_SUCCESS, PERMIT_REQUEST, PERMIT_SUCCESS, PERMIT_FAILURE
 } from '../actions/actions'
 
 // The authentication reducer. The starting state sets authentication
@@ -14,7 +14,8 @@ import {
 function auth(state = { // This is our "default" state
     isFetching: false,
     isAuthenticated: localStorage.getItem('id_token') ? true : false, 
-    user: localStorage.getItem('user') !== 'undefined' ? JSON.parse(localStorage.getItem('user')) : null  // Pull from local storage if we happen to lose our state
+    user: localStorage.getItem('user') !== 'undefined' ? JSON.parse(localStorage.getItem('user')) : null,  // Pull from local storage if we happen to lose our state
+    company: localStorage.getItem('company') !== 'undefined' ? JSON.parse(localStorage.getItem('company')) : null
   }, action) {
   switch (action.type) {
     case LOGIN_REQUEST || REGISTER_REQUEST:
@@ -46,10 +47,39 @@ function auth(state = { // This is our "default" state
   }
 }
 
+function perm(state = { // This is our "default" state
+    isFetching: false,
+    isAuthenticated: true,
+    user: localStorage.getItem('user') !== 'undefined' ? JSON.parse(localStorage.getItem('user')) : null,  // Pull from local storage if we happen to lose our state
+    company: localStorage.getItem('company') !== 'undefined' ? JSON.parse(localStorage.getItem('company')) : null
+  }, action) {
+  switch (action.type) {
+    case PERMIT_REQUEST:
+      return Object.assign({}, state, {
+        isFetching: true,
+        data: action.creds,
+      })
+    case PERMIT_SUCCESS:
+      return Object.assign({}, state, {
+        isFetching: false,
+        company: action.company,
+        errorMessage: ''
+      })
+    case PERMIT_FAILURE:
+      return Object.assign({}, state, {
+        isFetching: false,
+        isAuthenticated: true
+      })
+    default:
+      return state
+  }
+}
+
 // We combine all the reducers here so that they can 
 // be left split apart above
 const userInfo = combineReducers({
-    auth
+    auth,
+    perm
 })
 
 export default userInfo

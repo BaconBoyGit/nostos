@@ -12,8 +12,8 @@ import { CALL_API } from '../middleware/api'
 // Our development route (running on localhost) and our production route
 // Comment out one route to use the other 
 
-const prodRoute = "http://btboutcher.com:5000"
-// const prodRoute = "http://localhost:5000"
+//const prodRoute = "http://btboutcher.com:5000"
+const prodRoute = "http://localhost:5000"
 
 // There are three possible states for our login
 // process, and we need actions for each of them
@@ -130,7 +130,7 @@ export function registerUser(creds) {
     method: 'POST',
     headers: { 'Content-Type':'application/x-www-form-urlencoded' },
     body: ("first="+creds.first+"&last="+creds.last+"&title="+creds.title+
-    "&Company="+creds.company+"&phone="+creds.phone+"&email="+creds.email+"&address1="+creds.address1+
+    "&Company="+creds.company+"&phone="+creds.phone+"&email="+creds.email+"&emailCon="+creds.emailCon+"&address1="+creds.address1+
     "&address2="+creds.address2+"&password="+creds.password+"&confirm="+creds.confirm+"&city="+creds.city+
     "&state="+creds.state+"&zip="+creds.zip).replace(" ", "%20")
   }
@@ -159,6 +159,72 @@ export function registerUser(creds) {
           // Dispatch the success action
           dispatch(receiveLogin(user))
         }
+      }).catch(err => console.log("Error: ", err))
+  }
+}
+
+// Creating permit
+// There are three possible states for our permit
+// process, and we need actions for each of them
+// The data returned is identical to login, so we can follow a similar process
+
+export const PERMIT_REQUEST = 'PERMIT_REQUEST'
+export const PERMIT_SUCCESS = 'PERMIT_SUCCESS'
+export const PERMIT_FAILURE = 'PERMIT_FAILURE'
+
+function requestPermit(creds) {
+  return {
+    type: PERMIT_REQUEST,
+    isFetching: true,
+    isAuthenticated: true,
+    creds
+  }
+}
+
+function receivePermit(company) {
+  return {
+    type: REGISTER_SUCCESS,
+    isFetching: false,
+    isAuthenticated: true,
+    company
+  }
+}
+
+function permitError(message) {
+  return {
+    type: PERMIT_FAILURE,
+    isFetching: false,
+    isAuthenticated: true,
+    message
+  }
+}
+
+
+export function createPermit(creds) {
+
+  let config = {
+    method: 'POST',
+    headers: { 'Content-Type':'application/x-www-form-urlencoded' },
+    /*headers: { 'Authorization': localStorage.getItem('access_token') }*/
+    body: ("&location="+creds.location+"&start="+creds.start+"&end="+creds.end+
+    "&date="+creds.date).replace(" ", "%20")
+  }
+
+  return dispatch => {
+    // We dispatch requestLogin to kickoff the call to the API
+    dispatch(requestPermit(creds))
+    console.log(config)
+    return fetch(prodRoute + '/v1/companies/', config)
+      .then(response =>
+        response.json().then(company => ({ company, response }))
+            ).then(({ company, response }) =>  {
+        if (!response.ok || company.success === false) {
+          // If there was a problem, we want to
+          // dispatch the error condition
+          dispatch(permitError(company.error))
+          
+        } 
+        dispatch(receivePermit(company))
       }).catch(err => console.log("Error: ", err))
   }
 }

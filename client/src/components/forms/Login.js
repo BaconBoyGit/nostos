@@ -33,7 +33,7 @@ export default class Login extends Component {
               }
           </li>
           <li className="nv-h-l-i">
-            <div onClick={(event) => this.handleClick(event)} className="nv-h-l-a nv-h-l-a--k--s tr-link">
+            <div onClick={(event) => this.handleClick(event) } className="nv-h-l-a nv-h-l-a--k--s tr-link">
               Login
             </div>
           </li>

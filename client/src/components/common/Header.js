@@ -6,7 +6,7 @@ import {
   Switch,
   Redirect
 } from "react-router-dom";
-import PropTypes from 'prop-types'; 
+import {PropTypes} from 'prop-types'; 
 
 import { loginUser, logoutUser } from "../../actions/actions";
 import Register from "../forms/Register";
@@ -16,16 +16,13 @@ import Login from "../forms/Login"
 var blogo = require("../images/logo.svg");
 var bseal = require("../images/seal.svg");
 
-//Will draw from database
-var first = "Joe";
-var last = "Smith";
 
 /*
    The header component, present on all pages for the Nostos site
    Bradley Boutcher and Christine Frandsen 2018
 */
 
-export default class Header extends Component {
+export default class Header extends React.Component {
 
     // We want to manually refresh the dom after updating our props
     refreshPage() {
@@ -33,15 +30,21 @@ export default class Header extends Component {
     }
 
     render() {
-        const { dispatch, isAuthenticated, errorMessage } = this.props;
+        const { dispatch, isAuthenticated, user, errorMessage } = this.props
+        
+       
 
         // Move the logo slightly away from the wall
         const logoStyle = {
         marginLeft: "10px"
         };
+
+        const headerFix = {
+           
+        }
       
         return (
-            <div className="mn">
+            <div className="mn" style={headerFix}>
                 <header className="h" role="banner">
                     <nav className="lo">
                         <Link to="/" className="lo-l">
@@ -74,10 +77,9 @@ export default class Header extends Component {
                         <nav className="nv-h-l">
                             <Link to="/profile" >
                                 <div className ="nv-h-l-a" onClick = { this.refreshPage }> 
-                                    {first} {last} 
-                                </div>
+                               {user.first} {user.last}
+                                </div> 
                             </Link>
-    
                             <Link to="/status" onClick = { this.refreshPage } className="nv-h-l-a nv-h-l-a--k--s tr-link" > Status </Link>
                             <Link to="/permit" onClick = { this.refreshPage } className="nv-h-l-a nv-h-l-a--k--s tr-link"> New Permit </Link>
                             <Link to = "/">
@@ -100,5 +102,6 @@ export default class Header extends Component {
 Header.propTypes = {
     dispatch: PropTypes.func.isRequired,
     isAuthenticated: PropTypes.bool.isRequired,
-    errorMessage: PropTypes.string
+    errorMessage: PropTypes.string,
+    user: PropTypes.object,
 }
