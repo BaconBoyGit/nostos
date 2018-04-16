@@ -45,6 +45,7 @@ class App extends Component {
                 isAuthenticated={isAuthenticated}
                 errorMessage={errorMessage}
                 dispatch={dispatch}
+                user = { user }
             />
             
             { errorMessage &&  alert( errorMessage )  }
