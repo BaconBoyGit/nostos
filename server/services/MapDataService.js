@@ -7,76 +7,64 @@ var stream = require('stream');
 
 require('../config/config');     //instantiate configuration variables
 
-
-// var client = new MapboxClient(CONFIG.mapbox_upload_token);
-
-var options = {
+// Location of parking meter geojson data
+var parkingOptions = {
     hostname: 'http://bostonopendata-boston.opendata.arcgis.com',
     path: '/datasets/962da9bb739f440ba33e746661921244_9.geojson',
     method: 'GET'
 };
 
-var file = fs.createWriteStream("parkingMeters.geojson")
-
-var request = http.get( options, (response) => {
-    response.pipe(file);
-    file.on('finish', () => {
-        // close() is async, call cb after close completes.
-        file.close()
-        // creates a progress-stream object to track status of
-        // upload while upload continues in background
-        var progress = upload({
-            file: file.path, // Path to mbtiles file on disk.
-            account: 'bradleyboutcher', // Mapbox user account.
-            accesstoken: CONFIG.mapbox_upload_token, // A valid Mapbox API secret token with the uploads:write scope enabled.
-            mapid: "", // The identifier of the map to create or update.
-            name: 'My upload' // Optional name to set, otherwise a default such as original.geojson will be used.
-        });
-
-        progress.on('error', function(err){
-            if (err) throw err;
-        });
-
-        progress.on('progress', function(p){
-            // Do something with progress-stream object, like display upload status
-        });
-
-        progress.once('finished', function(){
-            // Upload has completed but is likely queued for processing and not yet available on Mapbox.
-        });
-
-    });
+// Create and / or open files to contain geojson data
+var parkingData = fs.createWriteStream("parkingMeters.geojson", { flag: 'w'}, function (err) {
+    if (err) throw err;
+    console.log("File Opened")
 })
 
-/* client.createUploadCredentials( (err, credentials) => {
-    // Use aws-sdk to stage the file on Amazon S3
-    var s3 = new AWS.S3({
-         accessKeyId: CONFIG.aws_access_key_id,
-         secretAccessKey: CONFIG.aws_secret_access_key,
-         region: 'us-east-1'
-    });
+// Location of zip code boundary geojson data
+var zipOptions = {
+    hostname: 'http://bostonopendata-boston.opendata.arcgis.com',
+    path: '/datasets/53ea466a189b4f43b3dfb7b38fa7f3b6_1.geojson',
+    method: 'GET'
+};
 
-    var file = fs.createWriteStream("parkingMeters.geojson")
+var zipData = fs.createWriteStream("parkingMeters.geojson", { flag: 'w'}, function (err) {
+    if (err) throw err;
+    console.log("File Opened")
+})
 
-    var request = http.get( options, (response) => {
-        response.pipe(file);
-        file.on('finish', () => {
+// A function for uploading using the mpabox uploading api
+function uploadGeoJson ( data, options )  {
+    http.get( options, (response) => {
+        response.pipe(data);
+        data.on('finish', () => {
             // close() is async, call cb after close completes.
-            file.close()
+            data.close()
+            // creates a progress-stream object to track status of
+            // upload while upload continues in background
+            var progress = upload({
+                file: data.path, // Path to mbtiles file on disk.
+                account: 'bradleyboutcher', // Mapbox user account.
+                accesstoken: CONFIG.mapbox_upload_token, // A valid Mapbox API secret token with the uploads:write scope enabled.
+                mapid: "bradleyboutcher." + data.path.basename, // The identifier of the map to create or update.
+                name: 'My upload' // Optional name to set, otherwise a default such as original.geojson will be used.
+            });
 
-            s3.putObject({
-                Bucket: myBucket,
-                Key: myKey,
-                Body: fs.createReadStream(file.path)
-            },  
-                (err, resp) => {
-                console.log(resp)
-            })
+            progress.on('error', function(err){
+                if (err) throw err;
+            });
+
+            progress.on('progress', function(p){
+                console.log(p.percentage + "%") 
+            });
+
+            progress.once('finished', function(){
+                console.log('Finished!')
+            });
+
         });
-    }).on('error', (err) => { // Handle errors
-        if (err) console.log(err.message);
-    });
-      
-    
+    })
+}
 
-  }); */
+// Commence uploads
+// uploadGeoJson(parkingData, parkingOptions)
+uploadGeoJson(zipData, zipOptions)
