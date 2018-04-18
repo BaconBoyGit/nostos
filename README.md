@@ -14,7 +14,7 @@ The prototype moving truck permitting application for the City of Boston
 - [Project Structure](#project-structure)
 
 - [Resources](#resources)
-    - [Developement Tools](#development-tools)
+    - [Development Tools](#development-tools)
     - [External Resources](#external-resources)
 
 - [About the Project](#about-the-project)
@@ -89,6 +89,32 @@ Upon running the back-end, the specified database will be populated with the app
 Therefore, one must have access pre-existing database, or run your own with appropriate security measures, to store any data.
 
 #### Schema
+
+*User Table*
+<mysqldump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<database name="nostos_test">
+
+	<table_structure name="Users">
+		<field field="id" type="int(11)" null="NO" key="PRI" default="<null>" extra="auto_increment" />
+		<field field="first" type="varchar(255)" null="NO" key="" default="<null>" extra="" />
+		<field field="last" type="varchar(255)" null="NO" key="" default="<null>" extra="" />
+		<field field="title" type="varchar(255)" null="YES" key="" default="<null>" extra="" />
+		<field field="Company" type="varchar(255)" null="YES" key="" default="<null>" extra="" />
+		<field field="email" type="varchar(255)" null="YES" key="UNI" default="<null>" extra="" />
+		<field field="phone" type="varchar(255)" null="YES" key="UNI" default="<null>" extra="" />
+		<field field="password" type="varchar(255)" null="YES" key="" default="<null>" extra="" />
+		<field field="address1" type="varchar(255)" null="NO" key="" default="<null>" extra="" />
+		<field field="address2" type="varchar(255)" null="YES" key="" default="<null>" extra="" />
+		<field field="city" type="varchar(255)" null="NO" key="" default="<null>" extra="" />
+		<field field="state" type="varchar(255)" null="NO" key="" default="<null>" extra="" />
+		<field field="zip" type="varchar(255)" null="NO" key="" default="<null>" extra="" />
+		<field field="createdAt" type="datetime" null="NO" key="" default="<null>" extra="" />
+		<field field="updatedAt" type="datetime" null="NO" key="" default="<null>" extra="" />
+
+		<options name="Users" engine="InnoDB" version="10" row_format="Dynamic" rows="14" avg_row_length="1170" data_length="16384" max_data_length="0" index_length="32768" data_free="0" create_time="2018-04-08 16:45:25" update_time="2018-04-16 20:29:51" collation="latin1_swedish_ci" create_options="" comment="" />
+    </table_structure>
+</database>
+</mysqldump>
 
 ## Resources
 Information regarding the tools and resources essential to the design and development of the project 
