@@ -31,6 +31,11 @@
 ### Overview 
 
 ### Structure
+├── client
+    ├── build                   # Contains static build of the front end
+    ├── public         		# Resources used during build, such as the favicon and index.html 
+    ├── src               # Unit tests
+    └── ...
 
 ### Configuring the Project
 
