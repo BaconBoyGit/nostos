@@ -1,5 +1,5 @@
 # Project Nostos 
-The prototype moving truck permitting application for the City of Boston 
+> The prototype moving truck permitting application for the City of Boston 
 
 ## Table of Contents
 - [Project Description](#project-description)
@@ -26,7 +26,7 @@ The prototype moving truck permitting application for the City of Boston
     - [Scoping Resources](#scoping-resources)
 
 ## Project Description
-What is "Project Nostos"? What are the key components, and what do I need to do before running the project? All of these questions are covered in this section.
+> What is "Project Nostos"? What are the key components, and what do I need to do before running the project? All of these questions are covered in this section.
 
 ### Overview 
 
@@ -35,7 +35,9 @@ What is "Project Nostos"? What are the key components, and what do I need to do 
 ### Configuring the Project
 
 ## Running the Project
-Information regarding dependencies, requirements, and commands used to build or run the project. To run this project, there is a private configuration file used by the back end. Without these files, you will be unable to successfully run the project. Please contact the respository owner for access to these files, or you can create your own. See [Database](#database) for more information on this.
+Information regarding dependencies, requirements, and commands used to build or run the project. To run this project, there is a private configuration file used by the back end. 
+
+> Without these files, you will be unable to successfully run the project. Please contact the respository owner for access to these files, or you can create your own. See [Database](#database) for more information on this.
 
 This information can be used for both testing the project and preparing it for deployment in a production setting.
 
@@ -96,7 +98,9 @@ This will run the node server with live-reload capabilities. The environment and
 otherwise, the defaults will be used.
 
 ### Database
-The project server requires a connection to a MYSQL System to store data. The system only needs one database, which is specified along with authentication credentials in a `.env` file. If there is no `.env` file, the config.json file will use default parameters. *For the back-end to run properly, the config.json file must have an appropriate entry for each variable pulled from a `.env` file. This file can be provided by the repository owner, or you can make your own.*
+The project server requires a connection to a MYSQL System to store data. The system only needs one database, which is specified along with authentication credentials in a `.env` file. If there is no `.env` file, the config.json file will use default parameters. 
+
+> For the back-end to run properly, the config.json file must have an appropriate entry for each variable pulled from a `.env` file. This file can be provided by the repository owner, or you can make your own.
 
 Upon running the back-end, the specified database will be populated with the appropriate tables, designed in the `/server/models` directory.
 
@@ -104,7 +108,7 @@ Therefore, one must have access pre-existing database, or run your own with appr
 
 #### Schema
 
-*User Table*
+> User Table
 ```xml
 <database name="nostos_test">
 	<table_structure name="Users">
@@ -130,7 +134,7 @@ Therefore, one must have access pre-existing database, or run your own with appr
 ```
 
 ## Resources
-Information regarding the tools and resources essential to the design and development of the project 
+> Information regarding the tools and resources essential to the design and development of the project 
 
 ### Developement Tools
 These development kits and tools were used to devlop and/or run the project. Becoming familiar with their documentation may prove useful in future development.
@@ -159,7 +163,7 @@ These components were developed by third-party teams, and used for the execution
 [MapBox](https://www.mapbox.com)
 
 ## About the Project
-Information regarding the process and purposes of this project
+> Information regarding the process and purposes of this project
 
 ### Issue
 Moving day--September 1--is a big day in Boston. 
