@@ -2,6 +2,10 @@
 The prototype moving truck permitting application for the City of Boston 
 
 ## Table of Contents
+- [Project Description](#project-description)
+	- [Overview](#overview)
+	- [Structure](#structure)
+	- [Configuring the Project](#configuring-the-project)
 
 - [Running the Project](#running-the-project)
     - [Dependencies](#dependencies)
@@ -10,8 +14,6 @@ The prototype moving truck permitting application for the City of Boston
         - [Server API](#server-api)
     - [Database](#database)
         - [Schema](#schema)
-
-- [Project Structure](#project-structure)
 
 - [Resources](#resources)
     - [Development Tools](#development-tools)
@@ -22,6 +24,15 @@ The prototype moving truck permitting application for the City of Boston
     - [Questions](#questions)
     - [Scope of Work](#scope-of-work)
     - [Scoping Resources](#scoping-resources)
+
+## Project Description
+What is "Project Nostos"? What are the key components, and what do I need to do before running the project? All of these questions are covered in this section.
+
+### Overview 
+
+### Structure
+
+### Configuring the Project
 
 ## Running the Project
 Information regarding dependencies, requirements, and commands used to build or run the project. To run this project, there is a private configuration file used by the back end. Without these files, you will be unable to successfully run the project. Please contact the respository owner for access to these files, or you can create your own. See [Database](#database) for more information on this.
@@ -80,6 +91,9 @@ This makes it possible to host the project from `build/index.html`, which is les
 To run the server separate from the front end, use
 
 `cd server && nodemon server.js`
+
+This will run the node server with live-reload capabilities. The environment and port are specified in the `.env` file,
+otherwise, the defaults will be used.
 
 ### Database
 The project server requires a connection to a MYSQL System to store data. The system only needs one database, which is specified along with authentication credentials in a `.env` file. If there is no `.env` file, the config.json file will use default parameters. *For the back-end to run properly, the config.json file must have an appropriate entry for each variable pulled from a `.env` file. This file can be provided by the repository owner, or you can make your own.*
