@@ -37,7 +37,7 @@
 ## Running the Project
 Information regarding dependencies, requirements, and commands used to build or run the project. To run this project, there is a private configuration file used by the back end. 
 
-> Without these files, you will be unable to successfully run the project. Please contact the respository owner for access to these files, or you can create your own. See [Database](#database) for more information on this.
+> **Note:** Without these files, you will be unable to successfully run the project. Please contact the respository owner for access to these files, or you can create your own. See [Database](#database) for more information on this.
 
 This information can be used for both testing the project and preparing it for deployment in a production setting.
 
@@ -100,7 +100,7 @@ otherwise, the defaults will be used.
 ### Database
 The project server requires a connection to a MYSQL System to store data. The system only needs one database, which is specified along with authentication credentials in a `.env` file. If there is no `.env` file, the config.json file will use default parameters. 
 
-> For the back-end to run properly, the config.json file must have an appropriate entry for each variable pulled from a `.env` file. This file can be provided by the repository owner, or you can make your own.
+> **Note:** For the back-end to run properly, the config.json file must have an appropriate entry for each variable pulled from a `.env` file. This file can be provided by the repository owner, or you can make your own.
 
 Upon running the back-end, the specified database will be populated with the appropriate tables, designed in the `/server/models` directory.
 
