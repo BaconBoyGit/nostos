@@ -91,6 +91,7 @@ Therefore, one must have access pre-existing database, or run your own with appr
 #### Schema
 
 *User Table*
+```xml
 <mysqldump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 <database name="nostos_test">
 
@@ -115,6 +116,7 @@ Therefore, one must have access pre-existing database, or run your own with appr
     </table_structure>
 </database>
 </mysqldump>
+```
 
 ## Resources
 Information regarding the tools and resources essential to the design and development of the project 
