@@ -11,7 +11,6 @@ import PropTypes from 'prop-types';
 import { createPermit } from '../../actions/actions';
 
 
-
 /*
    This class is used to allow users to apply for their moving truck permit,
    specifying data, time, and location. This component is only accessible for 

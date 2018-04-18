@@ -2,7 +2,7 @@ import React from 'react';
 
 /*
   The footer component, present on all pages for the Nostos site
-   Bradley Boutcher 2018
+   Bradley Boutcher and Christine Frandsen 2018
 */
 
 // We use 'relative' to render this below other elements

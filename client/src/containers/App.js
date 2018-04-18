@@ -25,6 +25,13 @@ import Permit from '../components/forms/Permit';
 import { fetchUser } from '../actions/actions';
 import { fetchPermit } from '../actions/actions';
 
+/*
+   Used to create the routes for the different pages
+   as well as set up the general structure 
+   
+   Bradley Boutcher and Christine Frandsen 2018
+*/
+
 
 class App extends Component {
 

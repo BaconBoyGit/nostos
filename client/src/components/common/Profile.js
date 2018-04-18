@@ -6,7 +6,7 @@ import {PropTypes} from 'prop-types'
    loaded for authenticated users, containing their information
    Makes use of boston.gov stylings to introduce the user to the site
    
-   Bradley Boutcher 2018
+   Bradley Boutcher and Christine Frandsen 2018
 */
 
 export default class Profile extends React.Component {

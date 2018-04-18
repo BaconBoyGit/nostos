@@ -2,9 +2,9 @@
 module.exports = (sequelize, DataTypes) => {
   var Model = sequelize.define('Company', {
         location     : { type: DataTypes.STRING, allowNull: false },
-        start        : { type: DataTypes.STRING,  },
-        end          : { type: DataTypes.STRING,  },
-        date         : { type: DataTypes.STRING,  },
+        start        : { type: DataTypes.STRING, allowNull: false },
+        end          : { type: DataTypes.STRING, allowNull: false },
+        date         : { type: DataTypes.STRING, allowNull: false },
   });
 
   Model.associate = function(models){
