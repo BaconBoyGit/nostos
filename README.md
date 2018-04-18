@@ -133,7 +133,8 @@ Therefore, one must have access pre-existing database, or run your own with appr
 Information regarding the tools and resources essential to the design and development of the project 
 
 ### Developement Tools
-These development kits and tools were used to produce the project. Becoming familiar with their documentation may prove useful in future development.
+These development kits and tools were used to devlop and/or run the project. Becoming familiar with their documentation may prove useful in future development.
+
 [Visual Studio Code](https://code.visualstudio.com)
 
 [React.js](https://reactjs.org)
@@ -150,6 +151,7 @@ These development kits and tools were used to produce the project. Becoming fami
 
 ### External Resources
 These components were developed by third-party teams, and used for the execution of this prototype.
+
 [City of Boston Patterns Library](https://github.com/CityOfBoston/patterns)
 
 [City of Boston Public Data Portal](https://data.boston.gov)
