@@ -1,10 +1,15 @@
 /*
+
+The Actions file, using React Redux practices to handle changing states
+
 The actions that we need in our case are all going to be asynchronous 
 because we are calling an API. To handle the async calls, 
 we need a setup that has actions which cover the three possible states that exist:
 A request was sent
 A request successful
 A request failed
+
+Created by Bradley Boutcher, 2018
 */
 
 import { CALL_API } from '../middleware/api'

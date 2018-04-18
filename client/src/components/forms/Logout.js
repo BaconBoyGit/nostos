@@ -2,6 +2,12 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
+/*
+  The Logout component
+
+  Handles logging the user out of the system
+*/
+
 export default class Logout extends Component {
 
   render() {

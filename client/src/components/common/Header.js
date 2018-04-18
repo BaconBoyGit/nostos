@@ -22,6 +22,8 @@ var last = "Smith";
 
 /*
    The header component, present on all pages for the Nostos site
+   The header is responsible for containing navigation and login/logout
+   
    Bradley Boutcher and Christine Frandsen 2018
 */
 
