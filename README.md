@@ -31,12 +31,50 @@
 ### Overview 
 
 ### Structure
-├── client
-    ├── build                   # Contains static build of the front end
-    ├── public         		# Resources used during build, such as the favicon and index.html 
-    ├── src               # Unit tests
-    └── ...
 
+├── client			# The front-end, a react.js based web application
+
+    ├── build                   # Contains static build of the front end
+    
+    ├── public         		# Resources used during build, such as the favicon and index.html 
+    
+    ├── src              	# Unit tests
+    
+    	├── actions		# Handles state changes
+	
+	└── components		# Contains mountable components, organized by purpose
+		
+		├── common	# Components such as the header which are used on multiple pages
+		
+		├── forms	# Pages with web-forms for the user to fill out
+		
+		├── images	# Static images, fairly self-explanatory
+		
+		└── maps	# Components which utilize the Mapbox SDK
+		
+	└── containers		# Components are aggregated into a page, which is stored here
+	
+	├── middleware		# Additional functions that utilize actions, but do not directly modify the state
+	
+	└── reducers 		# specify how the application's state changes in response to actions sent to the store
+	
+└── Server	
+
+	├── bin                   	# Contains our main file, www, on which the server is configured and ran
+
+	├── config         		# Contains the config.js file, using defaults unless specified in a .ENV file 
+
+	├── controllers              	# Helper functions for interacting with database models
+
+	├── middleware			# Helper finctions which span multiple models
+
+	├── models			# Build Schemas with hooks and custom methods
+
+	├── routes			# Our endpoints for the RESTful API 
+
+	└── services			# Additional methods used in the running and maintaining of our server
+	
+	
 ### Configuring the Project
 
 ## Running the Project
