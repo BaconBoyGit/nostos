@@ -32,7 +32,8 @@
 
 ### Structure
 
-```└── client				# The front-end, a react.js based web application
+```
+└── client				# The front-end, a react.js based web application
 
     ├── build                  		# Contains static build of the front end
     
