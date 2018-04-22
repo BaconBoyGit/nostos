@@ -32,31 +32,31 @@
 
 ### Structure
 
-├── client			# The front-end, a react.js based web application
+```└── client				# The front-end, a react.js based web application
 
-    ├── build                   # Contains static build of the front end
+    ├── build                  		# Contains static build of the front end
     
-    ├── public         		# Resources used during build, such as the favicon and index.html 
+    ├── public         			# Resources used during build, such as the favicon and index.html 
     
-    ├── src              	# Unit tests
+    ├── src              		# Unit tests
     
-    	├── actions		# Handles state changes
+    	├── actions			# Handles state changes
 	
-	└── components		# Contains mountable components, organized by purpose
+	└── components			# Contains mountable components, organized by purpose
 		
-		├── common	# Components such as the header which are used on multiple pages
+		├── common		# Components such as the header which are used on multiple pages
 		
-		├── forms	# Pages with web-forms for the user to fill out
+		├── forms		# Pages with web-forms for the user to fill out
 		
-		├── images	# Static images, fairly self-explanatory
+		├── images		# Static images, fairly self-explanatory
 		
-		└── maps	# Components which utilize the Mapbox SDK
+		└── maps		# Components which utilize the Mapbox SDK
 		
-	└── containers		# Components are aggregated into a page, which is stored here
+	└── containers			# Components are aggregated into a page, which is stored here
 	
-	├── middleware		# Additional functions that utilize actions, but do not directly modify the state
+	├── middleware			# Additional functions that utilize actions, but do not directly modify the state
 	
-	└── reducers 		# specify how the application's state changes in response to actions sent to the store
+	└── reducers 			# specify how the application's state changes in response to actions sent to the store
 	
 └── Server	
 
@@ -73,7 +73,7 @@
 	├── routes			# Our endpoints for the RESTful API 
 
 	└── services			# Additional methods used in the running and maintaining of our server
-	
+```	
 	
 ### Configuring the Project
 
