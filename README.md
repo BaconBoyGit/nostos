@@ -174,6 +174,7 @@ Therefore, one must have access pre-existing database, or run your own with appr
 
 		<options name="Users" engine="InnoDB" version="10" row_format="Dynamic" rows="14" avg_row_length="1170" data_length="16384" max_data_length="0" index_length="32768" data_free="0" create_time="2018-04-08 16:45:25" update_time="2018-04-16 20:29:51" collation="latin1_swedish_ci" create_options="" comment="" />
    	</table_structure>
+	
 </database>
 ```
 
