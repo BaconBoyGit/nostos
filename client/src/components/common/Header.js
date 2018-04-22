@@ -13,6 +13,7 @@ import Register from "../forms/Register";
 import Logout from "../forms/Logout"
 import Login from "../forms/Login"
 
+
 var blogo = require("../images/logo.svg");
 var bseal = require("../images/seal.svg");
 
@@ -30,7 +31,7 @@ export default class Header extends React.Component {
     }
 
     render() {
-        const { dispatch, isAuthenticated, user, errorMessage } = this.props
+        const { dispatch, isAuthenticated, user, errorMessage, logError } = this.props
         
        
 
@@ -40,6 +41,8 @@ export default class Header extends React.Component {
         };
 
         const headerFix = {
+
+            zindex: "999" 
            
         }
       
@@ -47,7 +50,7 @@ export default class Header extends React.Component {
             <div className="mn" style={headerFix}>
                 <header className="h" role="banner">
                     <nav className="lo">
-                        <Link to="/" className="lo-l">
+                        <Link to="/" className="lo-l" onClick={this.refreshPage}>
                             <img
                             style={logoStyle}
                             src={blogo}
@@ -69,11 +72,12 @@ export default class Header extends React.Component {
                                 errorMessage={errorMessage}
                                 onLoginClick={ creds => dispatch(loginUser(creds)) }
                                 style={{ marginLeft: "10px" }}
+                                logError = {logError}
                             />
     
                         }
                         
-                        {isAuthenticated && // If authenticated, only display the logout button
+                        { isAuthenticated && // If authenticated, display different header
                         <nav className="nv-h-l">
                             <Link to="/profile" >
                                 <div className ="nv-h-l-a" onClick = { this.refreshPage }> 
@@ -85,7 +89,6 @@ export default class Header extends React.Component {
                             <Link to = "/">
                                 <Logout
                                         onLogoutClick={() => dispatch(logoutUser())}
-                                        onClick = { this.refreshPage }
                                     />
                             </Link>
                         </nav>
@@ -104,4 +107,5 @@ Header.propTypes = {
     isAuthenticated: PropTypes.bool.isRequired,
     errorMessage: PropTypes.string,
     user: PropTypes.object,
+    logError: PropTypes.bool,
 }

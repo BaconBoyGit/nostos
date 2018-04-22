@@ -1,6 +1,6 @@
 const Company = require('../models').Company;
 
-//Various controller methods for the company model are defined
+//Various controller methods for the permit model are defined
 
 const create = async function(req, res){
     res.setHeader('Content-Type', 'application/json');

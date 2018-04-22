@@ -38,7 +38,7 @@ class App extends Component {
   render() {
     
     // Bring in our proptypes
-    const { dispatch, isAuthenticated, errorMessage, user, company } = this.props
+    const { dispatch, isAuthenticated, errorMessage, user, company, logError } = this.props
 
     const errorStyle = {
       position: "fixed",
@@ -55,11 +55,17 @@ class App extends Component {
                 errorMessage={errorMessage}
                 dispatch={dispatch}
                 user = {user}
+                logError={logError}
             />
             
-            { errorMessage &&  alert( errorMessage )  }
+            { errorMessage &&  alert( errorMessage ) }
             
             <Route exact path="/" component={ Welcome } 
+                render={ () =>
+                <Welcome
+                isAuthenticated = {isAuthenticated}
+                />
+                }
             />
 
             <Route 
@@ -70,7 +76,7 @@ class App extends Component {
                   dispatch = { dispatch }
                   errorMessage = { errorMessage }
                 />
-                : <Redirect to= '/' />
+                : <Redirect to= '/permit' />
               }
             />
 
@@ -123,6 +129,7 @@ App.propTypes = {
   dispatch: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
   errorMessage: PropTypes.string,
+  logError: PropTypes.bool,
 }
 
 // These props come from the application's
@@ -131,13 +138,14 @@ App.propTypes = {
 function mapStateToProps(state) {
 
   const { auth } = state
-  const { isAuthenticated, errorMessage, user, company } = auth
+  const { isAuthenticated, errorMessage, user, company, logError } = auth
 
   return {
     user,
     isAuthenticated,
     errorMessage,
     company,
+    logError
   }
 }
 

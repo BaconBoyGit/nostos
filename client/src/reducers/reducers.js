@@ -13,6 +13,7 @@ import {
 
 function auth(state = { // This is our "default" state
     isFetching: false,
+    logError: false,
     isAuthenticated: localStorage.getItem('id_token') ? true : false, 
     user: localStorage.getItem('user') !== 'undefined' ? JSON.parse(localStorage.getItem('user')) : null,  // Pull from local storage if we happen to lose our state
     company: localStorage.getItem('company') !== 'undefined' ? JSON.parse(localStorage.getItem('company')) : null
@@ -22,24 +23,36 @@ function auth(state = { // This is our "default" state
       return Object.assign({}, state, {
         isFetching: true,
         isAuthenticated: false,
-        data: action.creds
+        logError: false,
+        data: action.creds,
+        errorMessage: ''
       })
     case LOGIN_SUCCESS || REGISTER_SUCCESS:
       return Object.assign({}, state, {
         isFetching: false,
         isAuthenticated: true,
+        logError: false,
         user: action.user,
         errorMessage: ''
       })
-    case LOGIN_FAILURE || REGISTER_FAILURE:
+    case LOGIN_FAILURE:
       return Object.assign({}, state, {
         isFetching: false,
         isAuthenticated: false,
+        logError: true,
+        errorMessage: action.message
+      })
+    case REGISTER_FAILURE:
+      return Object.assign({}, state, {
+        isFetching: false,
+        isAuthenticated: false,
+        logError: false,
         errorMessage: action.message
       })
     case LOGOUT_SUCCESS:
       return Object.assign({}, state, {
         isFetching: true,
+        logError: false,
         isAuthenticated: false
       })
     default:

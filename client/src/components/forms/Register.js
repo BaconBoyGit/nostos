@@ -104,7 +104,7 @@ export default class Register extends React.Component {
 									<option value="LA">Louisiana</option>
 									<option value="ME">Maine</option>
 									<option value="MD">Maryland</option>
-									<option defaultValue="MA">Massachusetts</option>
+									<option selected="MA">Massachusetts</option>
 									<option value="MI">Michigan</option>
 									<option value="MN">Minnesota</option>
 									<option value="MS">Mississippi</option>

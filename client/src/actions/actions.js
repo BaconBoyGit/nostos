@@ -15,6 +15,7 @@ import { CALL_API } from '../middleware/api'
 //const prodRoute = "http://btboutcher.com:5000"
 const prodRoute = "http://localhost:5000"
 
+
 // There are three possible states for our login
 // process, and we need actions for each of them
 export const LOGIN_REQUEST = 'LOGIN_REQUEST'
@@ -26,6 +27,7 @@ function requestLogin(creds) {
     type: LOGIN_REQUEST,
     isFetching: true,
     isAuthenticated: false,
+    logError: false,
     creds
   }
 }
@@ -35,7 +37,8 @@ function receiveLogin(user) {
     type: LOGIN_SUCCESS,
     isFetching: false,
     isAuthenticated: true,
-    user
+    logError: false,
+    user,
   }
 }
 
@@ -44,6 +47,7 @@ function loginError(message) {
     type: LOGIN_FAILURE,
     isFetching: false,
     isAuthenticated: false,
+    logError: true,
     message
   }
 }
@@ -52,6 +56,7 @@ function loginError(message) {
 // dispaches actions along the way
 
 export function loginUser(creds) {
+
 
   let config = {
     method: 'POST',
@@ -80,6 +85,8 @@ export function loginUser(creds) {
           localStorage.setItem('access_token', user.token)
           localStorage.setItem('user', JSON.stringify(user.user))
 
+       
+
           // Dispatch the success action
           dispatch(receiveLogin(user))
         }
@@ -101,6 +108,7 @@ function requestRegister(creds) {
     type: REGISTER_REQUEST,
     isFetching: true,
     isAuthenticated: false,
+    logError: false,
     creds
   }
 }
@@ -110,6 +118,7 @@ function receiveRegister(user) {
     type: REGISTER_SUCCESS,
     isFetching: false,
     isAuthenticated: true,
+    logError: false,
     user
   }
 }
@@ -119,6 +128,7 @@ function registerError(message) {
     type: REGISTER_FAILURE,
     isFetching: false,
     isAuthenticated: false,
+    logError: false,
     message
   }
 }
@@ -146,7 +156,7 @@ export function registerUser(creds) {
         if (!response.ok || user.success === false) {
           // If there was a problem, we want to
           // dispatch the error condition
-          dispatch(loginError(user.error))
+          dispatch(registerError(user.error))
 
           return Promise.reject(user)
         } else {
@@ -205,9 +215,8 @@ export function createPermit(creds) {
   let config = {
     method: 'POST',
     headers: { 'Content-Type':'application/x-www-form-urlencoded', 'Authorization': localStorage.getItem('access_token') },
-    /*headers: { 'Authorization': localStorage.getItem('access_token') }*/
     body: ("&location="+creds.location+"&start="+creds.start+"&end="+creds.end+
-    "&date="+creds.date).replace(" ", "%20")
+    "&date="+creds.date+"&status="+"Pending").replace(" ", "%20")
   }
 
   return dispatch => {
@@ -222,8 +231,9 @@ export function createPermit(creds) {
           // If there was a problem, we want to
           // dispatch the error condition
           dispatch(permitError(company.error))
-          
+          return Promise.reject(company)
         } 
+        
         dispatch(receivePermit(company))
       }).catch(err => console.log("Error: ", err))
   }
@@ -281,9 +291,9 @@ export function fetchUser() {
 }
 
 // we need to include some more actions to call the API for the user info.
-export const PINFO_REQUEST = 'PINFO_REQUEST'
-export const PINFO_SUCCESS = 'PINFO_SUCCESS'
-export const PINFO_FAILURE = 'PINFO_FAILURE'
+//export const INFO_REQUEST = 'INFO_REQUEST'
+//export const INFO_SUCCESS = 'INFO_SUCCESS'
+//export const INFO_FAILURE = 'INFO_FAILURE'
 
 // Uses the api middleware to get the user's info
 export function fetchPermit() {
@@ -291,7 +301,7 @@ export function fetchPermit() {
     [CALL_API]: {
       endpoint: 'companies',
       authenticated: true, // Protected call
-      types: [PINFO_REQUEST, PINFO_SUCCESS, PINFO_FAILURE]
+      types: [INFO_REQUEST, INFO_SUCCESS, INFO_FAILURE]
     }
   }
 }

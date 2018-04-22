@@ -7,6 +7,7 @@ import {
   Switch,
   Redirect
 } from 'react-router-dom'
+import PropTypes from 'prop-types'; 
 
 /*
 *   The body of the home page,
@@ -54,9 +55,16 @@ class Map extends React.Component {
     componentWillUnmount() {
       this.map.remove();
     }
+
+    refreshPage() {
+      window.location.reload()
+  }
   
     // Render inline style attributes
     render() {
+
+      const { isAuthenticated } = this.props
+
 
       // Define our styling for the map
       const mapStyle = {
@@ -92,11 +100,11 @@ class Map extends React.Component {
               <div className = "homeBody" style = {homeBodyStyle} >
                   <div style= { homeContent }>
                               <div class="hro-c">
-                                  <div class="hro-i hro-i--l">welcome to the City of Boston</div>
+                                  <div class="hro-i hro-i--l">Welcome to the City of Boston</div>
                                   <h1 class="hro-t hro-t--l">Moving Truck Permit Portal</h1>
-                                  <nav>
-                                      <Link to="/register" class="btn btn--700">Get Started</Link>
-                                  </nav>
+                                      <nav>
+                                      <Link to="/register" class="btn btn--700" onClick={this.refreshPage}>Get Started</Link>
+                                      </nav>
                               </div>
                   </div>
               </div>
@@ -106,5 +114,9 @@ class Map extends React.Component {
 
     }
   }
+
+  Map.propTypes = {
+    isAuthenticated: PropTypes.bool.isRequired,
+}
   
 export default Map  
