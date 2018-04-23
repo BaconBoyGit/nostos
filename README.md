@@ -438,7 +438,7 @@ Therefore, one must have access pre-existing database, or run your own with appr
 
 </database>
 ```
-
+[Database Schema](photoFolder/schema.png)
 
 
 
