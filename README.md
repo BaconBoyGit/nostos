@@ -29,6 +29,7 @@
 > What is "Project Nostos"? What are the key components, and what do I need to do before running the project? All of these questions are covered in this section.
 
 ### Overview 
+Project Nostos is a prototype permitting application. It makes use of react.js and some redux practices for front-end functionality. On the back-end, it makes use of node.js. For storage, it utilizes a package in the back-end called Sequelize, which can connect to many database types, but is configured in this case to access a MYSQL database.
 
 ### Structure
 
@@ -77,13 +78,12 @@
 ```	
 	
 ### Configuring the Project
-
-## Running the Project
-Information regarding dependencies, requirements, and commands used to build or run the project. To run this project, there is a private configuration file used by the back end. 
+To begin working on the project, you will need a .ENV file to provide credentials to the config.js file. This is used for deciding the port you wish to run on and the datbase you wish to connect to. See "Running the Project" for information on dependencies and spinning up the project.
 
 > **Note:** Without these files, you will be unable to successfully run the project. Please contact the respository owner for access to these files, or you can create your own. See [Database](#database) for more information on this.
 
-This information can be used for both testing the project and preparing it for deployment in a production setting.
+## Running the Project
+Information regarding dependencies, requirements, and commands used to build or run the project. This information can be used for both testing the project and preparing it for deployment in a production setting. You can run the entire project on most systems, be it a virtual machine, remote server, or local host.
 
 ### Dependencies
 Before running the project, there are several dependencies for the front end and the back end.
@@ -140,6 +140,16 @@ To run the server separate from the front end, use
 
 This will run the node server with live-reload capabilities. The environment and port are specified in the `.env` file,
 otherwise, the defaults will be used.
+
+#### Server API
+The back-end is host to a RESTful API composed of CRUD (create, read, update, delete) routes. When running, these routes are testable using ``` { host address } /v1/ { route }
+
+The following naming conventions are used: 
+> Top level routes (such as 'permits' or 'users') are plural.
+> The final word in a route ( for example, /users/login ) should be singular to indicate specificity
+
+*** Routes ***
+
 
 ### Database
 The project server requires a connection to a MYSQL System to store data. The system only needs one database, which is specified along with authentication credentials in a `.env` file. If there is no `.env` file, the config.json file will use default parameters. 
