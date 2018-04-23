@@ -168,38 +168,58 @@ The following naming conventions are used:
 * **Data Params**
 
   * `GET`: { email: string , password: string }				# Get information on the current authenticated user. 
-  * `POST': {
+  * `POST': `{
     "first": string,
     "last": string,
     "phone": string,
     "password": string
+    "confirm": string							# Used to confirm the users password, but not stored
     "address1": string,
     "city": string,
     "state": string,
     "zip": string,
     "email": string,
     "isAdmin": bool
-  } 
+  }`
   * `PUT`: Any parameters used in the `POST` method can be used here	# Update the information on the current authenticated user
   * `DELETE`: { email: string , password: string }			# Remove the current user from the database
   
 
 * **Success Response:**
 
-  * **Code:** 200 <br />
-    **Content:** `{ id : 12 }`
+  * `POST`
+    **Code:** 200 <br />
+    **Content:** `{
+    "message": "Successfully created new user.",
+    "user": {
+        "id": { user ID }
+        "first": "",
+        "last": "",
+        "phone": "",
+        "password": { hashed password },
+        "address1": "",
+        "city": " ",
+        "state": "",
+        "zip": "",
+        "email": "",
+        "updatedAt": "2018-04-23T16:07:13.026Z",
+        "createdAt": "2018-04-23T16:07:13.026Z"
+    },
+    "token": "Bearer { token }",
+    "success": true
+}`
  
 * **Error Response:**
 
-  <_Most endpoints will have many ways they can fail. From unauthorized access, to wrongful parameters etc. All of those should be liste d here. It might seem repetitive, but it helps prevent assumptions from being made where they should be._>
-
-  * **Code:** 401 UNAUTHORIZED <br />
-    **Content:** `{ error : "Log in" }`
+  > Multiple, specific error messages are used for an invalid attempt. However, two main error codes are used:
+  
+  * **Code:** 401 UNAUTHORIZED <br />				# You do not have a valid JWT in your request
+    **Content:** `{ error : "" }`
 
   OR
 
-  * **Code:** 422 UNPROCESSABLE ENTRY <br />
-    **Content:** `{ error : "Email Invalid" }`
+  * **Code:** 422 UNPROCESSABLE ENTRY <br />			# The content of your request is wrong
+  * **Content:** `{ error : "" }`
 
 * **Sample Call:**
 
