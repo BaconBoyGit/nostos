@@ -12,7 +12,7 @@
     - [Running the React.js client](#Running-the-React.js-client)
     - [Running the Node.js Express server](#Running-the-Node.js-Express-server)
         - [Server API](#server-api)
-    - [Testing]
+    - [Testing](#testing)
     - [Database](#database)
         - [Schema](#schema)
 
