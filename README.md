@@ -13,6 +13,14 @@
     - [Running the Node.js Express server](#Running-the-Node.js-Express-server)
         - [Server API](#server-api)
     - [Testing](#testing)
+    	- [Initial Startup](#initial-startup)
+	- [Registering New Users](#registering-new-users)
+	- [Login](#login)
+	- [Logout](#logout)
+	- [Create New Permit](#create-new-permit)
+	- [Check Permit Status](#check-permit-status)
+	- [View Profile](#view-profile)
+	- [Admin](#admin)
     - [Database](#database)
         - [Schema](#schema)
 
@@ -298,7 +306,65 @@ The following naming conventions are used:
   (04/23/2018) [ BRADLEY BOUTCHER ] > The most errors I've encountered with these routes are with incorrect content. Check and double check that your request is properly formed.
   
 ### Testing
+Here are tests for the project, broken down by use cases, to ensure it is running properly and future changes have not altered the intended functionality.
 
+### Initial Startup 
+Program Startup: The program should be started from the command terminal and the user should be directed to the "Welcome" page. Upon initial startup the user should be logged out and the header for a user that is not authenticated should be displayed.
+
+### Registering New Users
+Reaching the registration form: A user should be able to reach the registration form by either using the "Get Started" button found on the map, or by using the "Sign Up" button located in the header
+
+Verification of Required Information: The user should not be able to submit their registration unless all required fields (indicated by *) are properly filled out.
+
+Confirm Phone Number: The length of the phone number should be checked, so a number that is too short or too long is not entered. If the phone number is not the proper length, an error occurs.
+
+Check Email: The information entered into the "email" field and the "confirm email" field should match, otherwise an error occurs.
+
+Check Password: The information entered into the "password" field and the "confirm password" field mathc, otherwise an error occurs.
+
+User is Registered: Once a form is properly filled out, the information should appear in the Users table of the database, where all the information is displayed. The password should be encrypted.
+
+### Login
+General Login: A user should be able to login from the main "Welcome" page or from the "Registration" page.
+
+Empty Fields: If someone does not enter an email or password, an error is thrown.
+
+Check Email: If the email entered does not match an email in the database, then an error is thrown.
+
+Check Password: If the password entered does not match with the email given, an error is thrown.
+
+Red Boxes: If an error is thrown, the boxes turn red to indicate there was an error.
+
+Correct Email and Password: If the user enters the correct email and password combination, then the user should be redirected to the home page, with a header that indicates they are logged in.
+
+### Logout
+General Logout: A user should be able to logout from any page. When a user logs out they should be redirected to the homepage, and the header should reflect the fact the user is no longer logged in.
+
+### Create New Permit
+Authenticated User: Only a user that is logged in should be able to access the page that allows someone to apply for a new permit.
+
+Aceess: A logged in user should be able to access the form to request a new permit by clicking "New Permit" in the header.
+
+Permit Submitted: All the information from the form should be entered into the database.
+
+Default Values: The field isPending should have a default value of 1, isApproved should be 0, and isDenied should be 0.
+
+Missing Values: If there is a field on the form that is not filled in, an error will be thrown, and the information will not be sent to the database.
+
+### Check Permit Status
+Check Status: A logged in user should be able to navigate to the page to check their status by clicking "Status" in the header
+
+Information: All current permits should be displayed, with the data, location, and the status of the permit.
+
+### View Profile
+Information: When viewing their profile, a user should be able to see their name, address, email, and phone number.
+
+Access: A user should be able to reach their profile page by clicking on their name in the header.
+
+### Admin
+Header: The header should indicate that the user is an admin and provide a link in the header to view pending permits.
+
+Pending Permits: When viewing pending permits, the admin should be able to approve or deny permits. If the admin denies a permit they must provide a reason. 
 
 ### Database
 The project server requires a connection to a MYSQL System to store data. The system only needs one database, which is specified along with authentication credentials in a `.env` file. If there is no `.env` file, the config.json file will use default parameters. 
@@ -372,6 +438,8 @@ Therefore, one must have access pre-existing database, or run your own with appr
 
 </database>
 ```
+
+
 
 
 ## Resources
