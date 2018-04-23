@@ -202,6 +202,7 @@ USERS
   ```
   Any parameters used in the `POST` method can be used here	# Update the information on the current authenticated user
   ```
+ 
   * `DELETE`: 
   ```
   { email: string , password: string }				# Remove the current user from the database
