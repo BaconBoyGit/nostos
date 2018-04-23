@@ -198,14 +198,15 @@ USERS
     "isAdmin": bool
   } 
   ```
-  * `PUT`: 
-  ```
-  Any parameters used in the `POST` method can be used here	# Update the information on the current authenticated user
-  ```
- 
+  
   * `DELETE`: 
   ```
   { email: string , password: string }				# Remove the current user from the database
+  ```
+  
+  * `PUT`: 
+  ```
+  Any parameters used in the `POST` method can be used here	# Update the information on the current authenticated user
   ```
   
 ---
@@ -374,7 +375,7 @@ USERS
 	* Missing Values: If there is a field on the form that is not filled in, an error will be thrown, and the information will not be sent to the database.
 
 #### Check Permit Status
-Check Status: A logged in user should be able to navigate to the page to check their status by clicking "Status" in the header
+	* Check Status: A logged in user should be able to navigate to the page to check their status by clicking "Status" in the header
 
 	* Information: All current permits should be displayed, with the data, location, and the status of the permit.
 
@@ -384,7 +385,7 @@ Information: When viewing their profile, a user should be able to see their name
 	* Access: A user should be able to reach their profile page by clicking on their name in the header.
 
 #### Admin
-Header: The header should indicate that the user is an admin and provide a link in the header to view pending permits.
+	* Header: The header should indicate that the user is an admin and provide a link in the header to view pending permits.
 
 	* Pending Permits: When viewing pending permits, the admin should be able to approve or deny permits. If the admin denies a permit they must provide a reason. 
 
