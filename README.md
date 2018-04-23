@@ -168,7 +168,7 @@ The following naming conventions are used:
 * **Data Params**
 
   * `GET`: { email: string , password: string }				# Get information on the current authenticated user. 
-  * `POST': `{
+  * `POST': ```json {
     "first": string,
     "last": string,
     "phone": string,
@@ -180,7 +180,7 @@ The following naming conventions are used:
     "zip": string,
     "email": string,
     "isAdmin": bool
-  }`
+  } ```
   * `PUT`: Any parameters used in the `POST` method can be used here	# Update the information on the current authenticated user
   * `DELETE`: { email: string , password: string }			# Remove the current user from the database
   
