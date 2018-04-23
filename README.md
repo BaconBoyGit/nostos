@@ -12,6 +12,7 @@
     - [Running the React.js client](#Running-the-React.js-client)
     - [Running the Node.js Express server](#Running-the-Node.js-Express-server)
         - [Server API](#server-api)
+    - [Testing]
     - [Database](#database)
         - [Schema](#schema)
 
@@ -295,6 +296,8 @@ The following naming conventions are used:
 * **Notes:**
 
   (04/23/2018) [ BRADLEY BOUTCHER ] > The most errors I've encountered with these routes are with incorrect content. Check and double check that your request is properly formed.
+  
+### Testing
 
 
 ### Database
@@ -327,6 +330,7 @@ Therefore, one must have access pre-existing database, or run your own with appr
 		<field field="zip" type="varchar(255)" null="NO" key="" default="<null>" extra="" />
 		<field field="createdAt" type="datetime" null="NO" key="" default="<null>" extra="" />
 		<field field="updatedAt" type="datetime" null="NO" key="" default="<null>" extra="" />
+		<field field="isAdmin" type="tinyint(1)" null="NO" key="" default="<null>" extra="" />
 
 		<options name="Users" engine="InnoDB" version="10" row_format="Dynamic" rows="14" avg_row_length="1170" data_length="16384" max_data_length="0" index_length="32768" data_free="0" create_time="2018-04-08 16:45:25" update_time="2018-04-16 20:29:51" collation="latin1_swedish_ci" create_options="" comment="" />
    	</table_structure>
@@ -355,8 +359,19 @@ Therefore, one must have access pre-existing database, or run your own with appr
 </database>
 ```
 >User/Permit Table
+```xml
+<database name="nostos_test">
+	<table_structure name="UserPermit">
+		<field field="createdAt" type="datetime" null="NO" key="" default="<null>" extra="" />
+		<field field="updatedAt" type="datetime" null="NO" key="" default="<null>" extra="" />
+		<field field="PermitId" type="int(11)" null="NO" key="PRI" default="<null>" extra="" />
+		<field field="UserId" type="int(11)" null="NO" key="PRI" default="<null>" extra="" />
 
+		<options name="UserPermit" engine="InnoDB" version="10" row_format="Dynamic" rows="5" avg_row_length="3276" data_length="16384" max_data_length="0" index_length="16384" data_free="0" create_time="2018-04-23 14:25:32" update_time="<null>" collation="latin1_swedish_ci" create_options="" comment="" />
+	</table_structure>
 
+</database>
+```
 
 
 ## Resources
