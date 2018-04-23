@@ -211,7 +211,7 @@ USERS
 ---
 * **Success Response:**
 
-    `POST`
+`POST`
     **Code:** 200 <br />
     **Content:** 
 ```
@@ -238,7 +238,7 @@ USERS
 ```
 
 
-   `GET`
+`GET`
     **Code:** 200 <br />
     **Content:** 
 ```
@@ -263,7 +263,7 @@ USERS
 ```
 
 
-   `PUT`
+`PUT`
     **Code:** 200 <br />
     **Content:** 
 	```
@@ -272,7 +272,16 @@ USERS
 	    "success": true
 	}
 	```
-
+	
+`DELETE`
+    **Code:** 204 <br />
+    **Content:** 
+	```
+	{
+	    "message": "Deleted user",
+	    "success": true
+	}
+	```
    
 ---
 
