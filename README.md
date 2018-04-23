@@ -169,9 +169,9 @@ The following naming conventions are used:
 
   * `GET`: { email: string , password: string }				# Get information on the current authenticated user. 
   * `POST': 
-  ```json 
+``` 
   {
-    "first": {string},
+    "first": string,
     "last": string,
     "phone": string,
     "password": string
@@ -183,7 +183,7 @@ The following naming conventions are used:
     "email": string,
     "isAdmin": bool
   } 
-  ```
+```
   * `PUT`: Any parameters used in the `POST` method can be used here	# Update the information on the current authenticated user
   * `DELETE`: { email: string , password: string }			# Remove the current user from the database
   
@@ -192,26 +192,61 @@ The following naming conventions are used:
 
   * `POST`
     **Code:** 200 <br />
-    **Content:** `{
-    "message": "Successfully created new user.",
-    "user": {
-        "id": { user ID }
-        "first": "",
-        "last": "",
-        "phone": "",
-        "password": { hashed password },
-        "address1": "",
-        "city": " ",
-        "state": "",
-        "zip": "",
-        "email": "",
-        "updatedAt": "2018-04-23T16:07:13.026Z",
-        "createdAt": "2018-04-23T16:07:13.026Z"
-    },
-    "token": "Bearer { token }",
-    "success": true
-}`
- 
+    **Content:** 
+```
+    {
+	"message": "Successfully created new user.",
+	"user": 
+	{
+		"id": { user ID }
+		"first": "",
+		"last": "",
+		"phone": "",
+		"password": { hashed password },
+		"address1": "",
+		"city": " ",
+		"state": "",
+		"zip": "",
+		"email": "",
+		"updatedAt": "2018-04-23T16:07:13.026Z",
+		"createdAt": "2018-04-23T16:07:13.026Z"
+	},
+        "token": "Bearer { token }",
+        "success": true
+    }
+```
+  * `GET`
+    **Code:** 200 <br />
+    **Content:** 
+```
+    {
+	"user": 
+	{
+		"id": { user ID }
+		"first": "",
+		"last": "",
+		"phone": "",
+		"password": { hashed password },
+		"address1": "",
+		"city": " ",
+		"state": "",
+		"zip": "",
+		"email": "",
+		"updatedAt": "2018-04-23T16:07:13.026Z",
+		"createdAt": "2018-04-23T16:07:13.026Z"
+	},
+        "success": true
+    }
+```
+  * `PUT`
+    **Code:** 200 <br />
+    **Content:** 
+```
+	{
+	    "message": "Updated User: boop@gmail.com",
+	    "success": true
+	}
+```
 * **Error Response:**
 
   > Multiple, specific error messages are used for an invalid attempt. However, two main error codes are used:
