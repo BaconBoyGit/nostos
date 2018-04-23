@@ -333,6 +333,31 @@ Therefore, one must have access pre-existing database, or run your own with appr
 	
 </database>
 ```
+>Permit Table
+```xml
+<database name="nostos_test">
+	<table_structure name="Permits">
+		<field field="id" type="int(11)" null="NO" key="PRI" default="<null>" extra="auto_increment" />
+		<field field="createdAt" type="datetime" null="NO" key="" default="<null>" extra="" />
+		<field field="updatedAt" type="datetime" null="NO" key="" default="<null>" extra="" />
+		<field field="location" type="varchar(255)" null="YES" key="" default="<null>" extra="" />
+		<field field="start" type="varchar(255)" null="YES" key="" default="<null>" extra="" />
+		<field field="end" type="varchar(255)" null="YES" key="" default="<null>" extra="" />
+		<field field="date" type="varchar(255)" null="YES" key="" default="<null>" extra="" />
+		<field field="meterID" type="int(11)" null="YES" key="" default="<null>" extra="" />
+		<field field="isPending" type="tinyint(1)" null="YES" key="" default="<null>" extra="" />
+		<field field="isApproved" type="tinyint(1)" null="YES" key="" default="<null>" extra="" />
+		<field field="isDenied" type="tinyint(1)" null="YES" key="" default="<null>" extra="" />
+
+		<options name="Permits" engine="InnoDB" version="10" row_format="Dynamic" rows="5" avg_row_length="3276" data_length="16384" max_data_length="0" index_length="0" data_free="0" create_time="2018-04-22 21:41:04" update_time="2018-04-22 22:12:46" collation="latin1_swedish_ci" create_options="" comment="" />
+	</table_structure>
+
+</database>
+```
+>User/Permit Table
+
+
+
 
 ## Resources
 > Information regarding the tools and resources essential to the design and development of the project 
