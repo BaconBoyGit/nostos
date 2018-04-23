@@ -176,15 +176,18 @@ The following naming conventions are used:
 
 * **Data Params**
 
-  * `GET`: { email: string , password: string }				# Get information on the current authenticated user. 
+  * `GET`: 
+  ```
+  { email: string , password: string }			# Get information on the current authenticated user. 
+  ```
   * `POST': 
-``` 
+  ``` 
   {
     "first": string,
     "last": string,
     "phone": string,
     "password": string
-    "confirm": string							# Used to confirm the users password, but not stored
+    "confirm": string						# Used to confirm the users password, but not stored
     "address1": string,
     "city": string,
     "state": string,
@@ -192,9 +195,15 @@ The following naming conventions are used:
     "email": string,
     "isAdmin": bool
   } 
-```
-  * `PUT`: Any parameters used in the `POST` method can be used here	# Update the information on the current authenticated user
-  * `DELETE`: { email: string , password: string }			# Remove the current user from the database
+  ```
+  * `PUT`: 
+  ```
+  Any parameters used in the `POST` method can be used here	# Update the information on the current authenticated user
+  ```
+  * `DELETE`: 
+  ```
+  { email: string , password: string }				# Remove the current user from the database
+  ```
   
 
 * **Success Response:**
@@ -224,6 +233,7 @@ The following naming conventions are used:
         "success": true
     }
 ```
+
     `GET`
     **Code:** 200 <br />
     **Content:** 
