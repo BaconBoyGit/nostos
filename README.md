@@ -190,7 +190,7 @@ The following naming conventions are used:
 
 * **Success Response:**
 
-  * `POST`
+    `POST`
     **Code:** 200 <br />
     **Content:** 
 ```
@@ -215,7 +215,7 @@ The following naming conventions are used:
         "success": true
     }
 ```
-  * `GET`
+    `GET`
     **Code:** 200 <br />
     **Content:** 
 ```
@@ -238,7 +238,7 @@ The following naming conventions are used:
         "success": true
     }
 ```
-  * `PUT`
+    `PUT`
     **Code:** 200 <br />
     **Content:** 
 ```
@@ -247,6 +247,16 @@ The following naming conventions are used:
 	    "success": true
 	}
 ```
+    `DELETE`
+    **Code:** 204 <br />
+    **Content:** 
+```
+	{
+	    "message": "Deleted user",
+	    "success": true
+	}
+```
+
 * **Error Response:**
 
   > Multiple, specific error messages are used for an invalid attempt. However, two main error codes are used:
@@ -261,11 +271,30 @@ The following naming conventions are used:
 
 * **Sample Call:**
 
-  <_Just a sample call to your endpoint in a runnable format ($.ajax call or a curl request) - this makes life easier and more predictable._> 
+	To test any of these routes, I recommend using [Postman](#https://www.getpostman.com/) and create a sample request like the following:
+	
+```
+  "method": "POST",
+  "headers": {
+    "Content-Type": "application/x-www-form-urlencoded",
+  },
+  "data": {
+    "first": "Bradley",
+    "last": "Boutcher",
+    "phone": "5555555555",
+    "password": "strongPassword",
+    "address1": "555 Test Road",
+    "city": "Test ",
+    "state": "TS",
+    "zip": "01234",
+    "email": "test@test.com",
+    "confirm": "strongPassword"
+  }
+```
 
 * **Notes:**
 
-  <_This is where all uncertainties, commentary, discussion etc. can go. I recommend timestamping and identifying oneself when leaving comments here._> 
+  (04/23/2018) [ BRADLEY BOUTCHER ] > The most errors I've encountered with these routes are with incorrect content. Check and double check that your request is properly formed.
 
 
 ### Database
