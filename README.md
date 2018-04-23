@@ -273,16 +273,7 @@ USERS
 	}
 	```
 
-    
-   `DELETE`
-    **Code:** 204 <br />
-    **Content:** 
-	```
-	{
-	    "message": "Deleted user",
-	    "success": true
-	}
-	```
+   
 ---
 
 * **Error Response:**
