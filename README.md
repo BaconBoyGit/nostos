@@ -150,37 +150,41 @@ The following naming conventions are used:
 
 **Users**
 ----
-  <_Additional information about your API call. Try to use verbs that match both request type (fetching vs modifying) and plurality (one vs multiple)._>
+  
+  Routes for requesting or creating information on a user. Passwords are encrypted on creation and login. 
 
 * **URL**
 
-  </users>
+  `/users`
 
-* **Method:**
-  
-  <_The request type_>
+* **Methods:**
 
   `GET` | `POST` | `DELETE` | `PUT`
   
 *  **URL Params**
 
-   <_If URL params exist, specify them in accordance with name mentioned in URL section. Separate into optional and required. Document data constraints._> 
-
-   **Required:**
- 
-   `id=[integer]`
-
-   **Optional:**
- 
-   `photo_id=[alphanumeric]`
+   `GET`, `DELETE`, and `PUT` require a valid JWT to access
 
 * **Data Params**
 
-  <_If making a post request, what should the body payload look like? URL Params rules apply here too._>
+  * `GET`: { email: string , password: string }				# Get information on the current authenticated user. 
+  * `POST': {
+    "first": string,
+    "last": string,
+    "phone": string,
+    "password": string
+    "address1": string,
+    "city": string,
+    "state": string,
+    "zip": string,
+    "email": string,
+    "isAdmin": bool
+  } 
+  * `PUT`: Any parameters used in the `POST` method can be used here	# Update the information on the current authenticated user
+  * `DELETE`: { email: string , password: string }			# Remove the current user from the database
+  
 
 * **Success Response:**
-  
-  <_What should the status code be on success and is there any returned data? This is useful when people need to to know what their callbacks should expect!_>
 
   * **Code:** 200 <br />
     **Content:** `{ id : 12 }`
