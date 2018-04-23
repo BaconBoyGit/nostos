@@ -208,8 +208,7 @@ USERS
   ```
   Any parameters used in the `POST` method can be used here	# Update the information on the current authenticated user
   ```
-  
----
+
 * **Success Response:**
 
     `POST`
