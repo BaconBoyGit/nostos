@@ -42,6 +42,8 @@ Project Nostos is a prototype permitting application. It makes use of react.js a
 
 ### Structure
 
+```
+
 └── client				# The front-end, a react.js based web application
 
     ├── build                  		# Contains static build of the front end
@@ -83,6 +85,8 @@ Project Nostos is a prototype permitting application. It makes use of react.js a
 	├── routes			# Our endpoints for the RESTful API 
 
 	└── services			# Additional methods used in the running and maintaining of our server
+```
+	
 	
 ### Configuring the Project
 To begin working on the project, you will need a .ENV file to provide credentials to the config.js file. This is used for deciding the port you wish to run on and the datbase you wish to connect to. See "Running the Project" for information on dependencies and spinning up the project.
@@ -233,7 +237,7 @@ The following naming conventions are used:
 ```
 
 
-    `GET`
+   `GET`
     **Code:** 200 <br />
     **Content:** 
 ```
@@ -258,26 +262,26 @@ The following naming conventions are used:
 ```
 
 
-    `PUT`
+   `PUT`
     **Code:** 200 <br />
     **Content:** 
-```
+	```
 	{
 	    "message": "Updated User: boop@gmail.com",
 	    "success": true
 	}
-```
+	```
 
     
-    `DELETE`
+   `DELETE`
     **Code:** 204 <br />
     **Content:** 
-```
+	```
 	{
 	    "message": "Deleted user",
 	    "success": true
 	}
-```
+	```
 
 * **Error Response:**
 
@@ -325,7 +329,8 @@ The following naming conventions are used:
 Program Startup: The program should be started from the command terminal and the user should be directed to the "Welcome" page. Upon initial startup the user should be logged out and the header for a user that is not authenticated should be displayed.
 
 * Registering New Users
-Reaching the registration form: A user should be able to reach the registration form by either using the "Get Started" button found on the map, or by using the "Sign Up" button located in the header
+
+	* Reaching the registration form: A user should be able to reach the registration form by either using the "Get Started" button found on the map, or by using the "Sign Up" button located in the header
 
 	* Verification of Required Information: The user should not be able to submit their registration unless all required fields (indicated by *) are properly filled out.
 
@@ -351,10 +356,12 @@ Reaching the registration form: A user should be able to reach the registration 
 	* Correct Email and Password: If the user enters the correct email and password combination, then the user should be redirected to the home page, with a header that indicates they are logged in.
 
 * Logout
-General Logout: A user should be able to logout from any page. When a user logs out they should be redirected to the homepage, and the header should reflect the fact the user is no longer logged in.
+	
+	* General Logout: A user should be able to logout from any page. When a user logs out they should be redirected to the homepage, and the header should reflect the fact the user is no longer logged in.
 
 * Create New Permit
-Authenticated User: Only a user that is logged in should be able to access the page that allows someone to apply for a new permit.
+
+	* Authenticated User: Only a user that is logged in should be able to access the page that allows someone to apply for a new permit.
 
 	* Aceess: A logged in user should be able to access the form to request a new permit by clicking "New Permit" in the header.
 
