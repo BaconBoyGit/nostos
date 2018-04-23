@@ -171,7 +171,7 @@ The following naming conventions are used:
   * `POST': 
   ```json 
   {
-    "first": string,
+    "first": {string},
     "last": string,
     "phone": string,
     "password": string
