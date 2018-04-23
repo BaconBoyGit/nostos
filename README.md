@@ -159,7 +159,7 @@ The following naming conventions are used:
 > Top level routes (such as 'permits' or 'users') are plural.
 > The final word in a route ( for example, /users/login ) should be singular to indicate specificity
 
-**Users**
+USERS
 ----
   
   Routes for requesting or creating information on a user. Passwords are encrypted on creation and login. 
@@ -167,15 +167,15 @@ The following naming conventions are used:
 * **URL**
 
   `/users`
-
+---
 * **Methods:**
 
   `GET` | `POST` | `DELETE` | `PUT`
-  
+---
 *  **URL Params**
 
    `GET`, `DELETE`, and `PUT` require a valid JWT to access
-
+---
 * **Data Params**
 
   * `GET`: 
@@ -207,7 +207,7 @@ The following naming conventions are used:
   { email: string , password: string }				# Remove the current user from the database
   ```
   
-
+---
 * **Success Response:**
 
     `POST`
@@ -282,7 +282,7 @@ The following naming conventions are used:
 	    "success": true
 	}
 	```
-
+---
 * **Error Response:**
 
   > Multiple, specific error messages are used for an invalid attempt. However, two main error codes are used:
@@ -294,7 +294,7 @@ The following naming conventions are used:
 
   * **Code:** 422 UNPROCESSABLE ENTRY <br />			# The content of your request is wrong
   * **Content:** `{ error : "" }`
-
+---
 * **Sample Call:**
 
 	To test any of these routes, I recommend using [Postman](#https://www.getpostman.com/) and create a sample request like the following:
@@ -317,16 +317,17 @@ The following naming conventions are used:
     "email": "test@test.com",
   }
 ```
-
+---
 * **Notes:**
 
   (04/23/2018) [ BRADLEY BOUTCHER ] > The most errors I've encountered with these routes are with incorrect content. Check and double check that your request is properly formed.
-  
+---
+
 ### Testing
 > Here are tests for the project, broken down by use-cases, to ensure it is running properly and future changes have not altered the intended functionality.
 
 #### Initial Startup 
-Program Startup: The program should be started from the command terminal and the user should be directed to the "Welcome" page. Upon initial startup the user should be logged out and the header for a user that is not authenticated should be displayed.
+	* Program Startup: The program should be started from the command terminal and the user should be directed to the "Welcome" page. Upon initial startup the user should be logged out and the header for a user that is not authenticated should be displayed.
 
 #### Registering New Users
 
@@ -359,7 +360,7 @@ Program Startup: The program should be started from the command terminal and the
 	
 	* General Logout: A user should be able to logout from any page. When a user logs out they should be redirected to the homepage, and the header should reflect the fact the user is no longer logged in.
 
-* Create New Permit
+#### Create New Permit
 
 	* Authenticated User: Only a user that is logged in should be able to access the page that allows someone to apply for a new permit.
 
