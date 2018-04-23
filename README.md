@@ -49,7 +49,7 @@ Project Nostos is a prototype permitting application. It makes use of react.js a
     
     ├── public         			# Resources used during build, such as the favicon and index.html 
     
-    ├── src              		# Unit tests
+    └── src              		# Unit tests
     
     	├── actions			# Handles state changes
 	
@@ -257,6 +257,7 @@ The following naming conventions are used:
         "success": true
     }
 ```
+
     `PUT`
     **Code:** 200 <br />
     **Content:** 
@@ -266,6 +267,7 @@ The following naming conventions are used:
 	    "success": true
 	}
 ```
+    
     `DELETE`
     **Code:** 204 <br />
     **Content:** 
