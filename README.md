@@ -42,7 +42,6 @@ Project Nostos is a prototype permitting application. It makes use of react.js a
 
 ### Structure
 
-```
 └── client				# The front-end, a react.js based web application
 
     ├── build                  		# Contains static build of the front end
@@ -84,7 +83,6 @@ Project Nostos is a prototype permitting application. It makes use of react.js a
 	├── routes			# Our endpoints for the RESTful API 
 
 	└── services			# Additional methods used in the running and maintaining of our server
-```	
 	
 ### Configuring the Project
 To begin working on the project, you will need a .ENV file to provide credentials to the config.js file. This is used for deciding the port you wish to run on and the datbase you wish to connect to. See "Running the Project" for information on dependencies and spinning up the project.
