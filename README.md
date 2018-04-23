@@ -325,10 +325,10 @@ The following naming conventions are used:
 ### Testing
 > Here are tests for the project, broken down by use-cases, to ensure it is running properly and future changes have not altered the intended functionality.
 
-* Initial Startup 
+#### Initial Startup 
 Program Startup: The program should be started from the command terminal and the user should be directed to the "Welcome" page. Upon initial startup the user should be logged out and the header for a user that is not authenticated should be displayed.
 
-* Registering New Users
+#### Registering New Users
 
 	* Reaching the registration form: A user should be able to reach the registration form by either using the "Get Started" button found on the map, or by using the "Sign Up" button located in the header
 
@@ -342,7 +342,7 @@ Program Startup: The program should be started from the command terminal and the
 
 	* User is Registered: Once a form is properly filled out, the information should appear in the Users table of the database, where all the information is displayed. The password should be encrypted.
 
-* Login
+#### Login
 	* General Login: A user should be able to login from the main "Welcome" page or from the "Registration" page.
 
 	* Empty Fields: If someone does not enter an email or password, an error is thrown.
@@ -355,7 +355,7 @@ Program Startup: The program should be started from the command terminal and the
 
 	* Correct Email and Password: If the user enters the correct email and password combination, then the user should be redirected to the home page, with a header that indicates they are logged in.
 
-* Logout
+#### Logout
 	
 	* General Logout: A user should be able to logout from any page. When a user logs out they should be redirected to the homepage, and the header should reflect the fact the user is no longer logged in.
 
@@ -371,17 +371,17 @@ Program Startup: The program should be started from the command terminal and the
 
 	* Missing Values: If there is a field on the form that is not filled in, an error will be thrown, and the information will not be sent to the database.
 
-* Check Permit Status
+#### Check Permit Status
 Check Status: A logged in user should be able to navigate to the page to check their status by clicking "Status" in the header
 
 	* Information: All current permits should be displayed, with the data, location, and the status of the permit.
 
-* View Profile
+#### View Profile
 Information: When viewing their profile, a user should be able to see their name, address, email, and phone number.
 
 	* Access: A user should be able to reach their profile page by clicking on their name in the header.
 
-* Admin
+#### Admin
 Header: The header should indicate that the user is an admin and provide a link in the header to view pending permits.
 
 	* Pending Permits: When viewing pending permits, the admin should be able to approve or deny permits. If the admin denies a permit they must provide a reason. 
