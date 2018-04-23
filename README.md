@@ -204,86 +204,7 @@ USERS
   { email: string , password: string }				# Remove the current user from the database
   ```
   
-  * `PUT`: 
-  ```
-  Any parameters used in the `POST` method can be used here	# Update the information on the current authenticated user
-  ```
----
-* **Success Response:**
 
-    `POST`
-    **Code:** 200 <br />
-    **Content:** 
-```
-    {
-	"message": "Successfully created new user.",
-	"user": 
-	{
-		"id": { user ID }
-		"first": "",
-		"last": "",
-		"phone": "",
-		"password": { hashed password },
-		"address1": "",
-		"city": " ",
-		"state": "",
-		"zip": "",
-		"email": "",
-		"updatedAt": "2018-04-23T16:07:13.026Z",
-		"createdAt": "2018-04-23T16:07:13.026Z"
-	},
-        "token": "Bearer { token }",
-        "success": true
-    }
-```
-
-
-   `GET`
-    **Code:** 200 <br />
-    **Content:** 
-```
-    {
-	"user": 
-	{
-		"id": { user ID }
-		"first": "",
-		"last": "",
-		"phone": "",
-		"password": { hashed password },
-		"address1": "",
-		"city": " ",
-		"state": "",
-		"zip": "",
-		"email": "",
-		"updatedAt": "2018-04-23T16:07:13.026Z",
-		"createdAt": "2018-04-23T16:07:13.026Z"
-	},
-        "success": true
-    }
-```
-
-
-   `PUT`
-    **Code:** 200 <br />
-    **Content:** 
-	```
-	{
-	    "message": "Updated User: boop@gmail.com",
-	    "success": true
-	}
-	```
-
-    
-   `DELETE`
-    **Code:** 204 <br />
-    **Content:** 
-	```
-	{
-	    "message": "Deleted user",
-	    "success": true
-	}
-	```
----
 * **Error Response:**
 
   > Multiple, specific error messages are used for an invalid attempt. However, two main error codes are used:
@@ -379,7 +300,7 @@ USERS
 	* Information: All current permits should be displayed, with the data, location, and the status of the permit.
 
 #### View Profile
-Information: When viewing their profile, a user should be able to see their name, address, email, and phone number.
+	* Information: When viewing their profile, a user should be able to see their name, address, email, and phone number.
 
 	* Access: A user should be able to reach their profile page by clicking on their name in the header.
 
