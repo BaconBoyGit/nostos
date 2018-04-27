@@ -33,7 +33,7 @@ const create = async function(req, res){
 module.exports.create = create;
 
 // Return information on a user
-// Information is alsp returned on a successful login, register, or update
+// Information is also returned on a successful login, register, or update
 const get = async function(req, res){
     res.setHeader('Content-Type', 'application/json');
     let user = req.user;

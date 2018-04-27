@@ -72,7 +72,7 @@ export default class Header extends React.Component {
                                 errorMessage={errorMessage}
                                 onLoginClick={ creds => dispatch(loginUser(creds)) }
                                 style={{ marginLeft: "10px" }}
-                                logError = {logError}
+                                logError = {logError}                   
                             />
     
                         }
@@ -80,8 +80,8 @@ export default class Header extends React.Component {
                         { isAuthenticated && // If authenticated, display different header
                         <nav className="nv-h-l">
                             <Link to="/profile" >
-                                <div className ="nv-h-l-a" onClick = { this.refreshPage }> 
-                               {user.first} {user.last}
+                                <div className ="nv-h-l-a"> 
+                                {user.first} {user.last}
                                 </div> 
                             </Link>
                             <Link to="/status" onClick = { this.refreshPage } className="nv-h-l-a nv-h-l-a--k--s tr-link" > Status </Link>

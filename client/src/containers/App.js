@@ -48,6 +48,7 @@ class App extends Component {
     
     return (
       <Router>
+
         <div className="App">
            
             <Header 
@@ -61,7 +62,7 @@ class App extends Component {
             { errorMessage &&  alert( errorMessage ) }
             
             <Route exact path="/" component={ Welcome } 
-                render={ () =>
+                render={ () => 
                 <Welcome
                 isAuthenticated = {isAuthenticated}
                 />
@@ -76,7 +77,7 @@ class App extends Component {
                   dispatch = { dispatch }
                   errorMessage = { errorMessage }
                 />
-                : <Redirect to= '/permit' />
+                : <Redirect to= '/' />
               }
             />
 

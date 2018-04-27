@@ -45,7 +45,7 @@ class Status extends React.Component {
                     <td data-label='Date Applied'> {status[0]}  </td> 
                 </tr>
                 <tr> 
-                    <td data-label='Date Applied'> {/*user.company.date*/} </td> 
+                    <td data-label='Date Applied'> {company} </td> 
                     <td data-label='Address'>  {address[1]}  </td> 
                     <td data-label='Date Applied'> {status[1]}  </td> 
                 </tr>

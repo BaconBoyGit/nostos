@@ -22,6 +22,10 @@ export const LOGIN_REQUEST = 'LOGIN_REQUEST'
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 export const LOGIN_FAILURE = 'LOGIN_FAILURE'
 
+function refreshPage() {
+  window.location.reload()
+}
+
 function requestLogin(creds) {
   return {
     type: LOGIN_REQUEST,
@@ -39,6 +43,7 @@ function receiveLogin(user) {
     isAuthenticated: true,
     logError: false,
     user,
+    
   }
 }
 
@@ -86,8 +91,9 @@ export function loginUser(creds) {
           localStorage.setItem('user', JSON.stringify(user.user))
 
        
-
+          
           // Dispatch the success action
+          dispatch(refreshPage())
           dispatch(receiveLogin(user))
         }
       }).catch(err => console.log("Error: ", err))
@@ -142,7 +148,7 @@ export function registerUser(creds) {
     body: ("first="+creds.first+"&last="+creds.last+"&title="+creds.title+
     "&Company="+creds.company+"&phone="+creds.phone+"&email="+creds.email+"&emailCon="+creds.emailCon+"&address1="+creds.address1+
     "&address2="+creds.address2+"&password="+creds.password+"&confirm="+creds.confirm+"&city="+creds.city+
-    "&state="+creds.state+"&zip="+creds.zip).replace(" ", "%20")
+    "&state="+creds.state+"&zip="+creds.zip+"&isAdmin="+0).replace(" ", "%20")
   }
 
   return dispatch => {
@@ -165,7 +171,7 @@ export function registerUser(creds) {
           localStorage.setItem('id_token', user.token)
           localStorage.setItem('access_token', user.token)
           localStorage.setItem('user', JSON.stringify(user.user))
- 
+          dispatch(refreshPage())
           // Dispatch the success action
           dispatch(receiveLogin(user))
         }
@@ -216,7 +222,7 @@ export function createPermit(creds) {
     method: 'POST',
     headers: { 'Content-Type':'application/x-www-form-urlencoded', 'Authorization': localStorage.getItem('access_token') },
     body: ("&location="+creds.location+"&start="+creds.start+"&end="+creds.end+
-    "&date="+creds.date+"&status="+"Pending").replace(" ", "%20")
+    "&date="+creds.date+"&isPending="+1+"&isApproved="+0+"&isDenied="+0).replace(" ", "%20")
   }
 
   return dispatch => {
@@ -291,9 +297,9 @@ export function fetchUser() {
 }
 
 // we need to include some more actions to call the API for the user info.
-//export const INFO_REQUEST = 'INFO_REQUEST'
-//export const INFO_SUCCESS = 'INFO_SUCCESS'
-//export const INFO_FAILURE = 'INFO_FAILURE'
+export const PINFO_REQUEST = 'INFO_REQUEST'
+export const PINFO_SUCCESS = 'INFO_SUCCESS'
+export const PINFO_FAILURE = 'INFO_FAILURE'
 
 // Uses the api middleware to get the user's info
 export function fetchPermit() {
@@ -301,7 +307,7 @@ export function fetchPermit() {
     [CALL_API]: {
       endpoint: 'companies',
       authenticated: true, // Protected call
-      types: [INFO_REQUEST, INFO_SUCCESS, INFO_FAILURE]
+      types: [PINFO_REQUEST, PINFO_SUCCESS, PINFO_FAILURE]
     }
   }
 }
