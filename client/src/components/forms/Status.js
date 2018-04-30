@@ -1,5 +1,4 @@
 import React from 'react';
-
 /*
    The status component
    loaded for authenticated users, containing permit status
@@ -13,7 +12,7 @@ class Status extends React.Component {
     // Render inline style attributes
     render() {
 
-        const { isAuthenticated, user, company } = this.props
+        const { isAuthenticated, user, permit } = this.props
 
         //Currently static, will connect to database to be dynamic later
        
@@ -22,6 +21,7 @@ class Status extends React.Component {
         var disStatus = '';
         var i;
         var address = ["1144 Aztec Road", "255 Grapevine Road", "1225 Santa Claus Lane"];
+        var test = permit;
 
 
         // container for our profile element
@@ -45,7 +45,7 @@ class Status extends React.Component {
                     <td data-label='Date Applied'> {status[0]}  </td> 
                 </tr>
                 <tr> 
-                    <td data-label='Date Applied'> {company} </td> 
+                    <td data-label='Date Applied'> {user.first} </td> 
                     <td data-label='Address'>  {address[1]}  </td> 
                     <td data-label='Date Applied'> {status[1]}  </td> 
                 </tr>

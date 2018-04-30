@@ -23,7 +23,7 @@ import Status from '../components/forms/Status';
 import Permit from '../components/forms/Permit';
 
 import { fetchUser } from '../actions/actions';
-import { fetchPermit } from '../actions/actions';
+import { fetchCompany } from '../actions/actions';
 
 /*
    Used to create the routes for the different pages
@@ -35,16 +35,23 @@ import { fetchPermit } from '../actions/actions';
 
 class App extends Component {
 
+  componentWillMount() {
+    const { dispatch } = this.props
+    dispatch(fetchCompany())
+  }
+
   render() {
     
     // Bring in our proptypes
-    const { dispatch, isAuthenticated, errorMessage, user, company, logError } = this.props
+    const { dispatch, isAuthenticated, errorMessage, user, permit, permitErrorMessage, logError } = this.props
 
     const errorStyle = {
       position: "fixed",
       background: "white"
     }
-
+    console.log(user)
+    console.log(permit)
+  
     
     return (
       <Router>
@@ -101,7 +108,8 @@ class App extends Component {
                 ? <Status 
                   isAuthenticated={ isAuthenticated }
                   user = { user }
-                  company = { company }
+                  permit = {permit}
+                
                 />
                 : <Redirect to='/' />
               } />
@@ -114,6 +122,7 @@ class App extends Component {
                   isAuthenticated={ isAuthenticated }
                   user = { user }
                   dispatch = { dispatch }
+                  permit = { permit }
                 />
                 : <Redirect to='/' />
               } />
@@ -138,14 +147,16 @@ App.propTypes = {
 
 function mapStateToProps(state) {
 
-  const { auth } = state
-  const { isAuthenticated, errorMessage, user, company, logError } = auth
-
+  const { auth, perm } = state
+  const { isAuthenticated, errorMessage, user, logError } = auth
+  const { permit, permitErrorMessage } = perm
+  
   return {
     user,
     isAuthenticated,
     errorMessage,
-    company,
+    permit,
+    permitErrorMessage,
     logError
   }
 }

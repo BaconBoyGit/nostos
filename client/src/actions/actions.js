@@ -226,7 +226,7 @@ export function createPermit(creds) {
   }
 
   return dispatch => {
-    // We dispatch requestLogin to kickoff the call to the API
+    // We dispatch to kickoff the call to the API
     dispatch(requestPermit(creds))
     console.log(config)
     return fetch(prodRoute + '/v1/companies/', config)
@@ -239,6 +239,10 @@ export function createPermit(creds) {
           dispatch(permitError(company.error))
           return Promise.reject(company)
         } 
+
+        // If login was successful, set the token and company data in local storage
+        localStorage.setItem('company', JSON.stringify(company.company))
+        // Dispatch the success action
         
         dispatch(receivePermit(company))
       }).catch(err => console.log("Error: ", err))
@@ -296,18 +300,13 @@ export function fetchUser() {
   }
 }
 
-// we need to include some more actions to call the API for the user info.
-export const PINFO_REQUEST = 'INFO_REQUEST'
-export const PINFO_SUCCESS = 'INFO_SUCCESS'
-export const PINFO_FAILURE = 'INFO_FAILURE'
-
-// Uses the api middleware to get the user's info
-export function fetchPermit() {
+// Uses the api middleware to get the permit info
+export function fetchCompany() {
   return {
     [CALL_API]: {
       endpoint: 'companies',
       authenticated: true, // Protected call
-      types: [PINFO_REQUEST, PINFO_SUCCESS, PINFO_FAILURE]
+      types: [PERMIT_REQUEST, PERMIT_SUCCESS, PERMIT_FAILURE]
     }
   }
 }

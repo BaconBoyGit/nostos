@@ -14,9 +14,10 @@ import { Link } from 'react-router-dom'
 
 export default class Login extends Component {
 
-  refreshPage() {
-    window.location.reload()
-}
+    refreshPage() {
+      window.location.reload()
+    } 
+
 
     render() {
 

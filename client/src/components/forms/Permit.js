@@ -69,7 +69,7 @@ export default class Permit extends React.Component {
 
     render () {   
 
-        const { errorMessage, dispatch } = this.props
+      const { errorMessage, dispatch, permit } = this.props
 
     // Define our styling for the map 
       const mapStyle = {
@@ -79,6 +79,7 @@ export default class Permit extends React.Component {
         width: '49%',
         height: '350px'
       };
+      console.log(permit)
 
       // Define a relative container for our map, and anything inside of it
       const mapContainerStyle = {
@@ -98,7 +99,7 @@ export default class Permit extends React.Component {
 
             <div className ="permit" style={signupContainer}>  
 
-            <form id="permitForm" onSubmit={(event) => this.permitClick(event)}>
+            <form action="/status" id="permitForm" onSubmit={(event) => this.permitClick(event)}>
                 <h1 class="hro-t"> <font color = "black" size="6" >Apply for New Permit</font></h1>
                     <div class="fs-c fs-c--i m-b300">
                         <div class="txt g--6">
@@ -191,7 +192,9 @@ export default class Permit extends React.Component {
             </div>
             </div>  
             <div class="m-v400 m-h200">
+
             <input type="submit" className="btn" value="Submit"> 
+           
             </input>
             
             </div>
@@ -203,6 +206,7 @@ export default class Permit extends React.Component {
             
         )
     }
+
 
 permitClick= function(e) {
     e.preventDefault()
@@ -221,5 +225,6 @@ permitClick= function(e) {
 
 Permit.propTypes = {
 	dispatch: PropTypes.func.isRequired,
-	errorMessage: PropTypes.string
+    errorMessage: PropTypes.string,
+    permit : PropTypes.object
 }

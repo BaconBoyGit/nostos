@@ -29,6 +29,7 @@ function callApi(endpoint, authenticated) {
       ).then(({ text, response }) => {
         if (!response.ok) {
           return Promise.reject(text)
+          localStorage.setItem(endpoint, JSON.stringify(response))
         }
   
         return text
@@ -54,7 +55,8 @@ function callApi(endpoint, authenticated) {
     // let us distinguish between normal and secret info
     return callApi(endpoint, authenticated).then(
       response =>
-        next({
+        next(
+          {
           response,
           authenticated,
           type: successType

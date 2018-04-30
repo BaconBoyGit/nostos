@@ -64,7 +64,7 @@ function perm(state = { // This is our "default" state
     isFetching: false,
     isAuthenticated: true,
     user: localStorage.getItem('user') !== 'undefined' ? JSON.parse(localStorage.getItem('user')) : null,  // Pull from local storage if we happen to lose our state
-    company: localStorage.getItem('company') !== 'undefined' ? JSON.parse(localStorage.getItem('company')) : null
+    permit: localStorage.getItem('company') !== 'undefined' ? JSON.parse(localStorage.getItem('company')) : null
   }, action) {
   switch (action.type) {
     case PERMIT_REQUEST:
@@ -75,13 +75,13 @@ function perm(state = { // This is our "default" state
     case PERMIT_SUCCESS:
       return Object.assign({}, state, {
         isFetching: false,
-        company: action.company,
-        errorMessage: ''
+        permit: action.response,
       })
     case PERMIT_FAILURE:
       return Object.assign({}, state, {
         isFetching: false,
-        isAuthenticated: true
+        isAuthenticated: true,
+        permitErrorMessage: action.message
       })
     default:
       return state
