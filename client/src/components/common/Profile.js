@@ -13,7 +13,7 @@ export default class Profile extends React.Component {
 
     render() {
         
-        const { isAuthenticated, user } = this.props
+        const { isAuthenticated, user, permit } = this.props
 
         // Main container for our profile component
         const profileContainer = {
@@ -36,10 +36,16 @@ export default class Profile extends React.Component {
                                 { user.first } {user.last} 
                             </div>
                             <hr className="hr hr--sq m-h300 m-v500" />
-                            <div className="ta-c p-h200 t--intro">
+                            { permit && permit.companies &&
+                            < div className="ta-c p-h200 t--intro">
                                { user.email } <br/>
-                               { user.address1}
+                               { user.address1} <br/>
+                               { user.phone } <br/>
+                    
+                               Permits applied for: {permit.companies.length}
+                               
                             </div>
+                            }
                         </div>
                        }
                     </div>

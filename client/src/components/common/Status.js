@@ -23,7 +23,6 @@ class Status extends React.Component {
     render() {
 
         const { isAuthenticated, user, permit } = this.props
-        console.log(permit)
         //Currently static, will connect to database to be dynamic later
        
         var appNumber = ["1", "2", "3"];
@@ -35,10 +34,10 @@ class Status extends React.Component {
 
         if (permit)
             if (permit.companies)
-                console.log(permit.companies[0])
+                console.log(permit.companies.length)
 
         // container for our profile element
-        const profileContainer = {
+        const statusContainer = {
             marginTop: '1%',
             position: 'relative',
             height: '400px',
@@ -46,12 +45,25 @@ class Status extends React.Component {
         };
 
         // Center the content of the home body within its container
-        const profileContent = {
+        const statusContent = {
             textAlign: 'center',
             position: 'relative',
         }
       
         // A table for displaying application data
+        var x = ""
+
+        if(permit)
+        {
+            if(permit.companies)
+            {
+                for(i = 0; i<permit.companies.length; i++)
+                {
+                     x+= permit.companies[i].location
+                   // console.log(x)
+                }
+            }
+        }
 
 
         var test = 
@@ -86,12 +98,13 @@ class Status extends React.Component {
             <td data-label='Address'>  {address[i]}  </td> 
                 <td data-label='Date Applied'> {status[i]}  </td> 
             </tr>;
+
         }
 
        
       return (
-          <div className = 'profileContainer' style = { profileContainer }>              
-                <div className = "profileContent" style = {profileContent} >
+          <div className = 'statusContainer' style = { statusContainer }>              
+                <div className = "statusContent" style = {statusContent} >
                     <div class="b">
                         <div class="b-c">
                             <div class="h2 tt-u ta-c p-h300">{user.first} {user.last}'s Application Status</div>
@@ -105,7 +118,9 @@ class Status extends React.Component {
                                         <th>Status</th>
                                     </tr>
                                 </thead>
-                                {test}
+                                <tbody>
+                                <td data-label='Address'>{x}</td>
+                                </tbody>
                             </table>
                         </div>
                     </div>
