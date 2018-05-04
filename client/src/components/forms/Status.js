@@ -1,4 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types'; 
+import { fetchCompany } from '../../actions/actions';
+
 /*
    The status component
    loaded for authenticated users, containing permit status
@@ -9,11 +12,18 @@ import React from 'react';
 
 class Status extends React.Component {
   
+   /* componentWillMount() {
+        const { fetchCompany } = this.props
+        fetchCompany()
+    }*/
     // Render inline style attributes
+    
+
+
     render() {
 
         const { isAuthenticated, user, permit } = this.props
-
+        console.log(permit)
         //Currently static, will connect to database to be dynamic later
        
         var appNumber = ["1", "2", "3"];
@@ -23,6 +33,9 @@ class Status extends React.Component {
         var address = ["1144 Aztec Road", "255 Grapevine Road", "1225 Santa Claus Lane"];
         var test = permit;
 
+        if (permit)
+            if (permit.companies)
+                console.log(permit.companies[0])
 
         // container for our profile element
         const profileContainer = {
@@ -39,21 +52,32 @@ class Status extends React.Component {
         }
       
         // A table for displaying application data
+
+
         var test = 
-            <tbody><tr> <td data-label='Date Applied For'> {appNumber[0]} </td> 
-                <td data-label='Address'>  {address[0]}  </td> 
+        
+        
+            <tbody>
+                
+                <tr> 
+                
+                <td data-label='Date Applied For'> 
+                {permit && permit.companies && permit.companies[0].date} </td> 
+                
+                <td data-label='Address'>  {permit && permit.companies && permit.companies[0].location}  </td> 
                     <td data-label='Date Applied'> {status[0]}  </td> 
                 </tr>
                 <tr> 
-                    <td data-label='Date Applied'> {user.first} </td> 
-                    <td data-label='Address'>  {address[1]}  </td> 
+                    <td data-label='Date Applied'> {permit && permit.companies && permit.companies[1].date} </td> 
+                    <td data-label='Address'>  {permit && permit.companies && permit.companies[1].location}  </td> 
                     <td data-label='Date Applied'> {status[1]}  </td> 
                 </tr>
                 <tr> 
-                    <td data-label='Date Applied'> {appNumber[2]} </td> 
-                    <td data-label='Address'>  {address[2]}  </td> 
+                    <td data-label='Date Applied'> {permit && permit.companies && permit.companies[2].date} </td> 
+                    <td data-label='Address'>  {permit && permit.companies && permit.companies[2].location}  </td> 
                     <td data-label='Date Applied'> {status[2]}  </td> 
                 </tr>
+                
             </tbody>
 
         for (i = 0; i < appNumber.length; i++)
@@ -63,6 +87,7 @@ class Status extends React.Component {
                 <td data-label='Date Applied'> {status[i]}  </td> 
             </tr>;
         }
+
        
       return (
           <div className = 'profileContainer' style = { profileContainer }>              
@@ -72,7 +97,7 @@ class Status extends React.Component {
                             <div class="h2 tt-u ta-c p-h300">{user.first} {user.last}'s Application Status</div>
                             <hr class="hr hr--sq m-h300 m-v500" />
                           
-                            <table border="1" cellpadding="1" cellspacing="1" class="responsive-table responsive-table--horizontal">
+                            <table border="1" cellPadding="1" cellSpacing="1" class="responsive-table responsive-table--horizontal">
                                 <thead>
                                     <tr>
                                         <th>Date Applied For</th>
@@ -89,5 +114,10 @@ class Status extends React.Component {
         ) 
     }
 }
-  
+
+Status.propTypes = {
+    fetchCompany : PropTypes.func,
+    permit : PropTypes.object
+}
+
 export default Status

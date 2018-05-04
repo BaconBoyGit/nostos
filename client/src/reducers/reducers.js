@@ -16,7 +16,7 @@ function auth(state = { // This is our "default" state
     logError: false,
     isAuthenticated: localStorage.getItem('id_token') ? true : false, 
     user: localStorage.getItem('user') !== 'undefined' ? JSON.parse(localStorage.getItem('user')) : null,  // Pull from local storage if we happen to lose our state
-    company: localStorage.getItem('company') !== 'undefined' ? JSON.parse(localStorage.getItem('company')) : null
+    permit: localStorage.getItem('company') !== 'undefined' ? JSON.parse(localStorage.getItem('company')) : null
   }, action) {
   switch (action.type) {
     case LOGIN_REQUEST || REGISTER_REQUEST:

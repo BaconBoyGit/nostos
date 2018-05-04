@@ -36,9 +36,13 @@ import { fetchCompany } from '../actions/actions';
 class App extends Component {
 
   componentWillMount() {
-    const { dispatch } = this.props
+    const { isAuthenticated, dispatch } = this.props
+    if(isAuthenticated){
     dispatch(fetchCompany())
+    }
   }
+
+
 
   render() {
     
@@ -49,9 +53,6 @@ class App extends Component {
       position: "fixed",
       background: "white"
     }
-    console.log(user)
-    console.log(permit)
-  
     
     return (
       <Router>

@@ -240,7 +240,7 @@ export function createPermit(creds) {
           return Promise.reject(company)
         } 
 
-        // If login was successful, set the token and company data in local storage
+        // If permit creation was successful, set the token and company data in local storage
         localStorage.setItem('company', JSON.stringify(company.company))
         // Dispatch the success action
         
@@ -310,4 +310,3 @@ export function fetchCompany() {
     }
   }
 }
-
