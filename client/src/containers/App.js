@@ -21,6 +21,7 @@ import Profile from '../components/common/Profile';
 import Footer from '../components/common/Footer';
 import Status from '../components/common/Status';
 import Permit from '../components/forms/Permit';
+import Update from '../components/forms/ProfileUpdate';
 
 import { fetchUser } from '../actions/actions';
 import { fetchCompany } from '../actions/actions';
@@ -104,6 +105,21 @@ class App extends Component {
 
             />
 
+             <Route 
+                exact path="/update" 
+                render={()=>
+                  isAuthenticated === true // Redirect unauthenticated users to avoid profile access
+                  ? <Update
+                    isAuthenticated={ isAuthenticated }
+                    user = { user }
+                    permit = { permit }
+                    dispatch = { dispatch }
+                  />
+                  : <Redirect to='/' />
+                } 
+
+            />
+
             <Route 
               exact path ="/status"
               render={()=>
@@ -160,7 +176,7 @@ function mapStateToProps(state) {
     errorMessage,
     permit,
     permitErrorMessage,
-    logError
+    logError,
   }
 }
 

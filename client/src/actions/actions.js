@@ -284,6 +284,76 @@ export function logoutUser() {
   }
 }
 
+
+// Creating permit
+// There are three possible states for our permit
+// process, and we need actions for each of them
+// The data returned is identical to login, so we can follow a similar process
+
+export const UPDATE_REQUEST = 'UPDATE_REQUEST'
+export const UPDATE_SUCCESS = 'UPDATE_SUCCESS'
+export const UPDATE_FAILURE = 'UPDATE_FAILURE'
+
+function requestUpdate(creds) {
+  return {
+    type: UPDATE_REQUEST,
+    isFetching: true,
+    isAuthenticated: true,
+    creds
+  }
+}
+
+function receiveUpdate(user) {
+  return {
+    type: UPDATE_SUCCESS,
+    isFetching: false,
+    isAuthenticated: true,
+    user
+  }
+}
+
+function updateError(message) {
+  return {
+    type: UPDATE_FAILURE,
+    isFetching: false,
+    isAuthenticated: true,
+    message
+  }
+}
+
+//Update a user's information
+export function updateUser(creds) {
+
+  let config = {
+    method: 'PUT',
+    headers: { 'Content-Type':'application/x-www-form-urlencoded', 'Authorization': localStorage.getItem('access_token') },
+    body: ("&email="+creds.email+"&address1="+creds.address+"&zip="+creds.zip+
+    "&state="+creds.state+"&city="+creds.city).replace(" ", "%20")
+  }
+
+  return dispatch => {
+    // We dispatch to kickoff the call to the API
+    dispatch(requestUpdate(creds))
+    console.log(config)
+    return fetch(prodRoute + '/v1/users/', config)
+      .then(response =>
+        response.json().then(user => ({ user, response }))
+            ).then(({ user, response }) =>  {
+        if (!response.ok || user.success === false) {
+          // If there was a problem, we want to
+          // dispatch the error condition
+          dispatch(updateError(user.error))
+          return Promise.reject(user)
+        } 
+
+        // If permit creation was successful, set the token and company data in local storage
+        // Dispatch the success action
+        
+        dispatch(receiveUpdate(user))
+      }).catch(err => console.log("Error: ", err))
+  }
+}
+
 // we need to include some more actions to call the API for the user info.
 export const INFO_REQUEST = 'INFO_REQUEST'
 export const INFO_SUCCESS = 'INFO_SUCCESS'

@@ -224,6 +224,8 @@ permitClick= function(e) {
     // Build our credentials to send to the backend
     const creds = { location: location.value.trim(), start: start.value.trim(), end: end.value.trim(), date: date.value.trim()}
     this.props.dispatch(createPermit(creds))
+    
+ 
   }
 
 }
@@ -231,5 +233,5 @@ permitClick= function(e) {
 Permit.propTypes = {
 	dispatch: PropTypes.func.isRequired,
     errorMessage: PropTypes.string,
-    permit : PropTypes.object
+    permit : PropTypes.object,
 }

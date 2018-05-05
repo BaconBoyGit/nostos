@@ -37,6 +37,7 @@ export default class Header extends React.Component {
         };
  
         return (
+            
             <div className="mn">
                 <header className="h" role="banner">
                     <nav className="lo">
@@ -67,12 +68,14 @@ export default class Header extends React.Component {
     
                         }
                         
-                        { isAuthenticated && // If authenticated, display different header
+                        { isAuthenticated &&  // If authenticated, display different header
                         <nav className="nv-h-l">
                             <Link to="/profile" >
+                            {user&&
                                 <div className ="nv-h-l-a"> 
                                 {user.first} {user.last}
                                 </div> 
+                            }
                             </Link>
                             <Link to="/status" onClick = { this.refreshPage } className="nv-h-l-a nv-h-l-a--k--s tr-link" > Status </Link>
                             <Link to="/permit" onClick = { this.refreshPage } className="nv-h-l-a nv-h-l-a--k--s tr-link"> New Permit </Link>

@@ -28,7 +28,7 @@ class Status extends React.Component {
             marginTop: '1%',
             position: 'relative',
             height: '400px',
-            marginBottom: '10%'
+            marginBottom: '15%'
         };
 
         // Center the content of the home body within its container
@@ -59,7 +59,7 @@ class Status extends React.Component {
             }
         }
 
-        var test = 
+      /*  var test = 
             <tbody>
                 
                 <tr> 
@@ -110,7 +110,7 @@ class Status extends React.Component {
                 }
                 </tr>
                 
-            </tbody>
+            </tbody> */
 
             var testPermit = ""
             if(permit)
@@ -154,6 +154,15 @@ class Status extends React.Component {
                             <div class="h2 tt-u ta-c p-h300">{user.first} {user.last}'s Application Status</div>
                             <hr class="hr hr--sq m-h300 m-v500" />
                           
+                         {permit && permit.companies && permit.companies.length==0 &&
+                         <div class="t--intro">
+                            No permits to display 
+                        </div>
+                         } 
+                          
+
+                        {permit && permit.companies && permit.companies.length>0 &&
+                         <div  style = { statusContainer }>
                            <table border="1" cellPadding="1" cellSpacing="1" class="responsive-table responsive-table--horizontal">
                                 <thead>
                                   
@@ -165,9 +174,8 @@ class Status extends React.Component {
                                         <th>Status</th>
                                     </tr>
                                 </thead>
-                                {permit && permit.companies &&
                                 <tbody>
-                                {permit.companies[0] &&
+                                { permit.companies[0] &&
                                   <tr> 
                                         <td data-label='Date Applied'> {permit.companies[0].date} </td> 
                                         <td data-label='Start Time'>  {permit.companies[0].start} </td>
@@ -368,8 +376,10 @@ class Status extends React.Component {
                                   </tr>
                                 }
                                 </tbody>
-                                }
+                                
                                 </table>
+                                </div>
+                            }
 
                                     <div class="t--intro">
                                         {/*nl2br(disStatus)*/}

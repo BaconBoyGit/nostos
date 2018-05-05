@@ -1,5 +1,12 @@
 import React from 'react'
 import {PropTypes} from 'prop-types'
+import {
+    BrowserRouter as Router,
+    Route,
+    Link,
+    Switch,
+    Redirect
+  } from 'react-router-dom'
 
 /*
    The profile page component
@@ -18,7 +25,8 @@ export default class Profile extends React.Component {
         // Main container for our profile component
         const profileContainer = {
             position: 'relative',
-            height: '400px'
+            height: '400px',
+            marginBottom: '5%'
         };
 
         // Center the content of the home body within its container
@@ -40,14 +48,18 @@ export default class Profile extends React.Component {
                             < div className="ta-c p-h200 t--intro">
                                { user.email } <br/>
                                { user.address1} <br/>
+                               { user.city }, {user.state} {user.zip} <br/>
                                { user.phone } <br/>
                     
                                Permits applied for: {permit.companies.length}
                                
                             </div>
                             }
+                            
                         </div>
+                        
                        }
+                        <Link to="/update" class="btn btn--700" onClick={this.refreshPage}>Update Information</Link>
                     </div>
                 </div>
           </div>  
