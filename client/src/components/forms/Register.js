@@ -15,11 +15,7 @@ const showError = false;
 
 export default class Register extends React.Component {
 
-	state = { showError: true }
-
 	render() {
-
-		const { errorMessage, dispatch } = this.props
 		
 		// Center the registration form on the page
 		const signupContainer = {

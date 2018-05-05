@@ -1,15 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 import {
-  BrowserRouter as Router,
-  Route,
+
   Link,
-  Switch,
-  Redirect
+
 } from "react-router-dom";
 import {PropTypes} from 'prop-types'; 
 
 import { loginUser, logoutUser } from "../../actions/actions";
-import Register from "../forms/Register";
 import Logout from "../forms/Logout"
 import Login from "../forms/Login"
 

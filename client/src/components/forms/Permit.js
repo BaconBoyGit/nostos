@@ -22,6 +22,11 @@ const showError = false;
 
 export default class Permit extends React.Component {
 
+    refreshPage() {
+        window.location.reload()
+      } 
+  
+
     state = { showError: true }
 
       // Set default map attributes on construction
@@ -99,7 +104,7 @@ export default class Permit extends React.Component {
 
             <div className ="permit" style={signupContainer}>  
 
-            <form action="/status" id="permitForm" onSubmit={(event) => this.permitClick(event)}>
+            <form  id="permitForm" onSubmit={(event) => this.permitClick(event)}>
                 <h1 class="hro-t"> <font color = "black" size="6" >Apply for New Permit</font></h1>
                     <div class="fs-c fs-c--i m-b300">
                         <div class="txt g--6">

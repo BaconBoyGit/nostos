@@ -13,7 +13,7 @@ export default class Profile extends React.Component {
 
     render() {
         
-        const { isAuthenticated, user, permit } = this.props
+        const {  user, permit } = this.props
 
         // Main container for our profile component
         const profileContainer = {
@@ -56,7 +56,6 @@ export default class Profile extends React.Component {
 }
   
 Profile.propTypes = {
-    isAuthenticated: PropTypes.bool.isRequired,
     user: PropTypes.object,
 
 }
