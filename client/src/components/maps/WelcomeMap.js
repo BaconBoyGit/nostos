@@ -63,8 +63,9 @@ class Map extends React.Component {
     // Render inline style attributes
     render() {
 
-      const { isAuthenticated } = this.props
-
+      const { isAuthenticated, user } = this.props
+      console.log(isAuthenticated)
+      console.log(user)
 
       // Define our styling for the map
       const mapStyle = {
@@ -103,8 +104,16 @@ class Map extends React.Component {
                                   <div class="hro-i hro-i--l">Welcome to the City of Boston</div>
                                   <h1 class="hro-t hro-t--l">Moving Truck Permit Portal</h1>
                                       <nav>
+                                        {isAuthenticated &&
+                                      <Link to="/permit" class="btn btn--700" onClick={this.refreshPage}>Get Started</Link>
+                                        }
+                                         {!isAuthenticated &&
                                       <Link to="/register" class="btn btn--700" onClick={this.refreshPage}>Get Started</Link>
+                                      }
                                       </nav>
+                                     
+                          
+
                               </div>
                   </div>
               </div>
@@ -116,7 +125,7 @@ class Map extends React.Component {
   }
 
   Map.propTypes = {
-    isAuthenticated: PropTypes.bool.isRequired,
+   
 }
   
 export default Map  

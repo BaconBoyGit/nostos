@@ -69,10 +69,11 @@ class App extends Component {
             
             { errorMessage &&  alert( errorMessage ) }
             
-            <Route exact path="/" component={ Welcome } 
+            <Route exact path="/" 
                 render={ () => 
                 <Welcome
                 isAuthenticated = {isAuthenticated}
+                user = {user}
                 />
                 }
             />

@@ -32,22 +32,15 @@ export default class Header extends React.Component {
 
     render() {
         const { dispatch, isAuthenticated, user, errorMessage, logError } = this.props
-        
        
 
         // Move the logo slightly away from the wall
         const logoStyle = {
         marginLeft: "10px"
         };
-
-        const headerFix = {
-
-            zindex: "999" 
-           
-        }
-      
+ 
         return (
-            <div className="mn" style={headerFix}>
+            <div className="mn">
                 <header className="h" role="banner">
                     <nav className="lo">
                         <Link to="/" className="lo-l" onClick={this.refreshPage}>
@@ -104,7 +97,7 @@ export default class Header extends React.Component {
 
 Header.propTypes = {
     dispatch: PropTypes.func.isRequired,
-    isAuthenticated: PropTypes.bool.isRequired,
+   
     errorMessage: PropTypes.string,
     user: PropTypes.object,
     logError: PropTypes.bool,
