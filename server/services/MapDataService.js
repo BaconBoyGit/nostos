@@ -19,6 +19,18 @@ var homeData = fs.createWriteStream("SAM.geojson", { flag: 'w'}, function (err) 
     console.log("SAM Opened")
 })
 
+// Neighborhood data
+var nieghborhoodOptions = {
+    hostname: 'http://bostonopendata-boston.opendata.arcgis.com',
+    path: '/datasets/3525b0ee6e6b427f9aab5d0a1d0a1a28_0.geojson',
+    method: 'GET'
+}
+
+var neighborhoodData = fs.createWriteStream("neighborhood.geojson", { flag: 'w'}, function (err) {
+    if (err) throw err;
+    console.log("SAM Opened")
+})
+
 // Location of parking meter geojson data
 var parkingOptions = {
     hostname: 'http://bostonopendata-boston.opendata.arcgis.com',
@@ -87,5 +99,7 @@ function uploadGeoJson ( data, options )  {
 uploadGeoJson(zipData, zipOptions)
 uploadGeoJson(parkingData, parkingOptions)
 uploadGeoJson(homeData, homeOptions)
+uploadGeoJson(neighborhoodData, nieghborhoodOptions)
+
 
 
