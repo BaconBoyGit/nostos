@@ -29,7 +29,7 @@ yarn-error.log*
 # private
 server/id_rsa
 server/.env
-server/secrets.js
+server/services/secrets.js
 server/config/config.json
 
 *.geojson

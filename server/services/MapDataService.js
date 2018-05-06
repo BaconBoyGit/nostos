@@ -5,12 +5,11 @@ var http = require('http');
 var fs = require('fs');
 var path = require('path');
 var stream = require('stream');
-
-require('../config/config');     //instantiate configuration variables
+var secrets = require('./secrets')
 
 // SAM (street address management) data
 var homeOptions = {
-    hostname: 'https://bostonopendata-boston.opendata.arcgis.com',
+    hostname: 'http://bostonopendata-boston.opendata.arcgis.com',
     path: '/datasets/b6bffcace320448d96bb84eabb8a075f_0.geojson',
     method: 'GET'
 }
@@ -22,7 +21,7 @@ var homeData = fs.createWriteStream("SAM.geojson", { flag: 'w'}, function (err) 
 
 // Location of parking meter geojson data
 var parkingOptions = {
-    hostname: 'https://bostonopendata-boston.opendata.arcgis.com',
+    hostname: 'http://bostonopendata-boston.opendata.arcgis.com',
     path: '/datasets/962da9bb739f440ba33e746661921244_9.geojson',
     method: 'GET'
 };
@@ -34,7 +33,7 @@ var parkingData = fs.createWriteStream("parkingMeters.geojson", { flag: 'w'}, fu
 
 // Location of zip code boundary geojson data
 var zipOptions = {
-    hostname: 'https://bostonopendata-boston.opendata.arcgis.com',
+    hostname: 'http://bostonopendata-boston.opendata.arcgis.com',
     path: '/datasets/53ea466a189b4f43b3dfb7b38fa7f3b6_1.geojson',
     method: 'GET'
 };
@@ -63,7 +62,7 @@ function uploadGeoJson ( data, options )  {
             var progress = upload({
                 file: data.path, // Path to mbtiles file on disk.
                 account: 'bradleyboutcher', // Mapbox user account.
-                accesstoken: CONFIG.mapbox_upload_token, // A valid Mapbox API secret token with the uploads:write scope enabled.
+                accesstoken: secrets.mapbox_upload_token, // A valid Mapbox API secret token with the uploads:write scope enabled.
                 mapid: "bradleyboutcher." + path.basename(data.path, '.geojson'), // The identifier of the map to create or update.
                 name: path.basename(data.path, '.geojson') // Optional name to set, otherwise a default such as original.geojson will be used.
             });
@@ -87,5 +86,6 @@ function uploadGeoJson ( data, options )  {
 // Commence uploads
 uploadGeoJson(zipData, zipOptions)
 uploadGeoJson(parkingData, parkingOptions)
+uploadGeoJson(homeData, homeOptions)
 
 
