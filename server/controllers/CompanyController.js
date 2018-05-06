@@ -1,10 +1,11 @@
 const Company = require('../models').Company;
 
+//Various controller methods for the company model are defined
+
 const create = async function(req, res){
     res.setHeader('Content-Type', 'application/json');
     let err, company;
     let user = req.user;
-
     let company_info = req.body;
 
 

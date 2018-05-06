@@ -16,6 +16,8 @@ const create = async function(req, res){
         return ReE(res, 'Please enter a password to register.');
     } else if(body.password != body.confirm){
         return ReE(res, 'Passwords do not match.');
+    } else if(body.email != body.emailCon){
+            return ReE(res, 'Emails do not match.');
     }else{
         let err, user;
 
@@ -31,7 +33,7 @@ const create = async function(req, res){
 module.exports.create = create;
 
 // Return information on a user
-// Information is alsp returned on a successful login, register, or update
+// Information is also returned on a successful login, register, or update
 const get = async function(req, res){
     res.setHeader('Content-Type', 'application/json');
     let user = req.user;

@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 import {
   LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_SUCCESS,
-  REGISTER_REQUEST, REGISTER_FAILURE, REGISTER_SUCCESS
+  REGISTER_REQUEST, REGISTER_FAILURE, REGISTER_SUCCESS, PERMIT_REQUEST, PERMIT_SUCCESS, PERMIT_FAILURE, UPDATE_REQUEST, UPDATE_FAILURE, UPDATE_SUCCESS 
 } from '../actions/actions'
 
 // The authentication reducer. The starting state sets authentication
@@ -13,33 +13,95 @@ import {
 
 function auth(state = { // This is our "default" state
     isFetching: false,
+    logError: false,
     isAuthenticated: localStorage.getItem('id_token') ? true : false, 
-    user: localStorage.getItem('user') !== 'undefined' ? JSON.parse(localStorage.getItem('user')) : null  // Pull from local storage if we happen to lose our state
+    user: localStorage.getItem('user') !== 'undefined' ? JSON.parse(localStorage.getItem('user')) : null,  // Pull from local storage if we happen to lose our state
+    permit: localStorage.getItem('company') !== 'undefined' ? JSON.parse(localStorage.getItem('company')) : null
   }, action) {
   switch (action.type) {
     case LOGIN_REQUEST || REGISTER_REQUEST:
       return Object.assign({}, state, {
         isFetching: true,
         isAuthenticated: false,
-        data: action.creds
+        logError: false,
+        data: action.creds,
+        errorMessage: ''
       })
     case LOGIN_SUCCESS || REGISTER_SUCCESS:
       return Object.assign({}, state, {
         isFetching: false,
         isAuthenticated: true,
+        logError: false,
         user: action.user,
         errorMessage: ''
       })
-    case LOGIN_FAILURE || REGISTER_FAILURE:
+    case LOGIN_FAILURE:
       return Object.assign({}, state, {
         isFetching: false,
         isAuthenticated: false,
+        logError: true,
+        errorMessage: action.message
+      })
+    case REGISTER_FAILURE:
+      return Object.assign({}, state, {
+        isFetching: false,
+        isAuthenticated: false,
+        logError: false,
         errorMessage: action.message
       })
     case LOGOUT_SUCCESS:
       return Object.assign({}, state, {
         isFetching: true,
+        logError: false,
         isAuthenticated: false
+      })
+   case UPDATE_REQUEST:
+    return Object.assign({}, state, {
+      isFetching: true,
+      isAuthenticated: true,
+      data: action.creds,
+    })
+    
+    case UPDATE_FAILURE:
+    return Object.assign({}, state, {
+      isFetching: false,
+      isAuthenticated: true,
+      errorMessage: action.message
+      })
+
+    case UPDATE_SUCCESS:
+    return Object.assign({}, state, {
+      isFetching: false,
+      user: action.user,
+      })
+    default:
+      return state
+
+  }
+}
+
+function perm(state = { // This is our "default" state
+    isFetching: false,
+    isAuthenticated: true,
+    user: localStorage.getItem('user') !== 'undefined' ? JSON.parse(localStorage.getItem('user')) : null,  // Pull from local storage if we happen to lose our state
+    permit: localStorage.getItem('company') !== 'undefined' ? JSON.parse(localStorage.getItem('company')) : null
+  }, action) {
+  switch (action.type) {
+    case PERMIT_REQUEST:
+      return Object.assign({}, state, {
+        isFetching: true,
+        data: action.creds,
+      })
+    case PERMIT_SUCCESS:
+      return Object.assign({}, state, {
+        isFetching: false,
+        permit: action.response,
+      })
+    case PERMIT_FAILURE:
+      return Object.assign({}, state, {
+        isFetching: false,
+        isAuthenticated: true,
+        permitErrorMessage: action.message
       })
     default:
       return state
@@ -49,7 +111,8 @@ function auth(state = { // This is our "default" state
 // We combine all the reducers here so that they can 
 // be left split apart above
 const userInfo = combineReducers({
-    auth
+    auth,
+    perm
 })
 
 export default userInfo

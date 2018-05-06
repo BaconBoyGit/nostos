@@ -9,6 +9,7 @@ import userInfo from './reducers/reducers'
 import api from './middleware/api'
 import App from './containers/App';
 import registerServiceWorker from './registerServiceWorker';
+import PropTypes from 'prop-types'; 
 
 let createStoreWithMiddleware = applyMiddleware(thunkMiddleware, api)(createStore)
 
@@ -21,7 +22,8 @@ let rootElement = document.getElementById('root')
 ReactDOM.render((
     <Provider store = {store}>
         <BrowserRouter>
-                <App />
+                <App 
+                />
         </BrowserRouter>
     </Provider>
 ), rootElement);

@@ -15,11 +15,7 @@ const showError = false;
 
 export default class Register extends React.Component {
 
-	state = { showError: true }
-
 	render() {
-
-		const { errorMessage, dispatch } = this.props
 		
 		// Center the registration form on the page
 		const signupContainer = {
@@ -104,7 +100,7 @@ export default class Register extends React.Component {
 									<option value="LA">Louisiana</option>
 									<option value="ME">Maine</option>
 									<option value="MD">Maryland</option>
-									<option defaultValue="MA">Massachusetts</option>
+									<option selected="MA">Massachusetts</option>
 									<option value="MI">Michigan</option>
 									<option value="MN">Minnesota</option>
 									<option value="MS">Mississippi</option>
@@ -159,9 +155,13 @@ export default class Register extends React.Component {
 							<input ref="email" type="email" placeholder="Email" className="txt-f txt-f--sm" required/>
 						</div>
 						<div className="txt g--6">
+							<label htmlFor="emailCon" className="txt-l txt-l--mt000">Confirm Email*</label>
+							<input ref="emailCon" type="email" placeholder="Confirm" className="txt-f txt-f--sm" required/>
+						</div>
+					</div>
+					<div className="txt g--6">
 							<label htmlFor="phone" className="txt-l txt-l--mt000">Telephone*</label>
 							<input ref="phone" type="text" placeholder="Telephone number" className="txt-f txt-f--sm" required/>
-						</div>
 					</div>
 
 					<h2 className="hro-t"> <font color = "gray" size="5"> Password </font></h2>
@@ -203,6 +203,7 @@ export default class Register extends React.Component {
 		const title = this.refs.title
 		const company = this.refs.company
 		const email = this.refs.email
+		const emailCon = this.refs.emailCon
 		const phone = this.refs.phone
 		const password = this.refs.password
 		const confirm = this.refs.confirm
@@ -214,7 +215,7 @@ export default class Register extends React.Component {
 
 		// Build our credentials to send to the backend
 		const creds = { first: first.value.trim(), last: last.value.trim(), confirm: confirm.value.trim(), title: title.value.trim(),
-						company: company.value.trim(), email: email.value.trim(), phone: phone.value.trim(),
+						company: company.value.trim(), email: email.value.trim(), emailCon: emailCon.value.trim(), phone: phone.value.trim(),
 						password: password.value.trim(), address1: address1.value.trim(), address2: address2.value.trim(),
 						city: city.value.trim(), state: state.value.trim(), zip: zip.value.trim()}
 

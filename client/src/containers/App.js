@@ -21,8 +21,20 @@ import Profile from '../components/common/Profile';
 import Footer from '../components/common/Footer';
 import Status from '../components/forms/Status';
 import Permit from '../components/forms/Permit';
+import Update from '../components/forms/ProfileUpdate';
 
 import { fetchUser } from '../actions/actions';
+import { fetchCompany } from '../actions/actions';
+import { fetchUpdate } from '../actions/actions';
+
+/*
+  The App component is the main component mounted at the first loading of the page
+  
+  This handles the passing of props to all child components, as well as 
+  establishing routes to other components
+  Created by Bradley Boutcher and Christine Frandsen, 2018
+*/
+
 
 /*
   The App component is the main component mounted at the first loading of the page
@@ -38,28 +50,37 @@ class App extends Component {
   render() {
     
     // Bring in our proptypes
-    const { dispatch, isAuthenticated, errorMessage, user } = this.props
+    const { dispatch, isAuthenticated, errorMessage, user, permit, permitErrorMessage, logError } = this.props
 
     const errorStyle = {
       position: "fixed",
       background: "white"
     }
-
     
     return (
       <Router>
+
         <div className="App">
            
             <Header 
                 isAuthenticated={isAuthenticated}
                 errorMessage={errorMessage}
                 dispatch={dispatch}
-                user = { user }
+                user = {user}
+                logError={logError}
+
             />
             
-            { errorMessage &&  alert( errorMessage )  }
+            { errorMessage &&  alert( errorMessage ) }
             
-            <Route exact path="/" component={ Welcome } />
+            <Route exact path="/" 
+                render={ () => 
+                <Welcome
+                isAuthenticated = {isAuthenticated}
+                user = {user}
+                />
+                }
+            />
 
             <Route 
                 exact path="/register" 
@@ -80,6 +101,23 @@ class App extends Component {
                   ? <Profile 
                     isAuthenticated={ isAuthenticated }
                     user = { user }
+                    permit = { permit }
+                    dispatch = { dispatch }
+                  />
+                  : <Redirect to='/' />
+                } 
+
+            />
+
+             <Route 
+                exact path="/update" 
+                render={()=>
+                  isAuthenticated === true // Redirect unauthenticated users to avoid profile access
+                  ? <Update
+                    isAuthenticated={ isAuthenticated }
+                    user = { user }
+                    permit = { permit }
+                    dispatch = { dispatch }
                   />
                   : <Redirect to='/' />
                 } 
@@ -93,6 +131,10 @@ class App extends Component {
                 ? <Status 
                   isAuthenticated={ isAuthenticated }
                   user = { user }
+                  permit = {permit}
+                  fetchCompany = {fetchCompany}
+                  dispatch = {dispatch}
+                
                 />
                 : <Redirect to='/' />
               } />
@@ -100,10 +142,12 @@ class App extends Component {
               <Route 
               exact path ="/permit"
               render={()=>
-                isAuthenticated === true // Redirect unauthenticated users to avoid status access
+                isAuthenticated === true // Redirect unauthenticated users to avoid permits being created
                 ? <Permit 
                   isAuthenticated={ isAuthenticated }
                   user = { user }
+                  dispatch = { dispatch }
+                  permit = { permit }
                 />
                 : <Redirect to='/' />
               } />
@@ -120,20 +164,26 @@ App.propTypes = {
   dispatch: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
   errorMessage: PropTypes.string,
+  logError: PropTypes.bool,
 }
 
 
 // These props come from the application's
 // state when it is started
+
 function mapStateToProps(state) {
 
-  const { auth } = state
-  const { isAuthenticated, errorMessage, user } = auth
-
+  const { auth, perm } = state
+  const { isAuthenticated, errorMessage, user, logError } = auth
+  const { permit, permitErrorMessage } = perm
+  
   return {
     user,
     isAuthenticated,
-    errorMessage
+    errorMessage,
+    permit,
+    permitErrorMessage,
+    logError,
   }
 }
 

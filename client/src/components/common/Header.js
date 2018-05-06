@@ -16,9 +16,6 @@ import Login from "../forms/Login"
 var blogo = require("../images/logo.svg");
 var bseal = require("../images/seal.svg");
 
-//Will draw from database
-var first = "Joe";
-var last = "Smith";
 
 /*
    The header component, present on all pages for the Nostos site
@@ -35,7 +32,8 @@ export default class Header extends Component {
     }
 
     render() {
-        const { dispatch, isAuthenticated, errorMessage, user } = this.props;
+      
+        const { dispatch, isAuthenticated, errorMessage, user, logError } = this.props;
 
         // Move the logo slightly away from the wall
         const logoStyle = {
@@ -68,24 +66,27 @@ export default class Header extends Component {
                                 errorMessage={errorMessage}
                                 onLoginClick={ creds => dispatch(loginUser(creds)) }
                                 style={{ marginLeft: "10px" }}
+                                logError = {logError}
                             />
     
                         }
                         
-                        {isAuthenticated && // If authenticated, only display the logout button
+                        { isAuthenticated &&  // If authenticated, display different header
                         <nav className="nv-h-l">
                             <Link to="/profile" >
+
+                            {user&&
                                 <div className ="nv-h-l-a" onClick = { this.refreshPage }> 
-                                    {user.first} 
-                                </div>
+                                {user.first} 
+                                </div> 
+                            }
+
                             </Link>
-    
                             <Link to="/status" onClick = { this.refreshPage } className="nv-h-l-a nv-h-l-a--k--s tr-link" > Status </Link>
                             <Link to="/permit" onClick = { this.refreshPage } className="nv-h-l-a nv-h-l-a--k--s tr-link"> New Permit </Link>
                             <Link to = "/">
                                 <Logout
                                         onLogoutClick={() => dispatch(logoutUser())}
-                                        onClick = { this.refreshPage }
                                     />
                             </Link>
                         </nav>
@@ -101,7 +102,9 @@ export default class Header extends Component {
 
 Header.propTypes = {
     dispatch: PropTypes.func.isRequired,
-    isAuthenticated: PropTypes.bool.isRequired,
+    isAuthenticated: PropTypes.bool,
     errorMessage: PropTypes.string,
-    user: PropTypes.object
+    user: PropTypes.object,
+    logError: PropTypes.bool,
+
 }
