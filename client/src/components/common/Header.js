@@ -22,6 +22,8 @@ var last = "Smith";
 
 /*
    The header component, present on all pages for the Nostos site
+   The header is responsible for containing navigation and login/logout
+   
    Bradley Boutcher and Christine Frandsen 2018
 */
 
@@ -33,7 +35,7 @@ export default class Header extends Component {
     }
 
     render() {
-        const { dispatch, isAuthenticated, errorMessage } = this.props;
+        const { dispatch, isAuthenticated, errorMessage, user } = this.props;
 
         // Move the logo slightly away from the wall
         const logoStyle = {
@@ -74,7 +76,7 @@ export default class Header extends Component {
                         <nav className="nv-h-l">
                             <Link to="/profile" >
                                 <div className ="nv-h-l-a" onClick = { this.refreshPage }> 
-                                    {first} {last} 
+                                    {user.first} 
                                 </div>
                             </Link>
     
@@ -100,5 +102,6 @@ export default class Header extends Component {
 Header.propTypes = {
     dispatch: PropTypes.func.isRequired,
     isAuthenticated: PropTypes.bool.isRequired,
-    errorMessage: PropTypes.string
+    errorMessage: PropTypes.string,
+    user: PropTypes.object
 }

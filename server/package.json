@@ -6,6 +6,7 @@
     "start": "nodemon ./bin/www"
   },
   "dependencies": {
+    "aws-sdk": "^2.224.1",
     "bcrypt": "^1.0.3",
     "bcrypt-promise": "^2.0.0",
     "body-parser": "~1.18.2",
@@ -14,6 +15,8 @@
     "dotenv": "^4.0.0",
     "express": "~4.15.5",
     "jade": "~1.11.0",
+    "mapbox": "^1.0.0-beta10",
+    "mapbox-upload": "^4.2.4",
     "morgan": "~1.9.0",
     "mysql2": "^1.5.1",
     "parse-error": "^0.2.0",

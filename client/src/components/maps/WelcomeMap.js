@@ -9,7 +9,7 @@ import {
 } from 'react-router-dom'
 
 /*
-*   The body of the home page,
+*   The map used for body of the home page,
 *   Makes use of a basic, non-interactive mapbox and
 *   boston.gov stylings to introduce the user to the site
 *   

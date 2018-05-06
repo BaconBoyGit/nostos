@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'; 
 
 /*
    The status component
@@ -13,8 +14,10 @@ class Status extends React.Component {
     // Render inline style attributes
     render() {
 
+        const { user } = this.props
+
         //Currently static, will connect to database to be dynamic later
-        var userName = "Joe Smith";  
+        var userName = user.first + " " + user.last 
         var appNumber = ["1", "2", "3"];
         var status = ["Accepted", "Pending", "Denied"];
         var disStatus = '';
@@ -87,5 +90,9 @@ class Status extends React.Component {
         ) 
     }
 }
-  
+ 
+Status.propTypes = {
+    user : PropTypes.object
+}
+
 export default Status

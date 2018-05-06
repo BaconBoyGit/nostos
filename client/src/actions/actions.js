@@ -1,10 +1,15 @@
 /*
+
+The Actions file, using React Redux practices to handle changing states
+
 The actions that we need in our case are all going to be asynchronous 
 because we are calling an API. To handle the async calls, 
 we need a setup that has actions which cover the three possible states that exist:
 A request was sent
 A request successful
 A request failed
+
+Created by Bradley Boutcher, 2018
 */
 
 import { CALL_API } from '../middleware/api'
@@ -58,11 +63,11 @@ export function loginUser(creds) {
     headers: { 'Content-Type':'application/x-www-form-urlencoded' },
     body: `email=${creds.username}&password=${creds.password}`
   }
-
+  
   return dispatch => {
     // We dispatch requestLogin to kickoff the call to the API
     dispatch(requestLogin(creds))
-
+  
     return fetch(prodRoute + '/v1/users/login', config)
       .then(response =>
         response.json().then(user => ({ user, response }))
@@ -213,4 +218,6 @@ export function fetchUser() {
     }
   }
 }
+
+
 
