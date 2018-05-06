@@ -8,28 +8,40 @@ var stream = require('stream');
 
 require('../config/config');     //instantiate configuration variables
 
+// SAM (street address management) data
+var homeOptions = {
+    hostname: 'https://bostonopendata-boston.opendata.arcgis.com',
+    path: '/datasets/b6bffcace320448d96bb84eabb8a075f_0.geojson',
+    method: 'GET'
+}
+
+var homeData = fs.createWriteStream("SAM.geojson", { flag: 'w'}, function (err) {
+    if (err) throw err;
+    console.log("SAM Opened")
+})
+
 // Location of parking meter geojson data
 var parkingOptions = {
-    hostname: 'http://bostonopendata-boston.opendata.arcgis.com',
+    hostname: 'https://bostonopendata-boston.opendata.arcgis.com',
     path: '/datasets/962da9bb739f440ba33e746661921244_9.geojson',
     method: 'GET'
 };
 
 var parkingData = fs.createWriteStream("parkingMeters.geojson", { flag: 'w'}, function (err) {
     if (err) throw err;
-    console.log("File Opened")
+    console.log("Parking Opened")
 })
 
 // Location of zip code boundary geojson data
 var zipOptions = {
-    hostname: 'http://bostonopendata-boston.opendata.arcgis.com',
+    hostname: 'https://bostonopendata-boston.opendata.arcgis.com',
     path: '/datasets/53ea466a189b4f43b3dfb7b38fa7f3b6_1.geojson',
     method: 'GET'
 };
 
 var zipData = fs.createWriteStream("zipCodes.geojson", { flag: 'w'}, function (err) {
     if (err) throw err;
-    console.log("File Opened")
+    console.log("Zip Opened")
 })
 
 // Create an array of upload data to iterate through
@@ -75,4 +87,5 @@ function uploadGeoJson ( data, options )  {
 // Commence uploads
 uploadGeoJson(zipData, zipOptions)
 uploadGeoJson(parkingData, parkingOptions)
+
 
