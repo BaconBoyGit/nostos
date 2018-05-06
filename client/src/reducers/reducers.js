@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 import {
   LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_SUCCESS,
-  REGISTER_REQUEST, REGISTER_FAILURE, REGISTER_SUCCESS, PERMIT_REQUEST, PERMIT_SUCCESS, PERMIT_FAILURE
+  REGISTER_REQUEST, REGISTER_FAILURE, REGISTER_SUCCESS, PERMIT_REQUEST, PERMIT_SUCCESS, PERMIT_FAILURE, UPDATE_REQUEST, UPDATE_FAILURE, UPDATE_SUCCESS 
 } from '../actions/actions'
 
 // The authentication reducer. The starting state sets authentication
@@ -55,8 +55,28 @@ function auth(state = { // This is our "default" state
         logError: false,
         isAuthenticated: false
       })
+   case UPDATE_REQUEST:
+    return Object.assign({}, state, {
+      isFetching: true,
+      isAuthenticated: true,
+      data: action.creds,
+    })
+    
+    case UPDATE_FAILURE:
+    return Object.assign({}, state, {
+      isFetching: false,
+      isAuthenticated: true,
+      errorMessage: action.message
+      })
+
+    case UPDATE_SUCCESS:
+    return Object.assign({}, state, {
+      isFetching: false,
+      user: action.user,
+      })
     default:
       return state
+
   }
 }
 

@@ -95,6 +95,7 @@ export function loginUser(creds) {
           // Dispatch the success action
           dispatch(refreshPage())
           dispatch(receiveLogin(user))
+
         }
       }).catch(err => console.log("Error: ", err))
   }
@@ -152,7 +153,7 @@ export function registerUser(creds) {
   }
 
   return dispatch => {
-    // We dispatch requestLogin to kickoff the call to the API
+    // We dispatch requestRegister to kickoff the call to the API
     dispatch(requestRegister(creds))
     console.log(config)
     return fetch(prodRoute + '/v1/users/', config)
@@ -167,7 +168,7 @@ export function registerUser(creds) {
           return Promise.reject(user)
         } else {
 
-          // If login was successful, set the token and user data in local storage
+          // If registration was successful, set the token and user data in local storage
           localStorage.setItem('id_token', user.token)
           localStorage.setItem('access_token', user.token)
           localStorage.setItem('user', JSON.stringify(user.user))
@@ -182,7 +183,7 @@ export function registerUser(creds) {
 // Creating permit
 // There are three possible states for our permit
 // process, and we need actions for each of them
-// The data returned is identical to login, so we can follow a similar process
+// The data returned is similar to login, so we can follow a similar process
 
 export const PERMIT_REQUEST = 'PERMIT_REQUEST'
 export const PERMIT_SUCCESS = 'PERMIT_SUCCESS'
@@ -240,7 +241,7 @@ export function createPermit(creds) {
           return Promise.reject(company)
         } 
 
-        // If permit creation was successful, set the token and company data in local storage
+        // If permit creation was successful, set the company data in local storage
         localStorage.setItem('company', JSON.stringify(company.company))
         // Dispatch the success action
         
@@ -309,6 +310,7 @@ function receiveUpdate(user) {
     isFetching: false,
     isAuthenticated: true,
     user
+    
   }
 }
 
@@ -328,12 +330,12 @@ export function updateUser(creds) {
     method: 'PUT',
     headers: { 'Content-Type':'application/x-www-form-urlencoded', 'Authorization': localStorage.getItem('access_token') },
     body: ("&email="+creds.email+"&address1="+creds.address+"&zip="+creds.zip+
-    "&state="+creds.state+"&city="+creds.city).replace(" ", "%20")
+    "&state="+creds.state+"&city="+creds.city+"&phone="+creds.phone).replace(" ", "%20")
   }
 
   return dispatch => {
     // We dispatch to kickoff the call to the API
-    dispatch(requestUpdate(creds))
+    dispatch(requestRegister(creds))
     console.log(config)
     return fetch(prodRoute + '/v1/users/', config)
       .then(response =>
@@ -346,10 +348,24 @@ export function updateUser(creds) {
           return Promise.reject(user)
         } 
 
-        // If permit creation was successful, set the token and company data in local storage
+        // If permit creation was successful, user data in local storage
         // Dispatch the success action
+
+        //issue with storing updated user information in local storage
+        user = JSON.parse(localStorage.getItem('user'))
+        user.zip = creds.zip
+        user.email = creds.email
+        user.address1 = creds.address
+        user.state = creds.state
+        user.city = creds.city
+        user.phone = creds.phone
         
+        console.log(user.state)
+        localStorage.setItem('user', JSON.stringify(user))
+        
+        dispatch(refreshPage())
         dispatch(receiveUpdate(user))
+
       }).catch(err => console.log("Error: ", err))
   }
 }
@@ -377,6 +393,16 @@ export function fetchCompany() {
       endpoint: 'companies',
       authenticated: true, // Protected call
       types: [PERMIT_REQUEST, PERMIT_SUCCESS, PERMIT_FAILURE]
+    }
+  }
+}
+
+export function fetchUpdate() {
+  return {
+    [CALL_API]: {
+      endpoint: 'users',
+      authenticated: true, // Protected call
+      types: [INFO_REQUEST, INFO_SUCCESS, INFO_FAILURE]
     }
   }
 }

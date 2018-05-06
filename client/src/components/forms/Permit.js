@@ -9,6 +9,7 @@ import {
 } from 'react-router-dom'
 import PropTypes from 'prop-types'; 
 import { createPermit } from '../../actions/actions';
+import Status from '../common/Status';
 
 
 /*
@@ -198,7 +199,7 @@ export default class Permit extends React.Component {
             </div>  
             <div class="m-v400 m-h200">
 
-            <input type="submit" className="btn" value="Submit"> 
+            <input type="submit" className="btn" value="Submit" onClick="/status"> 
            
             </input>
             
@@ -224,6 +225,8 @@ permitClick= function(e) {
     // Build our credentials to send to the backend
     const creds = { location: location.value.trim(), start: start.value.trim(), end: end.value.trim(), date: date.value.trim()}
     this.props.dispatch(createPermit(creds))
+
+    
     
  
   }

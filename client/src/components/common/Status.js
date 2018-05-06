@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types'; 
 import nl2br from 'react-newline-to-break';
+import { fetchCompany } from "../../actions/actions";
 
 
 /*
@@ -14,6 +15,14 @@ import nl2br from 'react-newline-to-break';
 class Status extends React.Component {
   
     // Render inline style attributes
+    componentWillMount() {
+        const { isAuthenticated, dispatch } = this.props
+        if(isAuthenticated){
+        dispatch(fetchCompany())
+        }
+      }
+
+
 
     render() {
 
@@ -396,7 +405,8 @@ class Status extends React.Component {
 }
 
 Status.propTypes = {
-    permit : PropTypes.object
+    permit : PropTypes.object,
+    dispatch: PropTypes.func.isRequired,
 }
 
 export default Status

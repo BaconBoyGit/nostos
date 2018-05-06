@@ -25,6 +25,7 @@ import Update from '../components/forms/ProfileUpdate';
 
 import { fetchUser } from '../actions/actions';
 import { fetchCompany } from '../actions/actions';
+import { fetchUpdate } from '../actions/actions';
 
 /*
    Used to create the routes for the different pages
@@ -36,12 +37,7 @@ import { fetchCompany } from '../actions/actions';
 
 class App extends Component {
 
-  componentWillMount() {
-    const { isAuthenticated, dispatch } = this.props
-    if(isAuthenticated){
-    dispatch(fetchCompany())
-    }
-  }
+
 
 
 
@@ -99,6 +95,7 @@ class App extends Component {
                     isAuthenticated={ isAuthenticated }
                     user = { user }
                     permit = { permit }
+                    dispatch = { dispatch }
                   />
                   : <Redirect to='/' />
                 } 
@@ -128,6 +125,8 @@ class App extends Component {
                   isAuthenticated={ isAuthenticated }
                   user = { user }
                   permit = {permit}
+                  fetchCompany = {fetchCompany}
+                  dispatch = {dispatch}
                 
                 />
                 : <Redirect to='/' />

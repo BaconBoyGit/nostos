@@ -7,6 +7,7 @@ import {
     Switch,
     Redirect
   } from 'react-router-dom'
+  import { fetchCompany, fetchUser } from "../../actions/actions";
 
 /*
    The profile page component
@@ -18,6 +19,15 @@ import {
 
 export default class Profile extends React.Component {
 
+    componentWillMount() {
+        const { isAuthenticated, dispatch } = this.props
+        if(isAuthenticated){
+        dispatch(fetchCompany())
+        dispatch(fetchUser())
+        }
+      }
+   
+   
     render() {
         
         const {  user, permit } = this.props
@@ -26,7 +36,7 @@ export default class Profile extends React.Component {
         const profileContainer = {
             position: 'relative',
             height: '400px',
-            marginBottom: '5%'
+            marginBottom: '10%'
         };
 
         // Center the content of the home body within its container
@@ -34,7 +44,7 @@ export default class Profile extends React.Component {
             textAlign: 'center',
             position: 'relative',
         }
-
+        console.log(user)
         return (
              <div className = 'profileContainer' style = { profileContainer }>              
                 <div className = "profileContent" style = { profileContent} >
@@ -69,5 +79,6 @@ export default class Profile extends React.Component {
   
 Profile.propTypes = {
     user: PropTypes.object,
+    dispatch: PropTypes.func
 
 }

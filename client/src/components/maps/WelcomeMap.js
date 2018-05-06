@@ -64,8 +64,7 @@ class Map extends React.Component {
     render() {
 
       const { isAuthenticated, user } = this.props
-      console.log(isAuthenticated)
-      console.log(user)
+
 
       // Define our styling for the map
       const mapStyle = {

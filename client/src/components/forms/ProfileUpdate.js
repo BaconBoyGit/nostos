@@ -7,7 +7,8 @@ import {
     Switch,
     Redirect
   } from 'react-router-dom'
-  import { updateUser } from '../../actions/actions';
+  import { updateUser, fetchUser } from '../../actions/actions';
+  import { fetchUpdate } from '../../actions/actions';
 
 /*
    The profile page component
@@ -17,17 +18,25 @@ import {
    Bradley Boutcher and Christine Frandsen 2018
 */
 
-export default class Profile extends React.Component {
+export default class ProfileUpdate extends React.Component {
 
+    componentWillMount() {
+        const { isAuthenticated, dispatch } = this.props
+        if(isAuthenticated){
+            dispatch(fetchUser())
+        }
+      }
+    
+    
     render() {
-        
+
         const {  user, permit } = this.props
 
         // Main container for our profile component
         const profileContainer = {
             position: 'relative',
             height: '400px',
-            marginBottom: '10%',
+            marginBottom: '15%',
             textAlign: 'center'
         };
 
@@ -37,30 +46,46 @@ export default class Profile extends React.Component {
             position: 'relative',
         }
 
+        const formAlign = {
+            marginLeft: '25%'
+        }
+        console.log(user)
         return (
              <div className = 'profileContainer' style = { profileContainer }>              
                 <div className = "profileContent" style = { profileContent} >
                     <div className="b">
                        { user && <div className="b-c">
+                       
                             <div className="h2 tt-u ta-c p-h300"> 
                                 { user.first } {user.last} 
                             </div>
                             <hr className="hr hr--sq m-h300 m-v500" />
-                            <div style={profileContainer}>
 
                             <form id="updateInfo" onSubmit={(event) => this.registerClick(event)} >
-                          
+                            <div style = {formAlign}>
                             < div className="ta-c p-h200 t--intro">
-                            <div className="txt g--6">
-                            <input ref="email" id="email" type="text" className="txt-f txt-f--sm txt-f txt-f--sm--sm" defaultValue={user.email} />
+                            <div className="fs-c fs-c--i m-b300">
+                            <div className="txt g--7">
+                            <input ref="email" id="email" type="text" className="txt-f txt-f--sm txt-f txt-f--sm--sm" defaultValue={user.email} placeholder="Email" />
                             </div>
-                            <div className="txt g--6">
-                            <input ref="address" id="address" type="text" className="txt-f txt-f--sm txt-f txt-f--sm--sm" defaultValue={user.address1}/>
                             </div>
-                            <div className="txt g--6">
-                            <input ref="city" id="city" type="text"  className="txt-f txt-f--sm txt-f txt-f--sm--sm" defaultValue={user.city}/>
+                            <div className="fs-c fs-c--i m-b300">
+                            <div className="txt g--7">
+                            <input ref="phone" id="phone" type="text"  className="txt-f txt-f--sm txt-f txt-f--sm--sm" defaultValue={user.phone} placeholder="Phone number"/>
                             </div>
-                            <div className="txt g--6">
+                            </div>
+                            <div className="fs-c fs-c--i m-b300">
+                            <div className="txt g--7">
+                            <input ref="address" id="address" type="text" className="txt-f txt-f--sm txt-f txt-f--sm--sm" defaultValue={user.address1} placeholder="Address"/>
+                            </div>
+                            </div>
+                            <div className="fs-c fs-c--i m-b300">
+                            <div className="txt g--7">
+                            <input ref="city" id="city" type="text"  className="txt-f txt-f--sm txt-f txt-f--sm--sm" defaultValue={user.city} placeholder="City"/>
+                            </div>
+                            </div>
+                            <div className="fs-c fs-c--i m-b300">
+                            <div className="txt g--7">
 							<div className="sel-c sel-c--fw">
 								<select name="language" ref="state" className="sel-f" defaultValue={user.state}>
 									<option value="AL">Alabama</option>
@@ -119,21 +144,23 @@ export default class Profile extends React.Component {
 									<option value="UVI">U.S. Virgin Islands</option>
 								</select>
 						    </div>
+                            </div>
 					    </div>
-                        <div className="txt g--6">
-                            <input ref="zip" id="zip" type="text"  className="txt-f txt-f--sm txt-f txt-f--sm--sm" defaultValue={user.zip}/>
+                        <div className="fs-c fs-c--i m-b300">
+                            <div className="txt g--7">
+                            <input ref="zip" id="zip" type="text"  className="txt-f txt-f--sm txt-f txt-f--sm--sm" defaultValue={user.zip} placeholder="Zip code"/>
                             </div>
+                        </div>   
                            
-                            </div>
+                       </div>
+                       </div>
                             <div className="m-v400 m-h200">
                             <input type="submit" className="btn" value="Update"/>
                             </div>
+                       
 
                             </form>
                             </div>
-                     
-                            
-                        </div>
                         
                        }
                     </div>
@@ -149,24 +176,22 @@ export default class Profile extends React.Component {
 		// Pull all of our references from the fulled out form
 
 		const email = this.refs.email
-		//const phone = this.refs.phone
 		const address = this.refs.address
 		const city = this.refs.city
 		const state = this.refs.state
         const zip = this.refs.zip
-        
-        console.log(email.value)
+        const phone = this.refs.phone
 
 		// Build our credentials to send to the backend
-		const creds = {  email: email.value.trim(), 
+		const creds = {  email: email.value.trim(), phone: phone.value.trim(), 
                          address: address.value.trim(), city: city.value.trim(), 
                          state: state.value.trim(), zip: zip.value.trim()}
 
-		this.props.dispatch(updateUser(creds))
+        this.props.dispatch(updateUser(creds))
 	  }
 }
   
-Profile.propTypes = {
+ProfileUpdate.propTypes = {
     user: PropTypes.object,
     dispatch: PropTypes.func.isRequired,
 	errorMessage: PropTypes.string
