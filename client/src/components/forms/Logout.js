@@ -4,8 +4,10 @@ import PropTypes from 'prop-types'
 
 /*
   The Logout component
+
   Handles logging the user out of the system
   Bradley Boutcher and Christine Frandsen, 2018
+
 */
 
 export default class Logout extends Component {

@@ -36,6 +36,15 @@ import { fetchUpdate } from '../actions/actions';
 */
 
 
+/*
+  The App component is the main component mounted at the first loading of the page
+  
+  This handles the passing of props to all child components, as well as 
+  establishing routes to other components
+
+  Created by Bradley Boutcher and Christine Frandsen, 2018
+*/
+
 class App extends Component {
 
   render() {
@@ -59,6 +68,7 @@ class App extends Component {
                 dispatch={dispatch}
                 user = {user}
                 logError={logError}
+
             />
             
             { errorMessage &&  alert( errorMessage ) }
@@ -156,6 +166,7 @@ App.propTypes = {
   errorMessage: PropTypes.string,
   logError: PropTypes.bool,
 }
+
 
 // These props come from the application's
 // state when it is started

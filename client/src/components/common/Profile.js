@@ -11,6 +11,7 @@ import {
 
 /*
    The profile page component
+   
    loaded for authenticated users, containing their information
    Makes use of boston.gov stylings to introduce the user to the site
    

@@ -1,7 +1,7 @@
 const User          = require('../models').User;
 const authService   = require('./../services/AuthService');
 
-// Here we define our various controller methods for the user model
+// Here we define our various helper methods for the user model
 
 // Create a new user in the database
 const create = async function(req, res){

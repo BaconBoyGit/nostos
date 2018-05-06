@@ -4,10 +4,14 @@ import { Link } from 'react-router-dom'
 
 /*
   The Login component
+
+
   This handles interaction with the back end in the form of sending
   user credentials and receiving authentication, making use of 
   appropriate actions and reducers
+
   Bradley Boutcher and Christine Frandsen, 2018
+
 */
 
 export default class Login extends Component {

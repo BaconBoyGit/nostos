@@ -32,6 +32,7 @@ export default class Header extends Component {
     }
 
     render() {
+      
         const { dispatch, isAuthenticated, errorMessage, user, logError } = this.props;
 
         // Move the logo slightly away from the wall
@@ -73,11 +74,13 @@ export default class Header extends Component {
                         { isAuthenticated &&  // If authenticated, display different header
                         <nav className="nv-h-l">
                             <Link to="/profile" >
+
                             {user&&
-                                <div className ="nv-h-l-a"> 
-                                {user.first} {user.last}
+                                <div className ="nv-h-l-a" onClick = { this.refreshPage }> 
+                                {user.first} 
                                 </div> 
                             }
+
                             </Link>
                             <Link to="/status" onClick = { this.refreshPage } className="nv-h-l-a nv-h-l-a--k--s tr-link" > Status </Link>
                             <Link to="/permit" onClick = { this.refreshPage } className="nv-h-l-a nv-h-l-a--k--s tr-link"> New Permit </Link>
@@ -99,8 +102,9 @@ export default class Header extends Component {
 
 Header.propTypes = {
     dispatch: PropTypes.func.isRequired,
-   
+    isAuthenticated: PropTypes.bool,
     errorMessage: PropTypes.string,
     user: PropTypes.object,
     logError: PropTypes.bool,
+
 }

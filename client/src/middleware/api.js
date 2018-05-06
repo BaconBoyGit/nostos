@@ -1,14 +1,17 @@
 /*
-Establish API communication using middleware
+  This middleware handles requests to external endpoints
+
+  Created by Bradley Boutcher, 2018
 */
 
 import {react} from 'react'
 
+// Change this depending on the location your server is running
 const BASE_URL = 'http://localhost:5000/v1/'
 
-// This is a basic function which makes calls to the specified endpoint 
 function callApi(endpoint, authenticated) {
 
+    // Retreive our token to determine if it exists
     let token = localStorage.getItem('access_token') || null
     let config = {}
   
@@ -22,7 +25,8 @@ function callApi(endpoint, authenticated) {
         throw "No token saved!"
       }
     }
-  
+    
+    // Fetch and return reponse data
     return fetch(BASE_URL + endpoint, config)
       .then(response =>
         response.json().then(text => ({ text, response }))
@@ -31,13 +35,14 @@ function callApi(endpoint, authenticated) {
           return Promise.reject(text)
           localStorage.setItem(endpoint, JSON.stringify(response))
         }
-  
+        
         return text
       }).catch(err => console.log(err))
   }
   
   export const CALL_API = Symbol('Call_API')
   
+  // We bind the function to our store and actions
   export default store => next => action => {
   
     const callAPI = action[CALL_API]
@@ -51,8 +56,6 @@ function callApi(endpoint, authenticated) {
   
     const [ requestType, successType, errorType ] = types
   
-    // Passing the authenticated boolean back in our data will 
-    // let us distinguish between normal and secret info
     return callApi(endpoint, authenticated).then(
       response =>
         next(
