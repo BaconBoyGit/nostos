@@ -360,7 +360,6 @@ export function updateUser(creds) {
         user.city = creds.city
         user.phone = creds.phone
         
-        console.log(user.state)
         localStorage.setItem('user', JSON.stringify(user))
         
         dispatch(refreshPage())

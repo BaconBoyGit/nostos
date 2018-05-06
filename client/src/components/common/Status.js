@@ -153,6 +153,213 @@ class Status extends React.Component {
 
                 }
             }
+    
+    var permits = ''
+    if(permit && permit.companies)
+      {
+      permits = <tbody>
+      { permit.companies[0] &&
+        <tr> 
+              <td data-label='Date Applied'> {permit.companies[0].date} </td> 
+              <td data-label='Start Time'>  {permit.companies[0].start} </td>
+              <td data-label='End Time'> {permit.companies[0].end} </td>
+              <td data-label='Address'> {permit.companies[0].location}</td>
+       
+              {permit.companies[0].isPending==1 &&
+              <td data-label='Status'> Pending</td>
+              }
+              
+              {permit.companies[0].isApproved==1 &&
+              <td data-label='Status'> {permit && permit.companies && 'Approved'}</td>
+              }
+              
+              {permit.companies[0].isDenied==1 &&
+              <td data-label='Status'> {permit && permit.companies && 'Denied'}</td>
+              }
+        </tr>
+      }
+      {permit.companies[1] &&
+        <tr> 
+              <td data-label='Date Applied'> {permit.companies[1].date} </td> 
+              <td data-label='Start Time'>  {permit.companies[1].start} </td>
+              <td data-label='End Time'> {permit.companies[1].end} </td>
+              <td data-label='Address'> {permit.companies[1].location}</td>
+       
+              {permit.companies[1].isPending==1 &&
+              <td data-label='Status'> Pending</td>
+              }
+              
+              {permit.companies[1].isApproved==1 &&
+              <td data-label='Status'> {permit && permit.companies && 'Approved'}</td>
+              }
+              
+              {permit.companies[1].isDenied==1 &&
+              <td data-label='Status'> {permit && permit.companies && 'Denied'}</td>
+              }
+        </tr>
+      }
+      {permit.companies[2] &&
+        <tr> 
+              <td data-label='Date Applied'> {permit.companies[2].date} </td> 
+              <td data-label='Start Time'>  {permit.companies[2].start} </td>
+              <td data-label='End Time'> {permit.companies[2].end} </td>
+              <td data-label='Address'> {permit.companies[2].location}</td>
+       
+              {permit.companies[2].isPending==1 &&
+              <td data-label='Status'> Pending</td>
+              }
+              
+              {permit.companies[2].isApproved==1 &&
+              <td data-label='Status'> {permit && permit.companies && 'Approved'}</td>
+              }
+              
+              {permit.companies[2].isDenied==1 &&
+              <td data-label='Status'> {permit && permit.companies && 'Denied'}</td>
+              }
+        </tr>
+      }
+      {permit.companies[3] &&
+        <tr> 
+              <td data-label='Date Applied'> {permit.companies[3].date} </td> 
+              <td data-label='Start Time'>  {permit.companies[3].start} </td>
+              <td data-label='End Time'> {permit.companies[3].end} </td>
+              <td data-label='Address'> {permit.companies[3].location}</td>
+       
+              {permit.companies[3].isPending==1 &&
+              <td data-label='Status'> Pending</td>
+              }
+              
+              {permit.companies[3].isApproved==1 &&
+              <td data-label='Status'> {permit && permit.companies && 'Approved'}</td>
+              }
+              
+              {permit.companies[0].isDenied==1 &&
+              <td data-label='Status'> {permit && permit.companies && 'Denied'}</td>
+              }
+        </tr>
+      }
+      {permit.companies[4] &&
+        <tr> 
+              <td data-label='Date Applied'> {permit.companies[4].date} </td> 
+              <td data-label='Start Time'>  {permit.companies[4].start} </td>
+              <td data-label='End Time'> {permit.companies[4].end} </td>
+              <td data-label='Address'> {permit.companies[4].location}</td>
+       
+              {permit.companies[4].isPending==1 &&
+              <td data-label='Status'> Pending</td>
+              }
+              
+              {permit.companies[4].isApproved==1 &&
+              <td data-label='Status'> {permit && permit.companies && 'Approved'}</td>
+              }
+              
+              {permit.companies[4].isDenied==1 &&
+              <td data-label='Status'> {permit && permit.companies && 'Denied'}</td>
+              }
+        </tr>
+      }
+      {permit.companies[5] &&
+        <tr> 
+              <td data-label='Date Applied'> {permit.companies[5].date} </td> 
+              <td data-label='Start Time'>  {permit.companies[5].start} </td>
+              <td data-label='End Time'> {permit.companies[5].end} </td>
+              <td data-label='Address'> {permit.companies[5].location}</td>
+       
+              {permit.companies[5].isPending==1 &&
+              <td data-label='Status'> Pending</td>
+              }
+              
+              {permit.companies[5].isApproved==1 &&
+              <td data-label='Status'> {permit && permit.companies && 'Approved'}</td>
+              }
+              
+              {permit.companies[5].isDenied==1 &&
+              <td data-label='Status'> {permit && permit.companies && 'Denied'}</td>
+              }
+        </tr>
+      }
+      {permit.companies[6] &&
+        <tr> 
+              <td data-label='Date Applied'> {permit.companies[6].date} </td> 
+              <td data-label='Start Time'>  {permit.companies[6].start} </td>
+              <td data-label='End Time'> {permit.companies[6].end} </td>
+              <td data-label='Address'> {permit.companies[6].location}</td>
+       
+              {permit.companies[6].isPending==1 &&
+              <td data-label='Status'> Pending</td>
+              }
+              
+              {permit.companies[6].isApproved==1 &&
+              <td data-label='Status'> {permit && permit.companies && 'Approved'}</td>
+              }
+              
+              {permit.companies[6].isDenied==1 &&
+              <td data-label='Status'> {permit && permit.companies && 'Denied'}</td>
+              }
+        </tr>
+      }
+      {permit.companies[7] &&
+        <tr> 
+              <td data-label='Date Applied'> {permit.companies[7].date} </td> 
+              <td data-label='Start Time'>  {permit.companies[7].start} </td>
+              <td data-label='End Time'> {permit.companies[7].end} </td>
+              <td data-label='Address'> {permit.companies[7].location}</td>
+       
+              {permit.companies[7].isPending==1 &&
+              <td data-label='Status'> Pending</td>
+              }
+              
+              {permit.companies[7].isApproved==1 &&
+              <td data-label='Status'> {permit && permit.companies && 'Approved'}</td>
+              }
+              
+              {permit.companies[7].isDenied==1 &&
+              <td data-label='Status'> {permit && permit.companies && 'Denied'}</td>
+              }
+        </tr>
+      }
+      {permit.companies[8] &&
+        <tr> 
+              <td data-label='Date Applied'> {permit.companies[8].date} </td> 
+              <td data-label='Start Time'>  {permit.companies[8].start} </td>
+              <td data-label='End Time'> {permit.companies[8].end} </td>
+              <td data-label='Address'> {permit.companies[8].location}</td>
+       
+              {permit.companies[8].isPending==1 &&
+              <td data-label='Status'> Pending</td>
+              }
+              
+              {permit.companies[8].isApproved==1 &&
+              <td data-label='Status'> {permit && permit.companies && 'Approved'}</td>
+              }
+              
+              {permit.companies[8].isDenied==1 &&
+              <td data-label='Status'> {permit && permit.companies && 'Denied'}</td>
+              }
+        </tr>
+      }
+      {permit.companies[9] &&
+        <tr> 
+              <td data-label='Date Applied'> {permit.companies[9].date} </td> 
+              <td data-label='Start Time'>  {permit.companies[9].start} </td>
+              <td data-label='End Time'> {permit.companies[9].end} </td>
+              <td data-label='Address'> {permit.companies[9].location}</td>
+       
+              {permit.companies[9].isPending==1 &&
+              <td data-label='Status'> Pending</td>
+              }
+              
+              {permit.companies[9].isApproved==1 &&
+              <td data-label='Status'> {permit && permit.companies && 'Approved'}</td>
+              }
+              
+              {permit.companies[9].isDenied==1 &&
+              <td data-label='Status'> {permit && permit.companies && 'Denied'}</td>
+              }
+        </tr>
+      }
+      </tbody>      
+      }
             
        
       return (
@@ -183,208 +390,8 @@ class Status extends React.Component {
                                         <th>Status</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                { permit.companies[0] &&
-                                  <tr> 
-                                        <td data-label='Date Applied'> {permit.companies[0].date} </td> 
-                                        <td data-label='Start Time'>  {permit.companies[0].start} </td>
-                                        <td data-label='End Time'> {permit.companies[0].end} </td>
-                                        <td data-label='Address'> {permit.companies[0].location}</td>
-                                 
-                                        {permit.companies[0].isPending==1 &&
-                                        <td data-label='Status'> Pending</td>
-                                        }
-                                        
-                                        {permit.companies[0].isApproved==1 &&
-                                        <td data-label='Status'> {permit && permit.companies && 'Approved'}</td>
-                                        }
-                                        
-                                        {permit.companies[0].isDenied==1 &&
-                                        <td data-label='Status'> {permit && permit.companies && 'Denied'}</td>
-                                        }
-                                  </tr>
-                                }
-                                {permit.companies[1] &&
-                                  <tr> 
-                                        <td data-label='Date Applied'> {permit.companies[1].date} </td> 
-                                        <td data-label='Start Time'>  {permit.companies[1].start} </td>
-                                        <td data-label='End Time'> {permit.companies[1].end} </td>
-                                        <td data-label='Address'> {permit.companies[1].location}</td>
-                                 
-                                        {permit.companies[1].isPending==1 &&
-                                        <td data-label='Status'> Pending</td>
-                                        }
-                                        
-                                        {permit.companies[1].isApproved==1 &&
-                                        <td data-label='Status'> {permit && permit.companies && 'Approved'}</td>
-                                        }
-                                        
-                                        {permit.companies[1].isDenied==1 &&
-                                        <td data-label='Status'> {permit && permit.companies && 'Denied'}</td>
-                                        }
-                                  </tr>
-                                }
-                                {permit.companies[2] &&
-                                  <tr> 
-                                        <td data-label='Date Applied'> {permit.companies[2].date} </td> 
-                                        <td data-label='Start Time'>  {permit.companies[2].start} </td>
-                                        <td data-label='End Time'> {permit.companies[2].end} </td>
-                                        <td data-label='Address'> {permit.companies[2].location}</td>
-                                 
-                                        {permit.companies[2].isPending==1 &&
-                                        <td data-label='Status'> Pending</td>
-                                        }
-                                        
-                                        {permit.companies[2].isApproved==1 &&
-                                        <td data-label='Status'> {permit && permit.companies && 'Approved'}</td>
-                                        }
-                                        
-                                        {permit.companies[2].isDenied==1 &&
-                                        <td data-label='Status'> {permit && permit.companies && 'Denied'}</td>
-                                        }
-                                  </tr>
-                                }
-                                {permit.companies[3] &&
-                                  <tr> 
-                                        <td data-label='Date Applied'> {permit.companies[3].date} </td> 
-                                        <td data-label='Start Time'>  {permit.companies[3].start} </td>
-                                        <td data-label='End Time'> {permit.companies[3].end} </td>
-                                        <td data-label='Address'> {permit.companies[3].location}</td>
-                                 
-                                        {permit.companies[3].isPending==1 &&
-                                        <td data-label='Status'> Pending</td>
-                                        }
-                                        
-                                        {permit.companies[3].isApproved==1 &&
-                                        <td data-label='Status'> {permit && permit.companies && 'Approved'}</td>
-                                        }
-                                        
-                                        {permit.companies[0].isDenied==1 &&
-                                        <td data-label='Status'> {permit && permit.companies && 'Denied'}</td>
-                                        }
-                                  </tr>
-                                }
-                                {permit.companies[4] &&
-                                  <tr> 
-                                        <td data-label='Date Applied'> {permit.companies[4].date} </td> 
-                                        <td data-label='Start Time'>  {permit.companies[4].start} </td>
-                                        <td data-label='End Time'> {permit.companies[4].end} </td>
-                                        <td data-label='Address'> {permit.companies[4].location}</td>
-                                 
-                                        {permit.companies[4].isPending==1 &&
-                                        <td data-label='Status'> Pending</td>
-                                        }
-                                        
-                                        {permit.companies[4].isApproved==1 &&
-                                        <td data-label='Status'> {permit && permit.companies && 'Approved'}</td>
-                                        }
-                                        
-                                        {permit.companies[4].isDenied==1 &&
-                                        <td data-label='Status'> {permit && permit.companies && 'Denied'}</td>
-                                        }
-                                  </tr>
-                                }
-                                {permit.companies[5] &&
-                                  <tr> 
-                                        <td data-label='Date Applied'> {permit.companies[5].date} </td> 
-                                        <td data-label='Start Time'>  {permit.companies[5].start} </td>
-                                        <td data-label='End Time'> {permit.companies[5].end} </td>
-                                        <td data-label='Address'> {permit.companies[5].location}</td>
-                                 
-                                        {permit.companies[5].isPending==1 &&
-                                        <td data-label='Status'> Pending</td>
-                                        }
-                                        
-                                        {permit.companies[5].isApproved==1 &&
-                                        <td data-label='Status'> {permit && permit.companies && 'Approved'}</td>
-                                        }
-                                        
-                                        {permit.companies[5].isDenied==1 &&
-                                        <td data-label='Status'> {permit && permit.companies && 'Denied'}</td>
-                                        }
-                                  </tr>
-                                }
-                                {permit.companies[6] &&
-                                  <tr> 
-                                        <td data-label='Date Applied'> {permit.companies[6].date} </td> 
-                                        <td data-label='Start Time'>  {permit.companies[6].start} </td>
-                                        <td data-label='End Time'> {permit.companies[6].end} </td>
-                                        <td data-label='Address'> {permit.companies[6].location}</td>
-                                 
-                                        {permit.companies[6].isPending==1 &&
-                                        <td data-label='Status'> Pending</td>
-                                        }
-                                        
-                                        {permit.companies[6].isApproved==1 &&
-                                        <td data-label='Status'> {permit && permit.companies && 'Approved'}</td>
-                                        }
-                                        
-                                        {permit.companies[6].isDenied==1 &&
-                                        <td data-label='Status'> {permit && permit.companies && 'Denied'}</td>
-                                        }
-                                  </tr>
-                                }
-                                {permit.companies[7] &&
-                                  <tr> 
-                                        <td data-label='Date Applied'> {permit.companies[7].date} </td> 
-                                        <td data-label='Start Time'>  {permit.companies[7].start} </td>
-                                        <td data-label='End Time'> {permit.companies[7].end} </td>
-                                        <td data-label='Address'> {permit.companies[7].location}</td>
-                                 
-                                        {permit.companies[7].isPending==1 &&
-                                        <td data-label='Status'> Pending</td>
-                                        }
-                                        
-                                        {permit.companies[7].isApproved==1 &&
-                                        <td data-label='Status'> {permit && permit.companies && 'Approved'}</td>
-                                        }
-                                        
-                                        {permit.companies[7].isDenied==1 &&
-                                        <td data-label='Status'> {permit && permit.companies && 'Denied'}</td>
-                                        }
-                                  </tr>
-                                }
-                                {permit.companies[8] &&
-                                  <tr> 
-                                        <td data-label='Date Applied'> {permit.companies[8].date} </td> 
-                                        <td data-label='Start Time'>  {permit.companies[8].start} </td>
-                                        <td data-label='End Time'> {permit.companies[8].end} </td>
-                                        <td data-label='Address'> {permit.companies[8].location}</td>
-                                 
-                                        {permit.companies[8].isPending==1 &&
-                                        <td data-label='Status'> Pending</td>
-                                        }
-                                        
-                                        {permit.companies[8].isApproved==1 &&
-                                        <td data-label='Status'> {permit && permit.companies && 'Approved'}</td>
-                                        }
-                                        
-                                        {permit.companies[8].isDenied==1 &&
-                                        <td data-label='Status'> {permit && permit.companies && 'Denied'}</td>
-                                        }
-                                  </tr>
-                                }
-                                {permit.companies[9] &&
-                                  <tr> 
-                                        <td data-label='Date Applied'> {permit.companies[9].date} </td> 
-                                        <td data-label='Start Time'>  {permit.companies[9].start} </td>
-                                        <td data-label='End Time'> {permit.companies[9].end} </td>
-                                        <td data-label='Address'> {permit.companies[9].location}</td>
-                                 
-                                        {permit.companies[9].isPending==1 &&
-                                        <td data-label='Status'> Pending</td>
-                                        }
-                                        
-                                        {permit.companies[9].isApproved==1 &&
-                                        <td data-label='Status'> {permit && permit.companies && 'Approved'}</td>
-                                        }
-                                        
-                                        {permit.companies[9].isDenied==1 &&
-                                        <td data-label='Status'> {permit && permit.companies && 'Denied'}</td>
-                                        }
-                                  </tr>
-                                }
-                                </tbody>
+                                
+                                {permits}
                                 
                                 </table>
                                 </div>

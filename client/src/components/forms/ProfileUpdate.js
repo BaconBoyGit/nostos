@@ -37,7 +37,7 @@ export default class ProfileUpdate extends React.Component {
             position: 'relative',
             height: '400px',
             marginBottom: '15%',
-            textAlign: 'center'
+            textAlign: 'center',
         };
 
         // Center the content of the home body within its container
