@@ -1,15 +1,17 @@
-import React from "react";
+import React, { Component } from "react";
 import {
-
+  BrowserRouter as Router,
+  Route,
   Link,
-
+  Switch,
+  Redirect
 } from "react-router-dom";
-import {PropTypes} from 'prop-types'; 
+import PropTypes from 'prop-types'; 
 
 import { loginUser, logoutUser } from "../../actions/actions";
+import Register from "../forms/Register";
 import Logout from "../forms/Logout"
 import Login from "../forms/Login"
-
 
 var blogo = require("../images/logo.svg");
 var bseal = require("../images/seal.svg");
@@ -17,10 +19,12 @@ var bseal = require("../images/seal.svg");
 
 /*
    The header component, present on all pages for the Nostos site
+   The header is responsible for containing navigation and login/logout
+   
    Bradley Boutcher and Christine Frandsen 2018
 */
 
-export default class Header extends React.Component {
+export default class Header extends Component {
 
     // We want to manually refresh the dom after updating our props
     refreshPage() {
@@ -28,20 +32,18 @@ export default class Header extends React.Component {
     }
 
     render() {
-        const { dispatch, isAuthenticated, user, errorMessage, logError } = this.props
-       
+        const { dispatch, isAuthenticated, errorMessage, user, logError } = this.props;
 
         // Move the logo slightly away from the wall
         const logoStyle = {
         marginLeft: "10px"
         };
- 
+      
         return (
-            
             <div className="mn">
                 <header className="h" role="banner">
                     <nav className="lo">
-                        <Link to="/" className="lo-l" onClick={this.refreshPage}>
+                        <Link to="/" className="lo-l">
                             <img
                             style={logoStyle}
                             src={blogo}
@@ -63,7 +65,7 @@ export default class Header extends React.Component {
                                 errorMessage={errorMessage}
                                 onLoginClick={ creds => dispatch(loginUser(creds)) }
                                 style={{ marginLeft: "10px" }}
-                                logError = {logError}                   
+                                logError = {logError}
                             />
     
                         }

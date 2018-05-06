@@ -28,18 +28,15 @@ import { fetchCompany } from '../actions/actions';
 import { fetchUpdate } from '../actions/actions';
 
 /*
-   Used to create the routes for the different pages
-   as well as set up the general structure 
-   
-   Bradley Boutcher and Christine Frandsen 2018
+  The App component is the main component mounted at the first loading of the page
+  
+  This handles the passing of props to all child components, as well as 
+  establishing routes to other components
+  Created by Bradley Boutcher and Christine Frandsen, 2018
 */
 
 
 class App extends Component {
-
-
-
-
 
   render() {
     

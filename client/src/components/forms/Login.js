@@ -2,14 +2,12 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
-
-
 /*
-   The login form
-   This is located in the header, allows users to login into their account, 
-   regardless of what page they are on
-   
-   Bradley Boutcher and Christine Frandsen 2018
+  The Login component
+  This handles interaction with the back end in the form of sending
+  user credentials and receiving authentication, making use of 
+  appropriate actions and reducers
+  Bradley Boutcher and Christine Frandsen, 2018
 */
 
 export default class Login extends Component {

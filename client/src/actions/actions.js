@@ -1,10 +1,13 @@
 /*
+The Actions file, using React Redux practices to handle changing states
 The actions that we need in our case are all going to be asynchronous 
 because we are calling an API. To handle the async calls, 
 we need a setup that has actions which cover the three possible states that exist:
 A request was sent
 A request successful
 A request failed
+Created by Bradley Boutcher, 2018
+Modified by Christine Frandsen, 2018
 */
 
 import { CALL_API } from '../middleware/api'
@@ -14,7 +17,6 @@ import { CALL_API } from '../middleware/api'
 
 //const prodRoute = "http://btboutcher.com:5000"
 const prodRoute = "http://localhost:5000"
-
 
 // There are three possible states for our login
 // process, and we need actions for each of them
@@ -42,8 +44,7 @@ function receiveLogin(user) {
     isFetching: false,
     isAuthenticated: true,
     logError: false,
-    user,
-    
+    user
   }
 }
 
@@ -62,17 +63,16 @@ function loginError(message) {
 
 export function loginUser(creds) {
 
-
   let config = {
     method: 'POST',
     headers: { 'Content-Type':'application/x-www-form-urlencoded' },
     body: `email=${creds.username}&password=${creds.password}`
   }
-
+  
   return dispatch => {
     // We dispatch requestLogin to kickoff the call to the API
     dispatch(requestLogin(creds))
-
+  
     return fetch(prodRoute + '/v1/users/login', config)
       .then(response =>
         response.json().then(user => ({ user, response }))
@@ -90,12 +90,10 @@ export function loginUser(creds) {
           localStorage.setItem('access_token', user.token)
           localStorage.setItem('user', JSON.stringify(user.user))
 
-       
-          
-          // Dispatch the success action
+          // Dispatch refeshPage to display name in header immediately
           dispatch(refreshPage())
+          // Dispatch the success action
           dispatch(receiveLogin(user))
-
         }
       }).catch(err => console.log("Error: ", err))
   }
@@ -142,7 +140,6 @@ function registerError(message) {
 
 // To register a user, we can use the same POST method as logging in
 export function registerUser(creds) {
-
   let config = {
     method: 'POST',
     headers: { 'Content-Type':'application/x-www-form-urlencoded' },
@@ -172,6 +169,7 @@ export function registerUser(creds) {
           localStorage.setItem('id_token', user.token)
           localStorage.setItem('access_token', user.token)
           localStorage.setItem('user', JSON.stringify(user.user))
+          
           dispatch(refreshPage())
           // Dispatch the success action
           dispatch(receiveLogin(user))
@@ -250,6 +248,7 @@ export function createPermit(creds) {
   }
 }
 
+
 // Three possible states for our logout process as well.
 // Since we are using JWTs, we just need to remove the token
 // from localStorage. These actions are more useful if we
@@ -285,11 +284,10 @@ export function logoutUser() {
   }
 }
 
-
-// Creating permit
-// There are three possible states for our permit
-// process, and we need actions for each of them
-// The data returned is identical to login, so we can follow a similar process
+// Updating user information
+// There are three possible states when updating information,
+// and we need actions for each of them
+// The data returned is similar to login, so we can follow a similar process
 
 export const UPDATE_REQUEST = 'UPDATE_REQUEST'
 export const UPDATE_SUCCESS = 'UPDATE_SUCCESS'
@@ -348,10 +346,9 @@ export function updateUser(creds) {
           return Promise.reject(user)
         } 
 
-        // If permit creation was successful, user data in local storage
+        // If update was successful, 
         // Dispatch the success action
 
-        //issue with storing updated user information in local storage
         user = JSON.parse(localStorage.getItem('user'))
         user.zip = creds.zip
         user.email = creds.email
@@ -384,7 +381,6 @@ export function fetchUser() {
     }
   }
 }
-
 // Uses the api middleware to get the permit info
 export function fetchCompany() {
   return {
@@ -395,7 +391,7 @@ export function fetchCompany() {
     }
   }
 }
-
+//Uses the api middleware to get updated user info
 export function fetchUpdate() {
   return {
     [CALL_API]: {
