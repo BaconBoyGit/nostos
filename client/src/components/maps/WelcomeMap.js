@@ -16,7 +16,7 @@ import {
 *   Bradley Boutcher 2018
 */
 
-class Map extends React.Component {
+export default class Map extends React.Component {
 
   // Set default map attributes on construction
     constructor(props){
@@ -107,4 +107,3 @@ class Map extends React.Component {
     }
   }
   
-export default Map  
