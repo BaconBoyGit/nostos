@@ -5,7 +5,8 @@ import {
     Route,
     Link,
     Switch,
-    Redirect
+    Redirect,
+    withRouter
   } from 'react-router-dom'
   import { updateUser, fetchUser } from '../../actions/actions';
   import { fetchUpdate } from '../../actions/actions';
@@ -18,7 +19,7 @@ import {
    Bradley Boutcher and Christine Frandsen 2018
 */
 
-export default class ProfileUpdate extends React.Component {
+ class ProfileUpdate extends React.Component {
 
     componentWillMount() {
         const { isAuthenticated, dispatch } = this.props
@@ -188,6 +189,7 @@ export default class ProfileUpdate extends React.Component {
                          state: state.value.trim(), zip: zip.value.trim()}
 
         this.props.dispatch(updateUser(creds))
+        this.props.history.push('/profile');
 	  }
 }
   
@@ -197,3 +199,4 @@ ProfileUpdate.propTypes = {
 	errorMessage: PropTypes.string
 
 }
+export default withRouter(ProfileUpdate)

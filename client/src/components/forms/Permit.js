@@ -5,11 +5,12 @@ import {
   Route,
   Link,
   Switch,
-  Redirect
+  Redirect,
+  withRouter
 } from 'react-router-dom'
 import PropTypes from 'prop-types'; 
 import { createPermit } from '../../actions/actions';
-
+import { createHashHistory } from 'history'
 
 
 /*
@@ -21,7 +22,8 @@ import { createPermit } from '../../actions/actions';
 
 const showError = false;
 
-export default class Permit extends React.Component {
+
+class Permit extends React.Component {
 
     refreshPage() {
         window.location.reload()
@@ -226,7 +228,7 @@ permitClick= function(e) {
     const creds = { location: location.value.trim(), start: start.value.trim(), end: end.value.trim(), date: date.value.trim()}
     this.props.dispatch(createPermit(creds))
 
-    
+    this.props.history.push('/status')
     
  
   }
@@ -238,3 +240,5 @@ Permit.propTypes = {
     errorMessage: PropTypes.string,
     permit : PropTypes.object,
 }
+
+export default withRouter(Permit)

@@ -244,8 +244,8 @@ export function createPermit(creds) {
 
         // If permit creation was successful, set the company data in local storage
         localStorage.setItem('company', JSON.stringify(company.company))
-        // Dispatch the success action
-        
+        dispatch(refreshPage())
+        // Dispatch the success action 
         dispatch(receivePermit(company))
       }).catch(err => console.log("Error: ", err))
   }
@@ -336,7 +336,7 @@ export function updateUser(creds) {
 
   return dispatch => {
     // We dispatch to kickoff the call to the API
-    dispatch(requestRegister(creds))
+    dispatch(requestUpdate(creds))
     console.log(config)
     return fetch(prodRoute + '/v1/users/', config)
       .then(response =>

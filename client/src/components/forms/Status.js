@@ -22,8 +22,6 @@ class Status extends React.Component {
         }
       }
 
-
-
     render() {
 
         const { user, permit } = this.props
@@ -68,67 +66,13 @@ class Status extends React.Component {
             }
         }
 
-      /*  var test = 
-            <tbody>
-                
-                <tr> 
-                
-                <td data-label='Date Applied'> {permit && permit.companies && permit.companies[0].date} </td> 
-                <td data-label='Start Time'>  {permit && permit.companies && permit.companies[0].start} </td>
-                <td data-label='End Time'> {permit && permit.companies && permit.companies[0].end} </td>
-                <td data-label='Address'> {permit && permit.companies && permit.companies[0].location}</td>
-                {permit && permit.companies && permit.companies[0].isPending==1 &&
-                <td data-label='Status'> {permit && permit.companies && 'Pending'}</td>
-                }
-                {permit && permit.companies && permit.companies[0].isApproved==1 &&
-                <td data-label='Status'> {permit && permit.companies && 'Approved'}</td>
-                }
-                {permit && permit.companies && permit.companies[0].isDenied==1 &&
-                <td data-label='Status'> {permit && permit.companies && 'Denied'}</td>
-                }
-
-                </tr>
-                <tr> 
-                <td data-label='Date Applied'> {permit && permit.companies && permit.companies[1].date} </td> 
-                <td data-label='Start Time'>  {permit && permit.companies && permit.companies[1].start} </td>
-                <td data-label='End Time'> {permit && permit.companies && permit.companies[1].end} </td>
-                <td data-label='Address'> {permit && permit.companies && permit.companies[1].location}</td>
-                {permit && permit.companies && permit.companies[1].isPending==1 &&
-                <td data-label='Status'> {permit && permit.companies && 'Pending'}</td>
-                }
-                {permit && permit.companies && permit.companies[1].isApproved==1 &&
-                <td data-label='Status'> {permit && permit.companies && 'Approved'}</td>
-                }
-                {permit && permit.companies && permit.companies[1].isDenied==1 &&
-                <td data-label='Status'> {permit && permit.companies && 'Denied'}</td>
-                }
-                </tr>
-                <tr> 
-                <td data-label='Date Applied'> {permit && permit.companies && permit.companies[2].date} </td> 
-                <td data-label='Start Time'>  {permit && permit.companies && permit.companies[2].start} </td>
-                <td data-label='End Time'> {permit && permit.companies && permit.companies[2].end} </td>
-                <td data-label='Address'> {permit && permit.companies && permit.companies[2].location}</td>
-                {permit && permit.companies && permit.companies[2].isPending==1 &&
-                <td data-label='Status'> {permit && permit.companies && 'Pending'}</td>
-                }
-                {permit && permit.companies && permit.companies[2].isApproved==1 &&
-                <td data-label='Status'> {permit && permit.companies && 'Approved'}</td>
-                }
-                {permit && permit.companies && permit.companies[2].isDenied==1 &&
-                <td data-label='Status'> {permit && permit.companies && 'Denied'}</td>
-                }
-                </tr>
-                
-            </tbody> */
 
             var testPermit = ""
             if(permit)
             {
                 if(permit.companies)
                 {
-                    
-
-                    
+                              
                     for(var i = 0; i<permit.companies.length; i++)
                     {
                         testPermit +=
