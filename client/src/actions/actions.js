@@ -244,7 +244,7 @@ export function createPermit(creds) {
 
         // If permit creation was successful, set the company data in local storage
         localStorage.setItem('company', JSON.stringify(company.company))
-        dispatch(refreshPage())
+         dispatch(refreshPage())
         // Dispatch the success action 
         dispatch(receivePermit(company))
       }).catch(err => console.log("Error: ", err))
@@ -362,7 +362,6 @@ export function updateUser(creds) {
         
         localStorage.setItem('user', JSON.stringify(user))
         
-        dispatch(refreshPage())
         dispatch(receiveUpdate(user))
 
       }).catch(err => console.log("Error: ", err))
@@ -386,7 +385,7 @@ export function fetchUser() {
 }
 
 // Uses the api middleware to get the permit info
-export function fetchCompany() {
+export function fetchPermit() {
   return {
     [CALL_API]: {
       endpoint: 'companies',

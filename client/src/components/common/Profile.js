@@ -7,7 +7,7 @@ import {
     Switch,
     Redirect
   } from 'react-router-dom'
-  import { fetchCompany, fetchUser } from "../../actions/actions";
+  import { fetchPermit, fetchUser } from "../../actions/actions";
 
 /*
    The profile page component
@@ -23,7 +23,7 @@ export default class Profile extends React.Component {
     componentWillMount() {
         const { isAuthenticated, dispatch } = this.props
         if(isAuthenticated){
-        dispatch(fetchCompany())
+        dispatch(fetchPermit())
         dispatch(fetchUser())
         }
       }

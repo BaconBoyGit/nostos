@@ -24,7 +24,7 @@ import Permit from '../components/forms/Permit';
 import Update from '../components/forms/ProfileUpdate';
 
 import { fetchUser } from '../actions/actions';
-import { fetchCompany } from '../actions/actions';
+import { fetchPermit } from '../actions/actions';
 import { fetchUpdate } from '../actions/actions';
 
 /*
@@ -132,7 +132,6 @@ class App extends Component {
                   isAuthenticated={ isAuthenticated }
                   user = { user }
                   permit = {permit}
-                  fetchCompany = {fetchCompany}
                   dispatch = {dispatch}
                 
                 />

@@ -80,7 +80,7 @@ export default class Register extends React.Component {
 					<div className="txt g--6">
 						<label htmlFor="state" className="txt-l txt-l--mt000">State*</label>
 							<div className="sel-c sel-c--fw">
-								<select name="language" ref="state" className="sel-f" required>
+								<select name="language" ref="state" className="sel-f" defaultValue="MA" required>
 									<option value="AL">Alabama</option>
 									<option value="AK" >Alaska</option>
 									<option value="AR">Arkansas</option>
@@ -100,7 +100,7 @@ export default class Register extends React.Component {
 									<option value="LA">Louisiana</option>
 									<option value="ME">Maine</option>
 									<option value="MD">Maryland</option>
-									<option selected="MA">Massachusetts</option>
+									<option value="MA">Massachusetts</option>
 									<option value="MI">Michigan</option>
 									<option value="MN">Minnesota</option>
 									<option value="MS">Mississippi</option>

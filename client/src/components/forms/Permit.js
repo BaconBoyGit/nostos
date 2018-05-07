@@ -123,35 +123,35 @@ class Permit extends React.Component {
                             <label for="start" class="txt-l txt-l--mt000">Select Start Time</label>
                             <div class="sel-c sel-c--fw">
                                 <select ref="start" name="time" id="time" class="sel-f">
-                                    <option value="8:00 AM">8:00 AM</option>
-                                    <option value="8:30 AM">8:30 AM</option>
+                                    <option value="800">8:00 AM</option>
+                                    <option value="830">8:30 AM</option>
                                     
-                                    <option value="9:00 AM">9:00 AM</option>
-                                    <option value="9:30 AM">9:30 AM</option>
+                                    <option value="900">9:00 AM</option>
+                                    <option value="930">9:30 AM</option>
                                     
-                                    <option value="10:00 AM">10:00 AM</option>
-                                    <option value="10:30 AM">10:30 AM</option>
+                                    <option value="1000">10:00 AM</option>
+                                    <option value="1030">10:30 AM</option>
                                     
-                                    <option value="11:00 AM">11:00 AM</option>
-                                    <option value="11:30 AM">11:30 AM</option>
+                                    <option value="1100">11:00 AM</option>
+                                    <option value="1130">11:30 AM</option>
                                     
-                                    <option value="12:00 PM">12:00 PM</option>
-                                    <option value="12:30 PM">12:30 PM</option>
+                                    <option value="1200">12:00 PM</option>
+                                    <option value="1230">12:30 PM</option>
                                     
-                                    <option value="1:00 PM">1:00 PM</option>
-                                    <option value="1:30 PM">1:30 PM</option>
+                                    <option value="1300">1:00 PM</option>
+                                    <option value="1330">1:30 PM</option>
                                     
-                                    <option value="2:00 PM">2:00 PM</option>
-                                    <option value="2:30 PM">2:30 PM</option>
+                                    <option value="1400">2:00 PM</option>
+                                    <option value="1430">2:30 PM</option>
                                     
-                                    <option value="3:00 PM">3:00 PM</option>
-                                    <option value="3:30 PM">3:30 PM</option>
+                                    <option value="1500">3:00 PM</option>
+                                    <option value="1530">3:30 PM</option>
 
-                                    <option value="4:00 PM">4:00 PM</option>
-                                    <option value="4:30 PM">4:30 PM</option>
+                                    <option value="1600">4:00 PM</option>
+                                    <option value="1630">4:30 PM</option>
                                     
-                                    <option value="5:00 PM">5:00 PM</option>
-                                    <option value="5:30 PM">5:30 PM</option>
+                                    <option value="1700">5:00 PM</option>
+                                    <option value="1730">5:30 PM</option>
                                 </select>
                              </div>
                         </div>
@@ -161,34 +161,36 @@ class Permit extends React.Component {
                 <label for="end" class="txt-l txt-l--mt000">Select End Time</label>
                 <div class="sel-c sel-c--fw">
                 <select ref="end" name="time" id="time" class="sel-f">
-                    <option value="8:30 AM">8:30 AM</option>
+                    <option value="830">8:30 AM</option>
                     
-                    <option value="9:00 AM">9:00 AM</option>
-                    <option value="9:30 AM">9:30 AM</option>
+                    <option value="900">9:00 AM</option>
+                    <option value="930">9:30 AM</option>
                     
-                    <option value="10:00 AM">10:00 AM</option>
-                    <option value="10:30 AM">10:30 AM</option>
+                    <option value="1000">10:00 AM</option>
+                    <option value="1030">10:30 AM</option>
                     
-                    <option value="11:00 AM">11:00 AM</option>
-                    <option value="11:30 AM">11:30 AM</option>
+                    <option value="1100">11:00 AM</option>
+                    <option value="1130">11:30 AM</option>
                     
-                    <option value="12:00 PM">12:00 PM</option>
-                    <option value="12:30 PM">12:30 PM</option>
+                    <option value="1200">12:00 PM</option>
+                    <option value="1230">12:30 PM</option>
                     
-                    <option value="1:00 PM">1:00 PM</option>
-                    <option value="1:30 PM">1:30 PM</option>
+                    <option value="1300">1:00 PM</option>
+                    <option value="1330">1:30 PM</option>
                     
-                    <option value="2:00 PM">2:00 PM</option>
-                    <option value="2:30 PM">2:30 PM</option>
+                    <option value="1400">2:00 PM</option>
+                    <option value="1430">2:30 PM</option>
                     
-                    <option value="3:00 PM">3:00 PM</option>
-                    <option value="3:30 PM">3:30 PM</option>
+                    <option value="1500">3:00 PM</option>
+                    <option value="1530">3:30 PM</option>
 
-                    <option value="4:00 PM">4:00 PM</option>
-                    <option value="4:30 PM">4:30 PM</option>
+                    <option value="1600">4:00 PM</option>
+                    <option value="1630">4:30 PM</option>
                     
-                    <option value="5:00 PM">5:00 PM</option>
-                    <option value="5:30 PM">5:30 PM</option>
+                    <option value="1700">5:00 PM</option>
+                    <option value="1730">5:30 PM</option>
+
+                    <option value="1800">6:00 PM</option>
                 </select>
                 </div>
             </div>
@@ -227,7 +229,6 @@ permitClick= function(e) {
     // Build our credentials to send to the backend
     const creds = { location: location.value.trim(), start: start.value.trim(), end: end.value.trim(), date: date.value.trim()}
     this.props.dispatch(createPermit(creds))
-
     this.props.history.push('/status')
     
  

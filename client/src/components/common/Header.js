@@ -76,14 +76,14 @@ export default class Header extends Component {
                             <Link to="/profile" >
 
                             {user&&
-                                <div className ="nv-h-l-a" onClick = { this.refreshPage }> 
+                                <div className ="nv-h-l-a"> 
                                 {user.first} 
                                 </div> 
                             }
 
                             </Link>
                             <Link to="/status" onClick = { this.refreshPage } className="nv-h-l-a nv-h-l-a--k--s tr-link" > Status </Link>
-                            <Link to="/permit" onClick = { this.refreshPage } className="nv-h-l-a nv-h-l-a--k--s tr-link"> New Permit </Link>
+                            <Link to="/permit" className="nv-h-l-a nv-h-l-a--k--s tr-link"> New Permit </Link>
                             <Link to = "/">
                                 <Logout
                                         onLogoutClick={() => dispatch(logoutUser())}

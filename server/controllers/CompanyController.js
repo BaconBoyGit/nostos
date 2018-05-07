@@ -4,10 +4,21 @@ const Company = require('../models').Company;
 
 const create = async function(req, res){
     res.setHeader('Content-Type', 'application/json');
-    let err, company;
+    
+    const body1 = req.body
+
+    if(body1.start==body1.end)
+    {
+        return  ReE(res, 'Start time and end time cannot be the same');
+    }
+    else if(parseInt(body1.start)>parseInt(body1.end))
+    {
+        return ReE(res, 'End time cannot be before start time');
+    }
+    else{
     let user = req.user;
     let company_info = req.body;
-
+    let err, company;
 
     [err, company] = await to(Company.create(company_info));
     if(err) return ReE(res, err, 422);
@@ -21,6 +32,7 @@ const create = async function(req, res){
     company_json.users = [{user:user.id}];
 
     return ReS(res,{company:company_json}, 201);
+    } 
 }
 module.exports.create = create;
 

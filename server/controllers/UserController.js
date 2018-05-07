@@ -17,7 +17,7 @@ const create = async function(req, res){
     } else if(body.password != body.confirm){
         return ReE(res, 'Passwords do not match.');
     } else if(body.email != body.emailCon){
-            return ReE(res, 'Emails do not match.');
+        return ReE(res, 'Emails do not match.');
     }else{
         let err, user;
 
