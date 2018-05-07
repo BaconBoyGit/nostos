@@ -14,6 +14,10 @@ Modified by Christine Frandsen, 2018
 */
 
 import { CALL_API } from '../middleware/api'
+import potato from '../components/forms/Permit'
+import{
+withRouter
+} from 'react-router-dom'
 
 // Our development route (running on localhost) and our production route
 // Comment out one route to use the other 
@@ -99,7 +103,8 @@ export function loginUser(creds) {
           dispatch(receiveLogin(user))
         }
       }).catch(err => console.log("Error: ", err))
-  }
+    }
+ 
 }
 
 // Registration actions 
@@ -195,6 +200,7 @@ function requestPermit(creds) {
     type: PERMIT_REQUEST,
     isFetching: true,
     isAuthenticated: true,
+    permError: false,
     creds
   }
 }
@@ -204,6 +210,7 @@ function receivePermit(company) {
     type: REGISTER_SUCCESS,
     isFetching: false,
     isAuthenticated: true,
+    permError: false,
     company
   }
 }
@@ -213,6 +220,7 @@ function permitError(message) {
     type: PERMIT_FAILURE,
     isFetching: false,
     isAuthenticated: true,
+    permError: true,
     message
   }
 }
@@ -238,17 +246,20 @@ export function createPermit(creds) {
         if (!response.ok || company.success === false) {
           // If there was a problem, we want to
           // dispatch the error condition
+          alert(company.error)
           dispatch(permitError(company.error))
           return Promise.reject(company)
         } 
-
+        else{
         // If permit creation was successful, set the company data in local storage
         localStorage.setItem('company', JSON.stringify(company.company))
-         dispatch(refreshPage())
-        // Dispatch the success action 
+        dispatch(refreshPage())
+        // Dispatch the success action
         dispatch(receivePermit(company))
+        }
+        
       }).catch(err => console.log("Error: ", err))
-  }
+    }
 }
 
 

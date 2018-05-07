@@ -7,6 +7,8 @@ const create = async function(req, res){
     
     const body1 = req.body
 
+    //Error handling to ensure people don't request a start time
+    //that is after their end time
     if(body1.start==body1.end)
     {
         return  ReE(res, 'Start time and end time cannot be the same');

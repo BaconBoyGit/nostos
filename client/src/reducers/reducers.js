@@ -14,6 +14,7 @@ import {
 function auth(state = { // This is our "default" state
     isFetching: false,
     logError: false,
+    permError: false,
     isAuthenticated: localStorage.getItem('id_token') ? true : false, 
     user: localStorage.getItem('user') !== 'undefined' ? JSON.parse(localStorage.getItem('user')) : null,  // Pull from local storage if we happen to lose our state
     permit: localStorage.getItem('company') !== 'undefined' ? JSON.parse(localStorage.getItem('company')) : null
@@ -83,6 +84,7 @@ function auth(state = { // This is our "default" state
 function perm(state = { // This is our "default" state
     isFetching: false,
     isAuthenticated: true,
+    permError: false,
     user: localStorage.getItem('user') !== 'undefined' ? JSON.parse(localStorage.getItem('user')) : null,  // Pull from local storage if we happen to lose our state
     permit: localStorage.getItem('company') !== 'undefined' ? JSON.parse(localStorage.getItem('company')) : null
   }, action) {
@@ -90,16 +92,19 @@ function perm(state = { // This is our "default" state
     case PERMIT_REQUEST:
       return Object.assign({}, state, {
         isFetching: true,
+        permError: false,
         data: action.creds,
       })
     case PERMIT_SUCCESS:
       return Object.assign({}, state, {
         isFetching: false,
+        permError: false,
         permit: action.response,
       })
     case PERMIT_FAILURE:
       return Object.assign({}, state, {
         isFetching: false,
+        permError: true,
         isAuthenticated: true,
         permitErrorMessage: action.message
       })

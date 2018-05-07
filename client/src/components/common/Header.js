@@ -76,7 +76,7 @@ export default class Header extends Component {
                             <Link to="/profile" >
 
                             {user&&
-                                <div className ="nv-h-l-a"> 
+                                <div className ="nv-h-l-a" onClick = { this.refreshPage }> 
                                 {user.first} 
                                 </div> 
                             }
@@ -106,5 +106,4 @@ Header.propTypes = {
     errorMessage: PropTypes.string,
     user: PropTypes.object,
     logError: PropTypes.bool,
-
 }

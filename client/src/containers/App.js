@@ -50,7 +50,7 @@ class App extends Component {
   render() {
     
     // Bring in our proptypes
-    const { dispatch, isAuthenticated, errorMessage, user, permit, permitErrorMessage, logError } = this.props
+    const { dispatch, isAuthenticated, errorMessage, user, permit, permitErrorMessage, logError, permError } = this.props
 
     const errorStyle = {
       position: "fixed",
@@ -147,6 +147,7 @@ class App extends Component {
                   user = { user }
                   dispatch = { dispatch }
                   permit = { permit }
+                  permError = { permError }
                 />
                 : <Redirect to='/' />
               } />
@@ -164,6 +165,7 @@ App.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
   errorMessage: PropTypes.string,
   logError: PropTypes.bool,
+  permError: PropTypes.bool
 }
 
 
@@ -174,7 +176,7 @@ function mapStateToProps(state) {
 
   const { auth, perm } = state
   const { isAuthenticated, errorMessage, user, logError } = auth
-  const { permit, permitErrorMessage } = perm
+  const { permit, permitErrorMessage, permError } = perm
   
   return {
     user,
@@ -183,6 +185,7 @@ function mapStateToProps(state) {
     permit,
     permitErrorMessage,
     logError,
+    permError
   }
 }
 

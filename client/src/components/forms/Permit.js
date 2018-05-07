@@ -77,7 +77,7 @@ class Permit extends React.Component {
 
     render () {   
 
-      const { errorMessage, dispatch, permit } = this.props
+      const { errorMessage, dispatch, permit, permError } = this.props
 
     // Define our styling for the map 
       const mapStyle = {
@@ -87,7 +87,6 @@ class Permit extends React.Component {
         width: '49%',
         height: '350px'
       };
-      console.log(permit)
 
       // Define a relative container for our map, and anything inside of it
       const mapContainerStyle = {
@@ -221,17 +220,19 @@ class Permit extends React.Component {
 permitClick= function(e) {
     e.preventDefault()
     // Pull all of our references from the filled out form
+
     const location = this.refs.location
     const start = this.refs.start
     const end = this.refs.end
     const date = this.refs.date
 
+
     // Build our credentials to send to the backend
     const creds = { location: location.value.trim(), start: start.value.trim(), end: end.value.trim(), date: date.value.trim()}
     this.props.dispatch(createPermit(creds))
+    const permError = this.props
     this.props.history.push('/status')
-    
- 
+
   }
 
 }
@@ -241,5 +242,6 @@ Permit.propTypes = {
     errorMessage: PropTypes.string,
     permit : PropTypes.object,
 }
+
 
 export default withRouter(Permit)
