@@ -22,6 +22,7 @@ import Footer from '../components/common/Footer';
 import Status from '../components/forms/Status';
 import Permit from '../components/forms/Permit';
 import Update from '../components/forms/ProfileUpdate';
+import Admin from '../components/forms/AdminPermit';
 
 import { fetchUser } from '../actions/actions';
 import { fetchPermit } from '../actions/actions';
@@ -81,6 +82,20 @@ class App extends Component {
                 />
                 }
             />
+
+            <Route 
+              exact path ="/admin"
+              render={()=>
+                isAuthenticated === true // Redirect unauthenticated users to avoid status access
+                ? <Admin
+                  isAuthenticated={ isAuthenticated }
+                  user = { user }
+                  permit = {permit}
+                  dispatch = {dispatch}
+                
+                />
+                : <Redirect to='/' />
+              } />
 
             <Route 
                 exact path="/register" 
@@ -185,7 +200,7 @@ function mapStateToProps(state) {
     permit,
     permitErrorMessage,
     logError,
-    permError
+    permError,    
   }
 }
 

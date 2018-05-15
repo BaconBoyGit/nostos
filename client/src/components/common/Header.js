@@ -39,6 +39,8 @@ export default class Header extends Component {
         const logoStyle = {
         marginLeft: "10px"
         };
+
+        console.log(user)
       
         return (
             <div className="mn">
@@ -71,7 +73,7 @@ export default class Header extends Component {
     
                         }
                         
-                        { isAuthenticated &&  // If authenticated, display different header
+                        { user && isAuthenticated && user.isAdmin==0 && // If authenticated, display different header
                         <nav className="nv-h-l">
                             <Link to="/profile" >
 
@@ -84,6 +86,25 @@ export default class Header extends Component {
                             </Link>
                             <Link to="/status" onClick = { this.refreshPage } className="nv-h-l-a nv-h-l-a--k--s tr-link" > Status </Link>
                             <Link to="/permit" className="nv-h-l-a nv-h-l-a--k--s tr-link"> New Permit </Link>
+                            <Link to = "/">
+                                <Logout
+                                        onLogoutClick={() => dispatch(logoutUser())}
+                                    />
+                            </Link>
+                        </nav>
+                        }
+                        { user && isAuthenticated && user.isAdmin==1 && // If authenticated, display different header
+                        <nav className="nv-h-l">
+                            <Link to="/profile" >
+
+                            {user&&
+                                <div className ="nv-h-l-a" onClick = { this.refreshPage }> 
+                                {user.first} 
+                                </div> 
+                            }
+
+                            </Link>
+                            <Link to="/admin" onClick={this.refreshPage} className="nv-h-l-a nv-h-l-a--k--s tr-link"> View Permits </Link>
                             <Link to = "/">
                                 <Logout
                                         onLogoutClick={() => dispatch(logoutUser())}
