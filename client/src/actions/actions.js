@@ -35,6 +35,7 @@ function refreshPage() {
   window.location.reload()
 }
 
+
 function requestLogin(creds) {
   return {
     type: LOGIN_REQUEST,

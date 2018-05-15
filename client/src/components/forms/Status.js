@@ -167,16 +167,14 @@ class Status extends React.Component {
 
         // container for our profile element
         const statusContainer = {
-            marginTop: '1%',
-            position: 'relative',
-            height: '400px',
-            marginBottom: '15%'
+            marginTop: '2%',
+            marginBottom: '1%'
         };
 
         // Center the content of the home body within its container
         const statusContent = {
             textAlign: 'center',
-            position: 'relative',
+            
         }
       
         // A table for displaying application data

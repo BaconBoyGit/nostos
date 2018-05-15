@@ -35,17 +35,11 @@ import {
 
         // Main container for our profile component
         const profileContainer = {
-            position: 'relative',
-            height: '400px',
-            marginBottom: '15%',
+
+            marginBottom: '1%',
             textAlign: 'center',
         };
 
-        // Center the content of the home body within its container
-        const profileContent = {
-            textAlign: 'center',
-            position: 'relative',
-        }
 
         const formAlign = {
             marginLeft: '25%'
@@ -53,7 +47,6 @@ import {
         console.log(user)
         return (
              <div className = 'profileContainer' style = { profileContainer }>              
-                <div className = "profileContent" style = { profileContent} >
                     <div className="b">
                        { user && <div className="b-c">
                        
@@ -166,7 +159,6 @@ import {
                        }
                     </div>
                 </div>
-          </div>  
           
         )
     }
