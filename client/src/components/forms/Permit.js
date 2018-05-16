@@ -102,6 +102,7 @@ class Permit extends React.Component {
             marginBottom: '5%'
         }
 
+
         return (    
 
             <div className ="permit" style={signupContainer}>  

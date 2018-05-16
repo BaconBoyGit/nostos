@@ -26,8 +26,13 @@ class Status extends React.Component {
 
         const { user, permit } = this.props
 
+        const profileContainer = {
+
+            marginBottom: '1%',
+            textAlign: 'center',
+        };
+
         var test = permit;
-        var disStatus = ''
         var result = ''
         var startArray = new Array(10)
         var endArray = new Array(10)
@@ -180,72 +185,41 @@ class Status extends React.Component {
         // A table for displaying application data
         var x = ""
 
-        if(permit)
-        {
-            if(permit.companies)
-            {
-                     
-                    for (var i = 0; i < permit.companies.length; i++)
-                    {   
-                        var m = i+1;
-                        if(permit.companies[i].isPending)
-                        disStatus += "Application " + m + ": " + permit.companies[i]. location +", Status: Pending" + "\n";
-                        else if(permit.companies[i].isApproved)
-                        disStatus += "Application " + m + ": " + permit.companies[i]. location +", Status: Approved" + "\n";
-                        else
-                        disStatus += "Application " + m + ": " + permit.companies[i]. location +", Status: Denied" + "\n";
-                        
-                    }
-            }
-        }
-
-
-           
-    
     var permits = ''
+    var status = ''
     if(permit && permit.companies)
       {
       permits = <tbody>
       { permit.companies[0] && permit.companies[0].isPending==1 &&
-        <tr> 
+ 
+       <tr> 
               <td data-label='Date Applied'> {permit.companies[0].date} </td> 
               <td data-label='Start Time'>  {startArray[0]} </td>
               <td data-label='End Time'> {endArray[0]} </td>
               <td data-label='Address'> {permit.companies[0].location}</td>
-       
-              {permit.companies[0].isPending==1 &&
-              <td data-label='Status'> Pending</td>
-              }
-              
-              {permit.companies[0].isApproved==1 &&
-              <td data-label='Status'> {permit && permit.companies && 'Approved'}</td>
-              }
-              
-              {permit.companies[0].isDenied==1 &&
-              <td data-label='Status'> {permit && permit.companies && 'Denied'}</td>
-              }
+              <select name="status" ref="status" className="sel-f" defaultValue="P" required>
+             <option value="P">Pending</option>
+             <option value="A" >Approved</option>
+             <option value="D">Denied</option>
+             </select>
         </tr>
+
       }
       {permit.companies[1] && permit.companies[1].isPending==1 &&
         <tr> 
-              <td data-label='Date Applied'> {permit.companies[1].date} </td> 
-              <td data-label='Start Time'>  {startArray[1]} </td>
-              <td data-label='End Time'> {endArray[1]} </td>
-              <td data-label='Address'> {permit.companies[1].location}</td>
+               <td data-label='Date Applied'> {permit.companies[1].date} </td> 
+               <td data-label='Start Time'>  {startArray[1]} </td>
+               <td data-label='End Time'> {endArray[1]} </td>
+               <td data-label='Address'> {permit.companies[1].location}</td>
+ 
+               <select name="status" ref="status" className="sel-f" defaultValue="P" required>
+             <option value="P">Pending</option>
+             <option value="A" >Approved</option>
+             <option value="D">Denied</option>
+             </select>
        
-              {permit.companies[1].isPending==1 &&
-              <td data-label='Status'> Pending</td>
-              }
-              
-              {permit.companies[1].isApproved==1 &&
-              <td data-label='Status'> {permit && permit.companies && 'Approved'}</td>
-              }
-              
-              {permit.companies[1].isDenied==1 &&
-              <td data-label='Status'> {permit && permit.companies && 'Denied'}</td>
-              }
-        </tr>
-      }
+             </tr>
+       }
       {permit.companies[2] && permit.companies[2].isPending==1 &&
         <tr> 
               <td data-label='Date Applied'> {permit.companies[2].date} </td> 
@@ -253,17 +227,11 @@ class Status extends React.Component {
               <td data-label='End Time'> {endArray[2]} </td>
               <td data-label='Address'> {permit.companies[2].location}</td>
        
-              {permit.companies[2].isPending==1 &&
-              <td data-label='Status'> Pending</td>
-              }
-              
-              {permit.companies[2].isApproved==1 &&
-              <td data-label='Status'> {permit && permit.companies && 'Approved'}</td>
-              }
-              
-              {permit.companies[2].isDenied==1 &&
-              <td data-label='Status'> {permit && permit.companies && 'Denied'}</td>
-              }
+              <select name="status" ref="status" className="sel-f" defaultValue="P" required>
+             <option value="P">Pending</option>
+             <option value="A" >Approved</option>
+             <option value="D">Denied</option>
+             </select>
         </tr>
       }
       {permit.companies[3] && permit.companies[3].isPending==1 &&
@@ -273,17 +241,11 @@ class Status extends React.Component {
               <td data-label='End Time'> {endArray[3]} </td>
               <td data-label='Address'> {permit.companies[3].location}</td>
        
-              {permit.companies[3].isPending==1 &&
-              <td data-label='Status'> Pending</td>
-              }
-              
-              {permit.companies[3].isApproved==1 &&
-              <td data-label='Status'> {permit && permit.companies && 'Approved'}</td>
-              }
-              
-              {permit.companies[0].isDenied==1 &&
-              <td data-label='Status'> {permit && permit.companies && 'Denied'}</td>
-              }
+              <select name="status" ref="status" className="sel-f" defaultValue="P" required>
+             <option value="P">Pending</option>
+             <option value="A" >Approved</option>
+             <option value="D">Denied</option>
+             </select>
         </tr>
       }
       {permit.companies[4] && permit.companies[4].isPending==1 &&
@@ -293,17 +255,11 @@ class Status extends React.Component {
               <td data-label='End Time'> {endArray[4]} </td>
               <td data-label='Address'> {permit.companies[4].location}</td>
        
-              {permit.companies[4].isPending==1 &&
-              <td data-label='Status'> Pending</td>
-              }
-              
-              {permit.companies[4].isApproved==1 &&
-              <td data-label='Status'> {permit && permit.companies && 'Approved'}</td>
-              }
-              
-              {permit.companies[4].isDenied==1 &&
-              <td data-label='Status'> {permit && permit.companies && 'Denied'}</td>
-              }
+              <select name="status" ref="status" className="sel-f" defaultValue="P" required>
+             <option value="P">Pending</option>
+             <option value="A" >Approved</option>
+             <option value="D">Denied</option>
+             </select>
         </tr>
       }
       {permit.companies[5] && permit.companies[5].isPending==1 &&
@@ -313,17 +269,11 @@ class Status extends React.Component {
               <td data-label='End Time'> {endArray[5]} </td>
               <td data-label='Address'> {permit.companies[5].location}</td>
        
-              {permit.companies[5].isPending==1 &&
-              <td data-label='Status'> Pending</td>
-              }
-              
-              {permit.companies[5].isApproved==1 &&
-              <td data-label='Status'> {permit && permit.companies && 'Approved'}</td>
-              }
-              
-              {permit.companies[5].isDenied==1 &&
-              <td data-label='Status'> {permit && permit.companies && 'Denied'}</td>
-              }
+              <select name="status" ref="status" className="sel-f" defaultValue="P" required>
+             <option value="P">Pending</option>
+             <option value="A" >Approved</option>
+             <option value="D">Denied</option>
+             </select>
         </tr>
       }
       {permit.companies[6] && permit.companies[6].isPending==1 &&
@@ -333,17 +283,11 @@ class Status extends React.Component {
               <td data-label='End Time'> {endArray[6]} </td>
               <td data-label='Address'> {permit.companies[6].location}</td>
        
-              {permit.companies[6].isPending==1 &&
-              <td data-label='Status'> Pending</td>
-              }
-              
-              {permit.companies[6].isApproved==1 &&
-              <td data-label='Status'> {permit && permit.companies && 'Approved'}</td>
-              }
-              
-              {permit.companies[6].isDenied==1 &&
-              <td data-label='Status'> {permit && permit.companies && 'Denied'}</td>
-              }
+              <select name="status" ref="status" className="sel-f" defaultValue="P" required>
+             <option value="P">Pending</option>
+             <option value="A" >Approved</option>
+             <option value="D">Denied</option>
+             </select>
         </tr>
       }
       {permit.companies[7] && permit.companies[7].isPending==1 &&
@@ -353,17 +297,11 @@ class Status extends React.Component {
               <td data-label='End Time'> {endArray[7]} </td>
               <td data-label='Address'> {permit.companies[7].location}</td>
        
-              {permit.companies[7].isPending==1 &&
-              <td data-label='Status'> Pending</td>
-              }
-              
-              {permit.companies[7].isApproved==1 &&
-              <td data-label='Status'> {permit && permit.companies && 'Approved'}</td>
-              }
-              
-              {permit.companies[7].isDenied==1 &&
-              <td data-label='Status'> {permit && permit.companies && 'Denied'}</td>
-              }
+              <select name="status" ref="status" className="sel-f" defaultValue="P" required>
+             <option value="P">Pending</option>
+             <option value="A" >Approved</option>
+             <option value="D">Denied</option>
+             </select>
         </tr>
       }
       {permit.companies[8] && permit.companies[8].isPending==1 &&
@@ -373,17 +311,11 @@ class Status extends React.Component {
               <td data-label='End Time'> {endArray[8]} </td>
               <td data-label='Address'> {permit.companies[8].location}</td>
        
-              {permit.companies[8].isPending==1 &&
-              <td data-label='Status'> Pending</td>
-              }
-              
-              {permit.companies[8].isApproved==1 &&
-              <td data-label='Status'> {permit && permit.companies && 'Approved'}</td>
-              }
-              
-              {permit.companies[8].isDenied==1 &&
-              <td data-label='Status'> {permit && permit.companies && 'Denied'}</td>
-              }
+              <select name="status" ref="status" className="sel-f" defaultValue="P" required>
+             <option value="P">Pending</option>
+             <option value="A" >Approved</option>
+             <option value="D">Denied</option>
+             </select>
         </tr>
       }
       {permit.companies[9] && permit.companies[9].isPending==1 &&
@@ -393,22 +325,17 @@ class Status extends React.Component {
               <td data-label='End Time'> {endArray[9]} </td>
               <td data-label='Address'> {permit.companies[9].location}</td>
        
-              {permit.companies[9].isPending==1 &&
-              <td data-label='Status'> Pending</td>
-              }
-              
-              {permit.companies[9].isApproved==1 &&
-              <td data-label='Status'> {permit && permit.companies && 'Approved'}</td>
-              }
-              
-              {permit.companies[9].isDenied==1 &&
-              <td data-label='Status'> {permit && permit.companies && 'Denied'}</td>
-              }
+              <select name="status" ref="status" className="sel-f" defaultValue="P" required>
+             <option value="P">Pending</option>
+             <option value="A" >Approved</option>
+             <option value="D">Denied</option>
+             </select>
         </tr>
       }
       </tbody>      
       }
-            
+         
+      console.log(permit)
        
       return (
           <div className = 'statusContainer' style = { statusContainer }>              
@@ -444,18 +371,32 @@ class Status extends React.Component {
                                 </table>
                                 </div>
                             }
-
-                                    <div class="t--intro">
-                                        {/*nl2br(disStatus)*/}
-                                    </div>
                         </div>
                     </div>
                 </div> 
+                <div style={profileContainer}>
+                            <input align = "center" type="submit" className="btn" value="Update" onClick={(event) => this.registerClick(event)}/>
+                </div>
             </div>   
 
        
         ) 
     }
+
+    registerClick= function(e) {
+		e.preventDefault()
+		// Pull all of our references from the fulled out form
+
+		const isPending = this.refs.email
+		const isApproved = this.refs.address
+		const isDenied = this.refs.city
+
+
+		// Build our credentials to send to the backend
+		//const creds = {  }
+
+        //this.props.dispatch(updateStatus(creds))
+	  }
     
 }
 
